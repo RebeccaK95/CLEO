@@ -15,5 +15,14 @@
 
 .container {
   width: 900px;
-  margin: 20px 0px;
+  margin: 20px auto;
+}
+
+body {
+  background-color: white;
+}
+
+a {
+  text-decoration: none !important;
+  color: #252525;
 }
