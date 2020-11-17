@@ -1,16 +1,16 @@
 <div class="container">
   <div class="category-cards">
-    <div class="category-card">
-      <% @challenges.each do |challenge| %>
-      <%= challenge.category.name%>
-      <% end %>
-    </div>
+    <% @categories.each do |category| %>
+      <div class=<%= "category-card transport" %>>
+        <h2><%= category.name %></h2>
+      </div>
+    <% end %>
   </div>
   <div class="cards">
     <% @challenges.each do |challenge| %>
     <div class="challenge-card" >
       <h2><%= link_to challenge.name, challenge_path(challenge) %></h2>
-      <p><%= challenge.description %></p>
+      <p><%= challenge.description.to_s.truncate(95) %><%= link_to "Read more", challenge_path(challenge) %></p>
     </div>
     <% end %>
   </ul>
