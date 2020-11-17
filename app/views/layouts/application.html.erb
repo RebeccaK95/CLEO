@@ -11,11 +11,22 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
+  <header>
+    <div class="d-flex navbar">
+      <div class="container">
+        <div class="mr-auto p-2 logo-navbar"> <%= image_tag("Logo_CLEO.png") %> </div>
+        <div class="p-2 title-navbar"> <%= image_tag("Icon_Dashboard_active.png") %> <%= link_to "Dashboard", root_path %> </div>
+        <div class="p-2 title-navbar"> <%= image_tag("Icon_Challenge_active.png") %><%= link_to " Challenges", challenges_path %></div>
+        <div class="p-2 title-navbar"> <%= image_tag("Icon_Tips_active.png") %><%= link_to " Tips", category_tips_path(:category_id) %> </div>
+        <div class="p-2 avatar"> <%= image_tag("eoliennes.jpg") %> </div>
+      </div>
+    </div>
+  </header>
+
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
     <div class="container">
       <%= yield %>
+      <div class="button">test</div>
     </div>
   </body>
 </html>
