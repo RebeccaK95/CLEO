@@ -10,9 +10,19 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/cardcategory";
 @import "pages/index";
 
 .container {
   width: 900px;
-  margin: 20px 0px;
+  margin: 20px auto;
+}
+
+body {
+  background-color: white;
+}
+
+a {
+  text-decoration: none !important;
+  color: #252525;
 }
