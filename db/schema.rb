@@ -10,10 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_140405) do
+ActiveRecord::Schema.define(version: 2020_11_17_092914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "steps"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_challenges_on_category_id"
+  end
+
+  create_table "footprints", force: :cascade do |t|
+    t.integer "score"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_footprints_on_user_id"
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.boolean "invited"
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_invitations_on_challenge_id"
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_tips_on_category_id"
+  end
+
+  create_table "user_challenges", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"
+    t.index ["user_id"], name: "index_user_challenges_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +78,10 @@ ActiveRecord::Schema.define(version: 2020_11_16_140405) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "challenges", "categories"
+  add_foreign_key "footprints", "users"
+  add_foreign_key "invitations", "challenges"
+  add_foreign_key "tips", "categories"
+  add_foreign_key "user_challenges", "challenges"
+  add_foreign_key "user_challenges", "users"
 end
