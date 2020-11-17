@@ -14,17 +14,17 @@
   <header>
     <div class="d-flex navbar">
       <div class="container">
-        <div class="mr-auto p-2 logo-navbar"> <%= image_tag("Logo_CLEO.png") %> </div>
-        <div class="p-2 title-navbar"> <%= image_tag("Icon_Dashboard_active.png") %> <%= link_to "Dashboard", root_path %> </div>
-        <div class="p-2 title-navbar"> <%= image_tag("Icon_Challenge_active.png") %><%= link_to " Challenges", challenges_path %></div>
-        <div class="p-2 title-navbar"> <%= image_tag("Icon_Tips_active.png") %><%= link_to " Tips", tips_path(:category_id) %> </div>
-        <div class="p-2 avatar"> <%= image_tag("image-energy.jpg") %> </div>
+        <div class="mr-auto logo-navbar"> <%= image_tag("Logo_Cleo_navbar.svg") %> </div>
+        <div class="px-3 title-navbar"> <%= image_tag("icon_dashboard_active.svg") %> <%= link_to "Dashboard", root_path %> </div>
+        <div class="px-3 title-navbar"> <%= image_tag("icon_challenges.svg") %><%= link_to " Challenges", challenges_path %></div>
+        <div class="px-3 title-navbar"> <%= image_tag("icon_tips.svg") %><%= link_to " Tips", tips_path(:category_id) %> </div>
+        <div class="px-3 avatar"> <%= image_tag("avatar_default.svg") %> </div>
       </div>
     </div>
   </header>
 
   <body>
-    <div class="container">
+    <div class="container container-margin">
       <%= yield %>
       <div class="button">test</div>
     </div>
