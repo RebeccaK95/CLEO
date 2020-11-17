@@ -1,0 +1,20 @@
+</div>
+  <div class="container">
+    <div class="column">
+      <div class="img">
+        <%= cl_image_tag @tip.photo.key %>
+      </div>
+    </div>
+    <div class="column flex-column d-flex justify-content-between">
+      <div class="d-flex">
+        <div class="mr-auto p-2"><h1 class="book-title"><%= @tip.title %></h1></div>
+        </div>
+        <p style="padding-left: 8px;"><%= @tip.category %></p>
+        <p style="padding-left: 8px;"><%= @tip.description %></p>
+          <div class="link-show">
+            <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
