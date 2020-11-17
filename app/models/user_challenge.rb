@@ -1,13 +1,20 @@
 class UserChallenge < ApplicationRecord
   belongs_to :user
   belongs_to :challenge
+  before_validation :start_challenge, on: :create
 
   STATUSES = ["in_progress", "completed"].freeze
 
   validates :user, :challenge, :status, presence: true
   validates :status, inclusion: { in: STATUSES }
 
-  def update_status_to_completed
-    status = "completed"
+  def mark_challenge_as_completed
+    self.status = "completed"
+  end
+
+  private
+
+  def start_challenge
+    self.status = "in_progress"
   end
 end
