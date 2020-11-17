@@ -14,12 +14,17 @@
 @import "pages/index";
 
 .container {
-  width: 900px;
-  margin: 20px auto;
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.container-margin {
+  margin: 3rem auto;
 }
 
 body {
   background-color: white;
+  color: $black;
 }
 
 a {
