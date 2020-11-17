@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :challenges, through: :user_challenges
 
-  validates :email, :encrypted_password, :username, presence: true
+  validates :email, :encrypted_password, presence: true
   validates :email, format: { with: Devise.email_regexp }
 end

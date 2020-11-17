@@ -1,7 +1,7 @@
 class UserChallengesController < ApplicationController
   def create
     @challenge = Challenge.find(params[:challenge_id])
-    @user_challenge = UserChallenge.new(user_challenge_params)
+    @user_challenge = UserChallenge.new
     @user_challenge.challenge = @challenge
     @user_challenge.user = current_user
     @user_challenge.status = "in_progress"
@@ -15,13 +15,7 @@ class UserChallengesController < ApplicationController
 
   def update
     user_challenge = UserChallenge.find(params[:id])
-    user_challenge.update(status: "completed")
+    user_challenge.update_status_to_completed.save
     redirect_to challenge_path(user_challenge.challenge)
-  end
-
-  private
-
-  def user_challenge_params
-    params.require(:user_challenge).permit(:status, :user_id, :challenge_id)
   end
 end
