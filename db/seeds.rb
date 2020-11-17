@@ -116,6 +116,22 @@ challenges_energy = Challenge.create([{name:"Light me up",
                                       category_id: Category.find_by(name: "Energy").id}])
 puts "Done with energy"
 
+puts "Creating tips"
+tip_lifestyle = Tip.create ([
+        {title: "Never without my bag",
+        description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
+        Well where a way of never forgotting this bag again",
+        category_id: Category.find_by(name: "Daily").id},
+        {title: "Never without my bag",
+        description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
+        Well where a way of never forgotting this bag again",
+        category_id: Category.find_by(name: "Daily").id},
+        {title: "Never without my bag",
+        description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
+        Well where a way of never forgotting this bag again",
+        category_id: Category.find_by(name: "Daily").id},
+])
+puts "Done with tips"
 
 
 

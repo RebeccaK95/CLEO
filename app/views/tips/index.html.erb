@@ -1,10 +1,10 @@
 <div class="container">
   <h1>Search within our categories</h1>
-  <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
     <%= link_to "See our categories", categories_path(@name)%>
-  </div>
+   </div>
 </div>
   
   
@@ -23,14 +23,14 @@
     </div>
   <% end %>
   <hr>
-  <h2>All our Tips</h2>
+  <h2>All our Tips of the month</h2>
   <div class="cards mt-4">
     <% @tips.each do |tip| %>
     <div class="card-product">
         <div class="card-product-infos">
           <h2 class="tip-title"><%= link_to tip.title, tip_path(tip), class: "stretched-link" %></h2>
           <div class="card-text">
-            <p><%= tip.category %></p>
+            <p><%= tip.category_id %></p>
             <p><%= tip.description.to_s.truncate(95) %> <%= link_to "Read more", tip_path(tip) %></p>
           </div>
         </div>
