@@ -11,9 +11,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
+  <header>
+    <div class="d-flex navbar">
+      <div class="mr-auto p-2"> <img src="logo.png" alt="logo"></div>
+      <div class="p-2">Dashboard</div>
+      <div class="p-2">Challenges</div>
+      <div class="p-2">Tips</div>
+      <div class="p-2 avatar">avatar</div>
+    </div>
+  </header>
+
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
     <div class="container">
       <%= yield %>
     </div>
