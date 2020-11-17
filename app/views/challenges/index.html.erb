@@ -1,10 +1,10 @@
 <div class="container">
   <div class="category-cards">
-    <div class="category-card">
-      <% @challenges.each do |challenge| %>
-      <%= challenge.category.name%>
-      <% end %>
-    </div>
+    <% @categories.each do |category| %>
+      <div class="category-card">
+        <h2><%= category.name %></h2>
+      </div>
+    <% end %>
   </div>
   <div class="cards">
     <% @challenges.each do |challenge| %>
