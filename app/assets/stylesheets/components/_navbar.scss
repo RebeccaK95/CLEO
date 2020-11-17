@@ -13,5 +13,23 @@
 
 .navbar {
   background-color: white;
-  height: 85px;
+  height: 110px;
+  box-shadow:0px 3px 3px  #DCDCDC;
 }
+
+.title-navbar a {
+  color: $green !important;
+  &:hover {
+
+  }
+}
+
+.title-navbar img {
+  width: 25px;
+  height: 25px;
+}
+
+.logo-navbar img {
+  height: 50px;
+}
+
