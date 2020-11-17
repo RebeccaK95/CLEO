@@ -7,7 +7,7 @@ class UserChallengesController < ApplicationController
     @user_challenge.status = "in_progress"
 
     if @user_challenge.save
-      redirect_to challenge_path(@user_challenge.user)
+      redirect_to challenge_path(@challenge)
     else
       render "challenges/show"
     end
@@ -16,7 +16,7 @@ class UserChallengesController < ApplicationController
   def update
     user_challenge = UserChallenge.find(params[:id])
     user_challenge.update(status: "completed")
-    redirect_to
+    redirect_to challenge_path(user_challenge.challenge)
   end
 
   private
