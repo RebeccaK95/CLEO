@@ -10,7 +10,7 @@ class TipsController < ApplicationController
 #   end
 
   def show
-    @tip = Tip.find(params[:category_id])
+    @tip = Tip.find(params[:id])
   end
 
   private
