@@ -93,10 +93,10 @@ challenges_energy = Challenge.create([{name:"Light me up",
 puts "Done with energy"
 
 puts "Creating tips"
+puts "Creating lifestyle tips"
 tip_lifestyle = Tip.create ([
-        {title: "Never without my bag",
-        description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
-        Well where a way of never forgotting this bag again",
+        {title: "Don't forget to drink",
+        description: "Plastic is has been. It's time to think about carying your own bottle with you. But that also means that you to think about cleaning it. Here are all our tips to have a clean bottle all the time",
         category_id: Category.find_by(name: "Daily").id,
         image:"daily"},
         {title: "Never without my bag",
@@ -104,13 +104,19 @@ tip_lifestyle = Tip.create ([
         Well where a way of never forgotting this bag again",
         category_id: Category.find_by(name: "Daily").id,
         image:"greenbag"},
-        {title: "Never without my bag",
-        description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
-        Well where a way of never forgotting this bag again",
-        category_id: Category.find_by(name: "Daily").id,
-        image:"bathroom"},
+        
 ])
-puts "Done wuth lifestyle"
+puts "Done with lifestyle"
+
+puts "Creating bathroom tips"
+tip_bathroom = Tip.create ([
+        {title: "Byebye cotton",
+        description: "Do you know how many cotton pads are thrown away each day? Millions. And now it's time to stop and do something else, something not only good for the planet, but surely for yourself too. And that's change for sustainable pads.
+                These pads can be used for removinig makeup, putting on lotion and even cleaning our baby. Easy to clean in there container bag",
+        category_id: Category.find_by(name: "Daily").id,
+        image:"bathroom"}
+])
+puts "Done with bathroom"
 
 puts "Done with tips"
 
