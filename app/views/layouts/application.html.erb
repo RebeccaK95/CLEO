@@ -46,7 +46,7 @@
   <!-- Body -->
   <body class="<%= @home_page ? 'homepage' : ''%>">
     <%= render 'shared/flashes' %>
-    <div class="container container-margin">
+    <div class="<%= @show_page ? '' : 'container container-margin'%>">
       <%= yield %>
     </div>
 
