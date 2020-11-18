@@ -15,9 +15,9 @@
     <div class="d-flex navbar">
       <div class="container">
         <div class="mr-auto logo-navbar"> <%= image_tag("Logo_Cleo_navbar.svg") %> </div>
-        <div class="px-3 title-navbar"> <%= image_tag("icon_dashboard_active.svg") %> <%= link_to "Dashboard", root_path %> </div>
-        <div class="px-3 title-navbar"> <%= image_tag("icon_challenges.svg") %><%= link_to " Challenges", challenges_path %></div>
-        <div class="px-3 title-navbar"> <%= image_tag("icon_tips.svg") %><%= link_to " Tips", tips_path(:category_id) %> </div>
+        <div class="px-3 title-navbar active" id="dashboard"> <%= image_tag("icon_dashboard_active.svg") %> <%= link_to "Dashboard", root_path %> </div>
+        <div class="px-3 title-navbar" id="challenges"> <%= image_tag("icon_challenges.svg") %><%= link_to " Challenges", challenges_path %></div>
+        <div class="px-3 title-navbar" id="tips"> <%= image_tag("icon_tips.svg") %><%= link_to " Tips", tips_path(:category_id) %> </div>
         <div class="px-3 avatar"> <%= image_tag("avatar_default.svg") %> </div>
       </div>
     </div>
@@ -29,4 +29,8 @@
       <div class="button">test</div>
     </div>
   </body>
+
+
 </html>
+
+
