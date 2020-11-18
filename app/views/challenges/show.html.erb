@@ -1,30 +1,39 @@
 <div class="banner">
-  <div class="container-banner">
+  <div class="container">
     <h1><%= @challenge.name %></h1>
     <p>Change your life step by step.</p>
   </div>
 </div>
 
-<div class="column flex-column d-flex justify-content-between">
-  <div class="challenge-intro">
-    <div class="description">
-      <h4>Challenge description:</h4>
-      <p><%= @challenge.description %></p>
+<div class="container container-margin">
+  <div class="column flex-column d-flex justify-content-between">
+    <div class="challenge-intro">
+      <div class="description">
+        <h4>Challenge description </h4>
+        <p><%= @challenge.description %></p>
+      </div>
+      <div class="category">
+        <h4>Challenge category </h4>
+        <p><%= @challenge.category.name %></p>
+      </div>
     </div>
-    <div class="category">
-      <h4>Challenge category:</h4>
-      <p><%= @challenge.category.name %></p>
+    <div class="steps">
+      <% steps_array = @challenge.steps.split(';') %>
+      <% steps_array.each do |step| %>
+        <div class="step">
+          <div class="step-description">
+            <p>Step <%=step %></p>
+          </div>
+          <div class="marker">
+            <%= check_box("tag", tag.id) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="link-show">
+      <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all challenges", challenges_path  %>
     </div>
   </div>
-  <div>
-    <% steps_array = @challenge.steps.split(';') %>
-    <% steps_array.each do |step| %>
-      <div class="step"><%= check_box("tag", tag.id) %> Step <%= step %></div>
-    <% end %>
-  </div>
-  <div class="link-show">
-    <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all challenges", challenges_path  %>
-  </div>
+  <%= link_to "Start challenge", challenge_user_challenges_path(@challenge), method: :post, class: "button" %>
+  <%= link_to "Mark as completed", challenge_user_challenge_path(@challenge), method: :patch, class: "button" %>
 </div>
-<%= link_to "Start challenge", challenge_user_challenges_path(@challenge), method: :post, class: "button" %>
-<%= link_to "Mark as completed", challenge_user_challenge_path(@challenge), method: :patch, class: "button" %>

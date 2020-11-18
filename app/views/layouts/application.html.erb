@@ -46,10 +46,16 @@
   <!-- Body -->
   <body class="<%= @home_page ? 'homepage' : ''%>">
     <%= render 'shared/flashes' %>
-    <div class="container container-margin">
+    <div class="<%= @show_page ? '' : 'container container-margin'%>">
       <%= yield %>
     </div>
+
+  <footer class="d-flex flex-row-reverse align-items-center">
+      <p>Made with <i class="fas fa-heart"></i> in Brussels © 2020 Cleo</p>
+  </footer>
+
   </body>
+
 
 
 </html>

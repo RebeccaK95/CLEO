@@ -6,5 +6,6 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    @show_page = true
   end
 end
