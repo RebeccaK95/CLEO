@@ -1,16 +1,13 @@
 </div>
   <div class="container">
-    <div class="column">
-      <%# <div class="img">
-        <%= cl_image_tag @tip.photo.key if @tip.photo.attached? %>
-      <%# </div> %>
-
-    </div>
+  <div class="bannerimage"
+    <%=image_tag("tip-greenbag.jpg")%>
+    <div class="mr-auto p-2"><h1 class="tip-title"><%= @tip.title %></h1></div>
+  </div>
     <div class="column flex-column d-flex justify-content-between">
       <div class="d-flex">
-        <div class="mr-auto p-2"><h1 class="tip-title"><%= @tip.title %></h1></div>
         </div>
-          <p style="padding-left: 8px;"><%= @tip.category_id %></p>
+          <p style="padding-left: 8px;"><%= @tip.category.name %></p>
           <p style="padding-left: 8px;"><%= @tip.description %></p>
           <div class="link-show">
             <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>

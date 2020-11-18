@@ -121,16 +121,21 @@ tip_lifestyle = Tip.create ([
         {title: "Never without my bag",
         description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
         Well where a way of never forgotting this bag again",
-        category_id: Category.find_by(name: "Daily").id},
+        category_id: Category.find_by(name: "Daily").id,
+        image:"daily"},
         {title: "Never without my bag",
         description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
         Well where a way of never forgotting this bag again",
-        category_id: Category.find_by(name: "Daily").id},
+        category_id: Category.find_by(name: "Daily").id,
+        image:"greenbag"},
         {title: "Never without my bag",
         description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
         Well where a way of never forgotting this bag again",
-        category_id: Category.find_by(name: "Daily").id},
+        category_id: Category.find_by(name: "Daily").id,
+        image:"bathroom"},
 ])
+puts "Done wuth lifestyle"
+
 puts "Done with tips"
 
 

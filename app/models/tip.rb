@@ -1,12 +1,11 @@
 class Tip < ApplicationRecord
   belongs_to :category
-  validates :title, :category_id, presence: true
+  validates :title, :category_id, :image, presence: true
 
-  # include PgSearch::Model
-  # pg_search_scope :pg_search,
-  # against: [:category_id],
-  # using: {
-  #   tsearch: {prefix: true}
-  # }
-
+  include PgSearch::Model
+  pg_search_scope :pg_search,
+  against: [:title, :description],
+  using: {
+    tsearch: {prefix: true}
+  }
 end
