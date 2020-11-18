@@ -1,0 +1,40 @@
+.cards {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.challenge-card {
+  overflow: hidden;
+  height: 120px;
+  width: 400px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.challenge-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.challenge-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.challenge-card p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.challenge-card .challenge-card-infos {
+  padding: 16px;
+}
