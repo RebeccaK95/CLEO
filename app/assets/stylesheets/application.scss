@@ -13,6 +13,7 @@
 @import "components/cardcategory";
 @import "components/cardchallenge";
 @import "components/cardtip";
+@import "components/banner";
 @import "pages/index";
 
 .container {
@@ -23,6 +24,7 @@
 .container-margin {
   margin: 3rem auto;
 }
+
 
 body {
   background-color: white;
