@@ -13,8 +13,7 @@
       <div class="challenge-card-infos">
         <h2><%= link_to challenge.name, challenge_path(challenge) %></h2>
         <h3><%= challenge.category.name %></h3>
-        <p><%= challenge.description.to_s.truncate(80) %></p>
-        <p><%= link_to "Read more", challenge_path(challenge) %></p>
+        <p><%= challenge.description.to_s.truncate(80) %><%= link_to "     Read more", challenge_path(challenge) %></p>
       </div>
     </div>
     <% end %>
