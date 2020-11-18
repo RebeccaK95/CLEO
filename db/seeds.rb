@@ -112,8 +112,8 @@ puts "Creating bathroom tips"
 tip_bathroom = Tip.create ([
         {title: "Byebye cotton",
         description: "Do you know how many cotton pads are thrown away each day? Millions. And now it's time to stop and do something else, something not only good for the planet, but surely for yourself too. And that's change for sustainable pads.
-                These pads can be used for removinig makeup, putting on lotion and even cleaning our baby. Easy to clean in there container bag",
-        category_id: Category.find_by(name: "Daily").id,
+                These pads can be used for removing makeup, putting on lotion and even cleaning our baby. Easy to clean in there container bag",
+        category_id: Category.find_by(name: "Bathroom").id,
         image:"bathroom"}
 ])
 puts "Done with bathroom"
