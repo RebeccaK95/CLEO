@@ -10,6 +10,7 @@ end
 
   def show
     @tip = Tip.find(params[:id])
+    @show_page = true
   end
 
   private
