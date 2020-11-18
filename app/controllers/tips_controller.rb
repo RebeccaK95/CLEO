@@ -1,13 +1,12 @@
 class TipsController < ApplicationController
   def index
-    @tips = Tip.all
+    @categories = Category.all
+    if params[:query].present?
+      @tips = Tip.pg_search(params[:query])
+    else
+      @tips = Tip.all
   end
-#     if params[:query].present?
-#       @tips = Tip.pg_search(params[:query])
-#     else
-#       @tips = Tip.all
-#     end
-#   end
+end
 
   def show
     @tip = Tip.find(params[:id])

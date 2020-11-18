@@ -1,40 +1,38 @@
 <div class="container">
-  <h1>Search within our categories</h1>
-    <div class="dropdown">
-      <button class="dropbtn">Dropdown</button>
-    <div class="dropdown-content">
-    <%= link_to "See our categories", categories_path(@name)%>
-   </div>
-</div>
-  
-  
-<div class="container-tips">
-  <%= simple_form_for :search, url: tips_path, method: :get do |f| %>
+  <div class="category-cards">
+    <% @categories.each do |category| %>
+      <div class="category-card <%=category.name.downcase%>">
+        <h2><%= category.name  %></h2>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= simple_form_for :search, url: tips_path, method: :get do |f| %>
     <div class="search-form-control form-group mb-4">
       <input class="form-control string required" type="text" placeholder="A reading wish..." name="[query]" id="pg_search" />
       <div class="row flex-row d-flex justify-content-between mx-0 my-2">
         <button name="button" type="submit" class="btn btn-flat">
-          <i class="fas fa-search"></i> Let's see what tip we ahev for you today...
+          <i class="fas fa-search"></i> Let's see what tip we can find for you today...
         </button>
-         <button name="button" type="submit" class="btn btn-flat">
+          <button name="button" type="submit" class="btn btn-flat">
           <i class="fas fa-hand-point-left"></i> Let's go back ...
         </button>
       </div>
     </div>
-  <% end %>
-  <hr>
-  <h2>All our Tips of the month</h2>
-  <div class="cards mt-4">
-    <% @tips.each do |tip| %>
-    <div class="card-product">
-        <div class="card-product-infos">
-          <h2 class="tip-title"><%= link_to tip.title, tip_path(tip), class: "stretched-link" %></h2>
-          <div class="card-text">
-            <p><%= tip.category_id %></p>
-            <p><%= tip.description.to_s.truncate(95) %> <%= link_to "Read more", tip_path(tip) %></p>
-          </div>
-        </div>
-      </div>
     <% end %>
   </div>
+  <div class="cards">
+    <% @tips.each do |tip| %>
+    <div class="tip-card">
+      <%= image_tag("tip-#{tip.image}.jpg") %>
+      <div class="tip-card-infos">
+        <h2><%= link_to tip.title, tip_path(tip) %></h2>
+        <h3><%= tip.category.name %></h3>
+        <p><%= tip.description.to_s.truncate(80) %><%= link_to "     Read more", tip_path(tip) %></p>
+      </div>
+    </div>
+    <% end %>
+  </ul>
+  </div>
 </div>
+ 
