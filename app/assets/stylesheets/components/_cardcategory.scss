@@ -1,7 +1,8 @@
 .category-card {
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 60px;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,10 +10,40 @@
   font-size: 24px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  h2 {
+  font-size: 15px;
+  }
+
+  h3 {
+  font-size: 10px;
+  font-weight: lighter;
+  }
 }
 
-.category-card.transport {
-    background-image: url("image_transports.jpg");
+.category-card.transports {
+    background-image: url("image-transports.jpg");
   }
+.category-card.food {
+    background-image: url("image-food.jpg");
+  }
+.category-card.energy {
+    background-image: url("image-energy.jpg");
+  }
+.category-card.bathroom {
+    background-image: url("image-bathroom.jpg");
+  }
+.category-card.daily {
+    background-image: url("image-daily.jpg");
+  }
+.category-card.shopping {
+    background-image: url("image-shopping.jpg");
+  }
+
+
+.category-cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}

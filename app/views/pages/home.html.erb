@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <h1 class="welcome-line">Welcome <span class="username-green"><%= current_user.username %><span></h1>
+<% else %>
+  <h1 class="welcome-line">Change is now</h1>
+  <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
+  <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+<% end %>
