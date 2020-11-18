@@ -6,6 +6,21 @@
       </div>
     <% end %>
   </div>
+  <div>
+    <%= simple_form_for :search, url: challenges_path, method: :get do |f| %>
+      <div class="search-form-control form-group mb-4">
+        <input class="form-control string required" type="text" placeholder="A reading wish..." name="[query]" id="pg_search" />
+        <div class="row flex-row d-flex justify-content-between mx-0 my-2">
+          <button name="button" type="submit" class="btn btn-flat">
+            <i class="fas fa-search"></i> Let's see what challenge we can find for you today...
+          </button>
+            <button name="button" type="submit" class="btn btn-flat">
+            <i class="fas fa-hand-point-left"></i> Let's go back ...
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div class="cards">
     <% @challenges.each do |challenge| %>
     <div class="challenge-card">
