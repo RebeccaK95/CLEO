@@ -119,7 +119,7 @@ challenges_food = Challenge.create([{name: "Decrease additives",
                                     steps: "1- Buy in local bio stores;2- Cook more at home !",
 
 
-                                    image: "radish.jpg",
+                                    image: "tomatoes.jpg",
 
                                     points: [100, 200, 300, 400, 500].sample,
                                     category_id: Category.find_by(name: "Food").id},
