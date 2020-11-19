@@ -105,7 +105,7 @@ challenges_lifestyle = Challenge.create([{name: "Bye bye plastic bags",
                                         steps: "1- Use essential oils! 9 out of 10 times they will do the job perfectly.;2- Try to get better use natural medecines like acupunture or homeopathy.",
 
 
-                                        image: "nature.jpg",
+                                        image: "tip-nature.jpg",
 
                                         points: [100, 200, 300, 400, 500].sample,
                                         category_id: Category.find_by(name: "Daily").id }])

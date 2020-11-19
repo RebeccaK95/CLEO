@@ -24,7 +24,7 @@
   <div class="cards">
     <% @challenges.each do |challenge| %>
     <div class="challenge-card">
-      <%= image_tag("image-energy.jpg") %>
+      <%= image_tag("#{challenge.image}") %>
       <div class="challenge-card-infos">
         <h2><%= link_to challenge.name, challenge_path(challenge) %></h2>
         <h3><%= challenge.category.name %></h3>
