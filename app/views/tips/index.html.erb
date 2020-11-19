@@ -1,8 +1,8 @@
 <div class="container">
   <div class="category-cards">
     <% @categories.each do |category| %>
-      <div class="category-card <%=category.name.downcase%>">
-        <h2><%= category.name  %></h2>
+      <div class="category-card <%=category.name.downcase%>" data-category="<%=category.name.downcase%>">
+        <h2 data-category="<%=category.name.downcase%>"><%= category.name  %></h2>
       </div>
     <% end %>
   </div>
@@ -23,7 +23,7 @@
   </div>
   <div class="cards">
     <% @tips.each do |tip| %>
-    <div class="tip-card">
+    <div class="tip-card" data-category="<%=tip.category.name.downcase%>">
       <%= image_tag("tip-#{tip.image}.jpg") %>
       <div class="tip-card-infos">
         <h2><%= link_to tip.title, tip_path(tip) %></h2>
@@ -35,4 +35,4 @@
   </ul>
   </div>
 </div>
- 
+

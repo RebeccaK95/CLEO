@@ -20,7 +20,6 @@ class ChallengesController < ApplicationController
 
   def challenge_started?
     user_challenges = UserChallenge.where(user_id: current_user.id)
-    # user_challenge = user_challenges.find(params[:id])
     user_challenge = user_challenges.find_by(challenge_id: params[:id])
     user_challenge&.status == "in_progress"
   end
