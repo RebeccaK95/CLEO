@@ -15,13 +15,13 @@ puts "Done with categories"
 
 puts "Creating bathroom challenges"
 cat = Category.all
-challenges_bathroom = Challenge.create([ {name: "Make your own beauty products",
+challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
                                 description: "Usage of industrial shampoos and soaps is an ecological drama,
                                               all those empty packages end up in the trash and they are not especilly good for the our bodies.",
                                 steps:   "1- Buy organic products for a week;2- Let's make your own shampoo !;3- Time for the body, make your own body wash;4- Reuse empty bottles to make some more of your marvellous product!",
 
 
-                                image: "homemade-p.jpg" ,
+                                image: "homemade-p.jpg",
 
                                 points: [100, 200, 300, 400, 500].sample,
                                 category_id: Category.find_by(name: "Bathroom").id},
@@ -105,7 +105,7 @@ challenges_lifestyle = Challenge.create([{name: "Bye bye plastic bags",
                                         steps: "1- Use essential oils! 9 out of 10 times they will do the job perfectly.;2- Try to get better use natural medecines like acupunture or homeopathy.",
 
 
-                                        image: "nature.jpg",
+                                        image: "tip-nature.jpg",
 
                                         points: [100, 200, 300, 400, 500].sample,
                                         category_id: Category.find_by(name: "Daily").id }])
@@ -119,7 +119,7 @@ challenges_food = Challenge.create([{name: "Decrease additives",
                                     steps: "1- Buy in local bio stores;2- Cook more at home !",
 
 
-                                    image: "radish.jpg",
+                                    image: "tomatoes.jpg",
 
                                     points: [100, 200, 300, 400, 500].sample,
                                     category_id: Category.find_by(name: "Food").id},
