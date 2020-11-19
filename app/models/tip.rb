@@ -5,6 +5,9 @@ class Tip < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :pg_search,
   against: [:title, :description],
+  :associated_against => {
+    :category => [:name]
+  },
   using: {
     tsearch: {prefix: true}
   }

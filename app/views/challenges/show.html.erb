@@ -4,6 +4,7 @@
     <p>Change your life step by step.</p>
   </div>
 </div>
+
 <div class="container container-margin">
   <div class="column flex-column d-flex justify-content-between">
     <div class="challenge-intro">
@@ -16,23 +17,26 @@
         <p><%= @challenge.category.name %></p>
       </div>
     </div>
-    <div class="steps">
-      <% steps_array = @challenge.steps.split(';') %>
-      <% steps_array.each do |step| %>
-        <div class="step">
-          <div class="step-description">
-            <p>Step <%=step %></p>
+    <% unless @show_challenge %>
+      <%= link_to "Start challenge", challenge_user_challenges_path(@challenge), method: :post, id: "start-challenge", class: "button" %>
+    <% else %>
+      <div class="steps" >
+        <% steps_array = @challenge.steps.split(';') %>
+        <% steps_array.each do |step| %>
+          <div class="step">
+            <div class="step-description">
+              <p>Step <%=step %></p>
+            </div>
+            <div class="marker">
+              <%= check_box_tag("step") %>
+            </div>
           </div>
-          <div class="marker">
-            <i class="far fa-circle"></i>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
     <div class="link-show">
       <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all challenges", challenges_path  %>
     </div>
   </div>
-  <%= link_to "Start challenge", challenge_user_challenges_path(@challenge), method: :post %>
-  <%= link_to "Mark as completed", challenge_user_challenge_path(@challenge), method: :patch %>
+  <%= link_to "Mark as completed", challenge_user_challenge_path(@challenge), method: :patch, class: "button" %>
 </div>

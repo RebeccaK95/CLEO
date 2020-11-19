@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :challenges, through: :user_challenges
+  has_many :user_challenges
 
   validates :email, :encrypted_password, presence: true
   validates :email, format: { with: Devise.email_regexp }
