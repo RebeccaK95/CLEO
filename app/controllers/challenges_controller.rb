@@ -22,4 +22,5 @@ class ChallengesController < ApplicationController
     user_challenge = user_challenges.find_by(challenge_id: params[:id])
     user_challenge&.status == "in_progress"
   end
+
 end
