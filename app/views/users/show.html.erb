@@ -1,0 +1,28 @@
+<div class="banner">
+  <div class="container">
+    <h1>Your footprint</h1>
+    <p>Change your life step by step.</p>
+  </div>
+</div>
+
+<div class="container container-margin">
+  <div class="column flex-column d-flex justify-content-between">
+    <div class="challenge-intro">
+      <div class="description">
+        <h4>Your footprint history</h4>
+        <p><%= @score %></p>
+      </div>
+      <div class="category">
+        <h3>Your ongoing challenges </h3>
+        <% @ongoing_challenges.each do |user_challenge| %>
+          <%= user_challenge.challenge.name %>
+      <% end %>
+    </div>
+      <div class="category">
+        <h3>Your new footprint after finishing these challenges </h3>
+        <% @done_challenges.each do |user_challenge| %>
+          <%= user_challenge.challenge.name %>
+      <% end %>
+    </div>
+
+    

@@ -185,7 +185,7 @@ tip_lifestyle = Tip.create ([
         description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
         Well where a way of never forgotting this bag again",
         category_id: Category.find_by(name: "Daily").id,
-        image:"plastic-bag.jpg"},
+        image:"plastic-bag"},
 
         {title: "The R Story Continues",
         description: "Reduce, reuse, recycle does not only apply to the kitchen.
@@ -198,12 +198,12 @@ tip_lifestyle = Tip.create ([
                       Don’t just look for green materials for the shower curtain.
                       There are plenty of choices for bath mats, trash cans, and toothbrush holders as well.",
         category_id: Category.find_by(name: "Daily").id,
-        image:"bottle.jpg"},
+        image:"bottle"},
 
         {title: "What is ecology ?",
         description: "Ecology is the study of interactions among living things and their environment. It provides new understanding of these vital systems as they are now, and how they may change in the future.",
         category_id: Category.find_by(name: "Daily").id,
-        image:"nature.jpg"}
+        image:"nature"}
 
 ])
 puts "Done with lifestyle"
@@ -269,7 +269,9 @@ puts "Done with food"
 
 puts "Done with tips"
 
-
+puts "Create footprint"
+footprint_1 = Footprint.create(user_id: 1, score: 5000)
+puts "Done with footprint"
 
 
 
