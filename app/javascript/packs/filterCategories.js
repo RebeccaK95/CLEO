@@ -4,16 +4,18 @@ const filterCategories = () => {
   const categories = document.querySelectorAll(".category-card");
   const categoriesContainer = document.querySelector(".category-cards");
 
-  categoriesContainer.addEventListener('click', (e) => {
+  if(challenges){
+    categoriesContainer.addEventListener('click', (e) => {
 
-    challenges.forEach(challenge => {
-      if (e.target.dataset.category === challenge.dataset.category) {
-      challenge.style.display = "";
-      } else {
-      challenge.style.display = "none";
-      }
+      challenges.forEach(challenge => {
+        if (e.target.dataset.category === challenge.dataset.category) {
+        challenge.style.display = "";
+        } else {
+        challenge.style.display = "none";
+        }
+      })
     })
-  })
+  }
 }
 
 export { filterCategories };
