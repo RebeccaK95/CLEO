@@ -23,6 +23,7 @@
   </div>
   <div class="cards">
     <% @challenges.each do |challenge| %>
+
     <div class="challenge-card" data-category="<%=challenge.category.name.downcase%>">
       <%= image_tag("#{challenge.image}") %>
       <div class="challenge-card-infos">
@@ -32,6 +33,5 @@
       </div>
     </div>
     <% end %>
-  </ul>
   </div>
 </div>

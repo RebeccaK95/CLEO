@@ -1,0 +1,43 @@
+.blue {
+  margin-top: 50px;
+  width: 100% !important;
+  background-color: rgba(0,141,213, 0.2);
+}
+
+.tip-dashboard-infos {
+  padding: 10px;
+}
+
+.tip-dashboard {
+  width: 250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+  &:hover{
+  transform: scale(1.05);
+  }
+}
+
+.tip-dashboard img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.tip-dashboard p {
+  font-size: 13px;
+}
+
+.tip-dashboard h5 {
+  font-size: 10px;
+}
+
+.tip-dashboard a {
+  &:hover {
+  color: $blue;
+ }
+}
+
+.read a {
+  color: $green !important;
+  text-decoration: underline !important;
+}
