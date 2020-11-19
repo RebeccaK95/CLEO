@@ -8,4 +8,5 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @show_page = true
   end
+
 end
