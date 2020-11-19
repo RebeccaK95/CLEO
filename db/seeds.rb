@@ -15,13 +15,13 @@ puts "Done with categories"
 
 puts "Creating bathroom challenges"
 cat = Category.all
-challenges_bathroom = Challenge.create([ {name: "Make your own beauty products",
+challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
                                 description: "Usage of industrial shampoos and soaps is an ecological drama,
                                               all those empty packages end up in the trash and they are not especilly good for the our bodies.",
                                 steps:   "1- Buy organic products for a week;2- Let's make your own shampoo !;3- Time for the body, make your own body wash;4- Reuse empty bottles to make some more of your marvellous product!",
 
 
-                                image: "homemade-p.jpg" ,
+                                image: "homemade-p.jpg",
 
                                 points: [100, 200, 300, 400, 500].sample,
                                 category_id: Category.find_by(name: "Bathroom").id},
@@ -185,7 +185,7 @@ tip_lifestyle = Tip.create ([
         description: "How many times did end up at the end of your groceries to realize that you have, once again, forgottent the bags...
         Well where a way of never forgotting this bag again",
         category_id: Category.find_by(name: "Daily").id,
-        image:"plastic-bag.jpg"},
+        image:"plastic-bag"},
 
         {title: "The R Story Continues",
         description: "Reduce, reuse, recycle does not only apply to the kitchen.
@@ -198,12 +198,12 @@ tip_lifestyle = Tip.create ([
                       Don’t just look for green materials for the shower curtain.
                       There are plenty of choices for bath mats, trash cans, and toothbrush holders as well.",
         category_id: Category.find_by(name: "Daily").id,
-        image:"bottle.jpg"},
+        image:"bottle"},
 
         {title: "What is ecology ?",
         description: "Ecology is the study of interactions among living things and their environment. It provides new understanding of these vital systems as they are now, and how they may change in the future.",
         category_id: Category.find_by(name: "Daily").id,
-        image:"nature.jpg"}
+        image:"nature"}
 
 ])
 puts "Done with lifestyle"
