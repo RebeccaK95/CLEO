@@ -4,7 +4,7 @@ const filterCategoriesTips = () => {
   const categories = document.querySelectorAll(".category-card");
   const categoriesContainer = document.querySelector(".category-cards");
 
-  if (tips){
+  if (categoriesContainer){
     categoriesContainer.addEventListener('click', (e) => {
 
       tips.forEach(tip => {
