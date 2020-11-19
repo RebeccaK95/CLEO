@@ -2,14 +2,7 @@
 
     <% if user_signed_in? %>
       <h1 class="welcome-line" style="margin: 50px 0px;">Welcome <span class="username-green"><%= current_user.username %><span></h1>
-    <% else %>
-      <h1 class="welcome-line">Change is now</h1>
-      <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
-      <%= link_to "Sign up", new_user_registration_path, class: "button" %>
-    <% end %>
-
-
-  <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
     <div>
       <h3>Profile</h3>
       <div class="graph"> <%= image_tag("graph.jpg") %> </div>
@@ -63,3 +56,8 @@
     <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
   </div>
 </div>
+    <% else %>
+      <h1 class="welcome-line">Change is now</h1>
+      <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
+      <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+    <% end %>

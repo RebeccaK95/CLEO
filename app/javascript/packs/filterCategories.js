@@ -4,7 +4,7 @@ const filterCategories = () => {
   const categories = document.querySelectorAll(".category-card");
   const categoriesContainer = document.querySelector(".category-cards");
 
-  if(challenges){
+  if(categoriesContainer){
     categoriesContainer.addEventListener('click', (e) => {
 
       challenges.forEach(challenge => {
