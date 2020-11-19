@@ -3,5 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @home_page = true
+    @challenges = Challenge.first(3)
+    @tips = Tip.last(3)
+    @show_page = true
   end
+
 end

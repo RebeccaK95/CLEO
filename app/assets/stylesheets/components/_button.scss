@@ -8,3 +8,18 @@
     box-shadow: 3px 3px 0px $green;
   }
 }
+
+.button-tips a {
+  text-align: center !important;
+  margin: 40px auto !important;
+  background-color: white;
+  color: $blue;
+  border: 2px solid $blue;
+  padding: 1px 5px;
+  text-align: center;
+  box-shadow: 1px 1px 0px $green;
+  &:hover {
+    box-shadow: 3px 3px 0px $green;
+  }
+}
+
