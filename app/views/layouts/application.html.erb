@@ -11,52 +11,55 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <!-- Navbar -->
-  <header>
-    <div class="d-flex navbar">
-      <div class="container">
-
-        <div class="mr-auto logo-navbar">
-          <%= link_to root_path do %>
-            <%= image_tag("Logo_Cleo_navbar.svg") %>
-          <% end %>
-        </div>
-        <% if user_signed_in? %>
-        <div class="px-3 title-navbar active" id="dashboard"> <%= image_tag("icon_dashboard_active.svg") %> <%= link_to "Dashboard", root_path %> </div>
-        <div class="px-3 title-navbar" id="challenges"> <%= image_tag("icon_challenges.svg") %><%= link_to " Challenges", challenges_path %></div>
-        <div class="px-3 title-navbar" id="tips"> <%= image_tag("icon_tips.svg") %><%= link_to " Tips", tips_path(:category_id) %> </div>
-          <!-- Dropdown avatar -->
-          <div class="dropdown mr-1">
-            <div class="avatar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag("avatar_default.svg") %>
-            </div>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
-              <%= link_to "Profile", root_path, class: "dropdown-item" %>
-              <div class="dropdown-divider"></div>
-              <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
-            </div>
-          </div>
-        <% else %>
-          <%= link_to "Log in", user_session_path, class: "button" %>
-        <% end %>
-      </div>
-    </div>
-  </header>
-
   <!-- Body -->
   <body class="<%= @home_page ? 'homepage' : ''%>">
+    <!-- Header / Navbar -->
+    <header>
+      <div class="d-flex navbar">
+        <div class="container">
+          <!-- Logo -->
+          <div class="mr-auto logo-navbar">
+            <%= link_to root_path do %>
+              <%= image_tag("Logo_Cleo_navbar.svg") %>
+            <% end %>
+          </div>
+          <!-- Menu -->
+          <% if user_signed_in? %>
+          <div class="px-3 title-navbar active" id="dashboard"> <%= image_tag("icon_dashboard_active.svg") %> <%= link_to "Dashboard", root_path %> </div>
+          <div class="px-3 title-navbar" id="challenges"> <%= image_tag("icon_challenges.svg") %><%= link_to " Challenges", challenges_path %></div>
+          <div class="px-3 title-navbar" id="tips"> <%= image_tag("icon_tips.svg") %><%= link_to " Tips", tips_path(:category_id) %> </div>
+            <!-- Dropdown avatar -->
+            <div class="dropdown mr-1">
+              <div class="avatar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= image_tag("avatar_default.svg") %>
+              </div>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
+                <%= link_to "Profile", root_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "Log in", user_session_path, class: "button" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
     <%= render 'shared/flashes' %>
-    <div class="container container-margin">
+
+    <div class="<%= @show_page ? '' : 'container container-margin'%>">
       <%= yield %>
     </div>
+    <!-- Footer -->
 
-  <footer class="d-flex flex-row-reverse align-items-center">
-      <p>Made with <i class="fas fa-heart"></i> in Brussels © 2020 Cleo</p>
-  </footer>
+    <footer class="d-flex align-items-center">
+      <div class="container d-flex justify-content-end">
+        <p>Made with <i class="fas fa-heart"></i> in Brussels © 2020 Cleo</p>
+      </div>
+    </footer>
 
   </body>
-
-
 
 </html>
 

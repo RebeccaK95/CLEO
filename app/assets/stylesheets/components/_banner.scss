@@ -7,29 +7,47 @@
 }
 
 .banner h1 {
-  margin: 0;
+  margin-bottom: 10px;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  text-align: left;
 }
 
 .banner p {
   font-size: 20px;
   color: white;
   opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .step {
-  padding: 10px;
+  display: flex;
+  padding: 5px;
   margin: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.steps {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  margin: 2px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.marker {
+  font-size: 30px;
+  color: #38B44E;
+  padding: 10px;
 }
 
 .challenge-intro {
   display: flex;
   align-items: space-between;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
 }
 
 .category {
