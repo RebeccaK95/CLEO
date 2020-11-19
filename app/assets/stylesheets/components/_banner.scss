@@ -1,9 +1,15 @@
 .banner {
+  height: 200px;
   background-size: cover;
   background-position: center;
+  background: image-url("bouteille-jaune.jpg");
   padding: 150px 0;
-  background-image: url("image-energy.jpg");
   margin-bottom: 10px;
+}
+
+.banner img {
+  width: 100%;
+  object-fit: cover;
 }
 
 .banner h1 {
