@@ -1,18 +1,17 @@
 const tabs = () => {
 
-  const coucou = $("#dashboard svg").children[0].setAttribute("fill", "#38B44E")
-  console.log(svgDashboard);
   // console.log(element)
 
-
-
-
-
  $(document).ready(function () {
-        const svgDashboard = $("#dashboard svg").children[0];
-        const svgChallenges = $("#challenges svg").children[0];
-        const svgTips = $("#tips svg").children[0];
         const dashboard = $("#dashboard");
+        const svgDashboard = $("#dashboard svg").children[0];
+        console.log(svgDashboard);
+        const svgChallengesOne = $("#challenges svg g").children[1];
+        const svgChallengesTwo = $("#challenges svg g").children[3];
+        const svgChallengesThree = $("#challenges svg g").children[5];
+        const svgTipsOne = $("#tips svg g").children[0];
+        const svgTipsTwo = $("#tips svg g").children[1];
+
 // const challenges = document.getElementById("challenges");
         const tips = $("#tips");
         var url = window.location;
@@ -24,7 +23,9 @@ const tabs = () => {
           dashboard.removeClass("active");
           tips.removeClass("active");
           svgDashboard.setAttribute("fill", "#C4C4C4");
-          svgChallenges.setAttribute("fill", "#38B44E");
+          svgChallengesOne.setAttribute("fill", "#38B44E");
+          svgChallengesTwo.setAttribute("fill", "#38B44E");
+          svgChallengesThree.setAttribute("fill", "#38B44E");
 
         }
         if (window.location.href.includes("tips")) {
@@ -32,7 +33,8 @@ const tabs = () => {
           dashboard.removeClass("active");
           challenges.removeClass("active");
           svgDashboard.setAttribute("fill", "#C4C4C4");
-          svgTips.setAttribute("fill", "#38B44E");
+          svgTipsOne.setAttribute("fill", "#38B44E");
+          svgTipsTwo.setAttribute("fill", "#38B44E");
 
         }
 
