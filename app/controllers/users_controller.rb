@@ -6,5 +6,6 @@ class UsersController < ApplicationController
     @done_challenges = @user_challenges.where(status: "completed")
     @ongoing_challenges = @user_challenges.where(status: "in_progress")
     @user_footprint = Footprint.find_by(user_id: current_user.id)
+    @score = @user_footprint.score
   end
 end
