@@ -270,7 +270,7 @@ puts "Done with food"
 puts "Done with tips"
 
 puts "Create footprint"
-footprint_1 = Footprint.create(user_id: 1, score: 5000)
+fp = Footprint.create([{ user_id: 1, score: 5000 }, { user_id: 2, score: 5000 } ])
 puts "Done with footprint"
 
 
