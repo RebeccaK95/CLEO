@@ -35,6 +35,8 @@
               </div>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">
                 <%= link_to "Profile", user_path(current_user.id), class: "dropdown-item" %>
+                <%= link_to "Settings", root_path, class: "dropdown-item" %>
+                <%= link_to "Help", root_path, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
               </div>
