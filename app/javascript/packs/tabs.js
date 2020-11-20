@@ -1,16 +1,17 @@
 const tabs = () => {
-const svgDashboard = $("#dashboard svg").children[0];
-const svgChallenges = $("#challenges svg").children[0];
-const svgTips = $("#tips svg").children[0];
-$("#dashboard svg").children[0].setAttribute("fill", "#38B44E")
-console.log(svgDashboard);
-// console.log(element)
+
+  const coucou = $("#dashboard svg").children[0].setAttribute("fill", "#38B44E")
+  console.log(svgDashboard);
+  // console.log(element)
 
 
 
 
 
  $(document).ready(function () {
+        const svgDashboard = $("#dashboard svg").children[0];
+        const svgChallenges = $("#challenges svg").children[0];
+        const svgTips = $("#tips svg").children[0];
         const dashboard = $("#dashboard");
 // const challenges = document.getElementById("challenges");
         const tips = $("#tips");
