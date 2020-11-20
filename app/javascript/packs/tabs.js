@@ -18,15 +18,15 @@ const tabs = () => {
           challenges.addClass("active");
           dashboard.removeClass("active");
           tips.removeClass("active");
-          $("#challenges img").attr("src","/assets/images/icon_challenges_active.svg")
-          $("#dashboard img").attr("src","/assets/images/icon_dashboard.svg")
+          $("#challenges img").attr("src","/assets/icon_challenges_active.svg")
+          $("#dashboard img").attr("src","/assets/icon_dashboard.svg")
         }
         if (window.location.href.includes("tips")) {
           tips.addClass("active");
           dashboard.removeClass("active");
           challenges.removeClass("active");
-          $("#tips img").attr("src","/assets/images/icon_tips_active.svg")
-          $("#dashboard img").attr("src","/assets/images/icon_dashboard.svg")
+          $("#tips img").attr("src","/assets/icon_tips_active.svg")
+          $("#dashboard img").attr("src","/assets/icon_dashboard.svg")
         }
 
         // $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
