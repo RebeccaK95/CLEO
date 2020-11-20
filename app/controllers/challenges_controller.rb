@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
   def index
-    @challenges = Challenge.all
+    @challenges = Challenge.includes(:category).all
     @categories = Category.all
     if params[:query].present?
       @challenges = Challenge.pg_search(params[:query])
