@@ -1,3 +1,112 @@
 .min-height {
   min-height: 100vh;
 }
+
+h3 {
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+p.challenge-description {
+  font-size: 1.1rem;
+}
+
+div.challenge-highlights {
+  margin-top: 2.2rem;
+  margin-bottom: 2.2rem;
+  font-family: Secular One;
+}
+
+.highlight i {
+  color: $green;
+  font-size: 1.3rem;
+  margin-right: 1.2rem;
+}
+
+div.participants {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #38B44E35;
+  text-align: center;
+  padding: 2.6rem;
+}
+
+p.number-participants {
+  font-family: Secular One;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.avatar-friends img {
+  width: 40px;
+  border-radius: 50%;
+  border: $light-gray 1px solid;
+}
+
+p.friends {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+div.outline-grey {
+  text-align: center;
+  color: $light-gray;
+  border: 2px solid $light-gray;
+  padding: 10px 20px;
+  margin-bottom: 1.4rem;
+}
+
+div.outline-grey > p {
+  font-family: Montserrat;
+  font-weight: 600;
+  margin-bottom: 0;
+  }
+
+div.challenge-progression {
+  padding-left: 5rem;
+}
+
+.secular-one {
+  font-family: Secular One;
+}
+
+.background-blue {
+  background-color: #008DD535;
+  padding: 1.4rem;
+}
+
+.step {
+  display: flex;
+  padding: 5px;
+  margin: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.steps {
+  margin: 2px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.marker {
+  font-size: 30px;
+  color: #38B44E;
+  padding: 10px;
+}
+
+.secular-one > p {
+  margin: 0;
+}
+
+.link-show > i {
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+}
+
+.link-show:hover {
+  color: $blue;
+}

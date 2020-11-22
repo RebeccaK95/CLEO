@@ -1,63 +1,103 @@
 <div class="banner">
   <div class="container">
     <h1><%= @challenge.name %></h1>
-    <p>Change your life step by step.</p>
+    <p class="d-inline-flex"><%= @challenge.category.name.downcase %></p>
   </div>
 </div>
 
 <div class="container container-margin">
-  <div class="column flex-column d-flex justify-content-between">
-    <div class="challenge-intro">
-      <div class="description">
-        <h4>Challenge description</h4>
-        <p><%= @challenge.description %></p>
+
+  <div class="d-flex">
+    <!-- Left side -->
+    <div>
+      <h3>Overview</h3>
+      <p class="challenge-description"><%= @challenge.description %></p>
+      <div class="challenge-highlights">
+        <div class="d-flex highlight">
+          <i class="fas fa-calendar-check"></i>
+          <p>You will need 4 weeks to complete this challenge.</p>
+        </div>
+        <div class="d-flex highlight">
+          <i class="fas fa-medal"></i>
+          <p>Get a plastic-free bathroom.</p>
+        </div>
+        <div class="d-flex highlight">
+          <i class="fas fa-seedling"></i>
+          <p>Offset your carbon footprint by <%= @challenge.points %> points.</p>
+        </div>
       </div>
-      <div class="category">
-        <h4>Challenge category</h4>
-        <p><%= @challenge.category.name %></p>
-      </div>
-      <div class="category">
-        <h4>Challenge points</h4>
-        <p><%= @challenge.points %></p>
+      <div class="d-flex my-4">
+        <div class="participants">
+          <p>Participants</p>
+          <p class="number-participants">3786</p>
+        </div>
+        <div class="d-flex flex-column justify-content-end px-4">
+          <div class="d-flex align-items-center">
+            <span class="avatar-friends"><%= image_tag("avatar_default.svg") %></span>
+            <p class="friends">1 friend is completing this challenge</p>
+          </div>
+          <div class="button-outline-blue">
+            <%= link_to "Invite friends" %>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Progression through challenge: start -->
-    <% if @challenge_started %>
-      <h4>Let's get started!</h4>
-      <p>Here are the different steps you will have to take to complete this challenge:</p>
-      <div class="steps" >
-        <% steps_array = @challenge.steps.split(';') %>
-        <% steps_array.each do |step| %>
-          <div class="step">
-            <div class="step-description">
-              <p>Step <%=step %></p>
-            </div>
-            <div class="marker">
-              <%= check_box_tag("step") %>
+    <!-- Right side -->
+    <div>
+      <!-- Progression through challenge: start -->
+      <% if @challenge_started %>
+        <div class="challenge-progression d-flex flex-column">
+          <h3>Let's nail it!</h3>
+          <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
+          <div class="steps background-blue" >
+            <% steps_array = @challenge.steps.split(';') %>
+            <% steps_array.each do |step| %>
+              <div class="step">
+                <div class="marker">
+                  <%= check_box_tag("step") %>
+                </div>
+                <div class="secular-one">
+                  <p>Step <%=step %></p>
+                </div>
+              </div>
+            <% end %>
+            <div>
+              <p>Your progress:</p>
             </div>
           </div>
-        <% end %>
-      </div>
-      <%= link_to "Mark as completed", challenge_user_challenge_path(@challenge),
-                                        method: :patch,
-                                        class: "button" %>
-    <% elsif @challenge_completed %>
-      <div>
-        <h4>High five! You've completed this challenge.</h4>
-        <p>Well done on completing the challenge "<%= @challenge.name %>". Thank you for contributing to a greener world.</p>
-        <p>By completing this challenge, you earned <%= @challenge.points %> points and reduced your overall footprint.</p>
-        <p>Keep up the good work!</p>
-        <%= link_to "See footprint", user_path(current_user.id), class: "button" %>
-      </div>
-    <% else %>
-      <%= link_to "Start challenge", challenge_user_challenges_path(@challenge),
-                                      method: :post,
-                                      id: "start-challenge",
-                                      class: "button" %>
-    <% end %>
-    <!-- Progression through challenge: end -->
-    <div class="link-show">
-      <i class="fas fa-hand-point-left"></i><%= link_to "Go back to all challenges", challenges_path  %>
+          <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
+                                            method: :patch,
+                                            class: "button-primary" %>
+        </div>
+      <% elsif @challenge_completed %>
+        <div class="challenge-progression d-flex flex-column">
+          <h3>High five!</h3>
+          <div class="outline-grey">
+            <p>Challenge completed!</p>
+          </div>
+          <div class="background-blue">
+            <p class="secular-one">You reduced your footprint by <%= @challenge.points %> points by completing this challenge.</p>
+            <p>Well done on completing the challenge "<%= @challenge.name %>".</p>
+            <p>Thank you for contributing to a greener world.</p>
+            <p>Keep up the good work!</p>
+            <div class="d-flex justify-content-center">
+              <%= link_to "See footprint", user_path(current_user.id), class: "button-footprint" %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="challenge-progression d-flex">
+          <%= link_to "Start challenge", challenge_user_challenges_path(@challenge),
+                                          method: :post,
+                                          id: "start-challenge",
+                                          class: "button-primary" %>
+        </div>
+      <% end %>
+      <!-- Progression through challenge: end -->
     </div>
+  </div>
+  <hr>
+  <div class="link-show">
+    <i class="fas fa-hand-point-left"></i><%= link_to "Go back to all challenges", challenges_path  %>
   </div>
 </div>

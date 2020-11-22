@@ -1,8 +1,8 @@
 .banner {
-  height: 200px;
+  height: 350px;
   background-size: cover;
   background-position: center;
-  background: image-url("ecolo.jpg");
+  background: linear-gradient(to right bottom, rgba(0,0,0,0.4),rgba(0,0,0,0.1)), image-url("ecolo.jpg");
   padding: 150px 0;
   margin-bottom: 10px;
 }
@@ -15,38 +15,19 @@
 .banner h1 {
   margin-bottom: 10px;
   color: white;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   text-align: left;
 }
 
 .banner p {
-  font-size: 20px;
+  margin: 0;
+  font-size: 14px;
   color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-}
-
-.step {
-  display: flex;
-  padding: 5px;
-  margin: 10px;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.steps {
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  margin: 2px;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.marker {
-  font-size: 30px;
-  color: #38B44E;
-  padding: 10px;
+  font-family: Secular One;
+  background-color: #008DD5;
+  padding: 0px 10px;
+  padding-top: 2px;
 }
 
 .challenge-intro {
