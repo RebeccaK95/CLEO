@@ -1,6 +1,7 @@
-<div class="container container-margin">
+
+<% if user_signed_in? %>
 <!-- User signed in view: start -->
-  <% if user_signed_in? %>
+  <div class="container container-margin">
     <h1 class="welcome-line" style="margin: 50px 0px;">Welcome <span class="username-green"><%= current_user.username %><span></h1>
     <!-- Dashboard -->
     <div class="d-flex justify-content-between">
@@ -54,98 +55,100 @@
         <% end %>
       </div>
     </div>
-    <!-- Tips carousel -->
-    <div class="blue">
-      <div class="container">
-        <h3 style="padding: 30px 0px">Tips</h3>
-        <div class="top-content">
-          <div class="container-fluid">
-            <div id="carousel-example" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                <!-- Carousel item active -->
-                <div class="carousel-item active">
-                  <div class="d-flex justify-content-between">
-                    <% tip_dashboard = @tips.sample(3) %>
-                    <% tip_dashboard.each do |tip| %>
-                      <div class="tip-dashboard">
-                        <%= image_tag("tip-#{tip.image}.jpg") %>
-                        <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                          <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                          <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                        </div>
+  </div>
+  <!-- Tips carousel -->
+  <div class="blue">
+    <div class="container">
+      <h3 style="padding: 30px 0px">Tips</h3>
+      <div class="top-content">
+        <div class="container-fluid">
+          <div id="carousel-example" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+              <!-- Carousel item active -->
+              <div class="carousel-item active">
+                <div class="d-flex justify-content-between">
+                  <% tip_dashboard = @tips.sample(3) %>
+                  <% tip_dashboard.each do |tip| %>
+                    <div class="tip-dashboard">
+                      <%= image_tag("tip-#{tip.image}.jpg") %>
+                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
+                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
                       </div>
-                    <% end %>
-                  </div>
+                    </div>
+                  <% end %>
                 </div>
-                <!-- Carousel item 1 -->
-                <div class="carousel-item">
-                  <div class="d-flex justify-content-between">
-                    <% tip_dashboard = @tips.sample(3) %>
-                    <% tip_dashboard.each do |tip| %>
-                      <div class="tip-dashboard">
-                        <%= image_tag("tip-#{tip.image}.jpg") %>
-                        <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                          <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                          <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-                <!-- Carousel item 2 -->
-                <div class="carousel-item">
-                  <div class="d-flex justify-content-between">
-                    <% tip_dashboard = @tips.sample(3) %>
-                    <% tip_dashboard.each do |tip| %>
-                      <div class="tip-dashboard">
-                        <%= image_tag("tip-#{tip.image}.jpg") %>
-                        <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                          <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                          <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-                <!-- Carousel item 3 -->
-                <div class="carousel-item">
-                  <div class="d-flex justify-content-between">
-                    <% tip_dashboard = @tips.sample(3) %>
-                    <% tip_dashboard.each do |tip| %>
-                      <div class="tip-dashboard">
-                        <%= image_tag("tip-#{tip.image}.jpg") %>
-                        <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                          <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                          <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                        </div>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
-                <!-- Previous / Next -->
-                <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
               </div>
+              <!-- Carousel item 1 -->
+              <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                  <% tip_dashboard = @tips.sample(3) %>
+                  <% tip_dashboard.each do |tip| %>
+                    <div class="tip-dashboard">
+                      <%= image_tag("tip-#{tip.image}.jpg") %>
+                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
+                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <!-- Carousel item 2 -->
+              <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                  <% tip_dashboard = @tips.sample(3) %>
+                  <% tip_dashboard.each do |tip| %>
+                    <div class="tip-dashboard">
+                      <%= image_tag("tip-#{tip.image}.jpg") %>
+                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
+                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <!-- Carousel item 3 -->
+              <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                  <% tip_dashboard = @tips.sample(3) %>
+                  <% tip_dashboard.each do |tip| %>
+                    <div class="tip-dashboard">
+                      <%= image_tag("tip-#{tip.image}.jpg") %>
+                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
+                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <!-- Previous / Next -->
+              <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
           </div>
-          <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
         </div>
+        <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
       </div>
     </div>
+  </div>
 <!-- User signed in view: end -->
-  <% else %>
+<% else %>
+  <div class="container container-margin min-height">
     <h1 class="welcome-line">Change is now</h1>
     <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
     <%= link_to "Sign up", new_user_registration_path, class: "button" %>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -1,19 +1,10 @@
 .banner {
-  height: 200px;
-  position: relative;
+  height: 350px;
   margin-bottom: 30px;
-}
-
-.banner img {
-  width: 100%;
-  object-fit: cover;
-  height: 240px;
-}
-
-.banner-infos {
-  position: absolute;
-  top: 90px;
-  left: 40px;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin-bottom: 10px;
 }
 
 .banner h1 {

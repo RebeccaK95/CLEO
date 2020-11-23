@@ -1,11 +1,11 @@
-<div class="container container-margin min-height d-flex">
+<div class="container container-margin min-height margin-top d-flex">
   <!-- Left side -->
-  <div>
+  <div class="col-4">
     <!-- User card -->
     <div class="user-card background-blue position-relative">
-      <div class="position-absolute avatar-profile">
+      <span class="avatar-profile position-absolute">
         <%= image_tag("avatar_default.svg") %>
-      </div>
+      </span>
       <h3><%= @user.username %></h3>
       <div class="d-flex">
         <div class="col text-center vertical-separator">
@@ -19,15 +19,17 @@
           <p class="secular-one numbers-big"><%= @user_challenges.count %></p>
         </div>
       </div>
-      <p>Completed challenge last on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
-      <div class="button-outline-blue margin-bottom-none">
-        <%= link_to "Edit" %>
-      </div>
+      <p class="text-small">Last challenge completed on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
+      <%= link_to do %>
+        <div class="button-outline-blue margin-bottom-none">
+          <p>Edit</p>
+        </div>
+      <% end %>
     </div>
     <!-- Achievements section -->
     <div>
       <h2>Achievements</h2>
-      <hr>
+      <hr class="profile">
       <% @done_challenges.each do |user_challenge| %>
         <div>
           <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
@@ -37,11 +39,11 @@
     </div>
   </div>
   <!-- Right side -->
-  <div>
+  <div class="col-8">
     <!-- Carbon footprint -->
     <div>
       <h2>Carbon footprint</h2>
-      <hr>
+      <hr class="profile">
       <div>
         <% if @score %>
           <p><%= @score %></p>
@@ -54,7 +56,7 @@
     <!-- Ongoing challenges -->
     <div>
       <h2>Ongoing challenges</h2>
-      <hr>
+      <hr class="profile">
       <div>
         <% @ongoing_challenges.each do |user_challenge| %>
           <div>

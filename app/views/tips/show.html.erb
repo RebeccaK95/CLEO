@@ -1,6 +1,5 @@
-<div class="banner">
-  <%= image_tag("tip-#{@tip.image}.jpg") %>
-  <div class="banner-infos">
+<div class="banner" style="background-image: url('/assets/tip-<%= @tip.image %>.jpg');">
+  <div class="container">
     <h1><%= @tip.title %></h1>
     <p class="d-inline-flex"><%= @tip.category.name.downcase %></p>
   </div>
