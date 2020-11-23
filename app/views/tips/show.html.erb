@@ -7,12 +7,21 @@
 </div>
 <div class="container">
   <div class="column flex-column d-flex justify-content-between">
-    <div class="d-flex"></div>
-      <p style="padding-left: 8px;"><%= @tip.category.name %></p>
-      <p style="padding-left: 8px;"><%= @tip.description %></p>
+    <!-- <div class="d-flex"></div> -->
+    <br>
+    <br>
+      <% tip_array = @tip.description.split(";") %>
+        <% tip_array.each do |tip| %>
+          <%= tip %>
+        <br>
+        <br>
+        <% end %>
+      <br>
+      <!-- <p style="padding-left: 8px;"><%= @tip.description %></p> -->
       <div class="link-show">
         <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>
       </div>
+      <br>
   </div>
 </div>
 
