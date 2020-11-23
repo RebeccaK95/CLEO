@@ -31,6 +31,16 @@
         </div>
         <% end %>
       </div>
+
+      <h6 style="padding-top: 10px;">Invitations</h6>
+      <div class="d-flex">
+        <% @invites.each do |invite| %>
+          <p><%= invite.inviter %> invited you to participate to <%=invite.challenge.name %></p>
+          <%= link_to "Accept", challenge_invite_path(invite),
+                                            method: :patch,
+                                            class: "button-primary" %>
+        <% end %>
+      </div>
     </div>
     <!-- <div class="buttons">
       <div class="button"> <%= link_to "Start a new challenge", challenges_path %> </div>

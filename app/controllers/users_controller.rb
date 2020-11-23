@@ -7,7 +7,5 @@ class UsersController < ApplicationController
     @ongoing_challenges = @user_challenges.where(status: "in_progress")
     @user_footprint = Footprint.find_by(user_id: current_user.id)
     @score = @user_footprint&.score
-    @users = User.all
-    @invitations = Invitation.all
   end
 end

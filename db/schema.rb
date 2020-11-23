@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_091435) do
+ActiveRecord::Schema.define(version: 2020_11_23_141656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,17 @@ ActiveRecord::Schema.define(version: 2020_11_23_091435) do
     t.index ["user_id"], name: "index_footprints_on_user_id"
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "invites", force: :cascade do |t|
     t.boolean "invited"
+    t.boolean "accepted"
     t.bigint "challenge_id", null: false
+    t.bigint "inviter_id", null: false
+    t.bigint "invitee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["challenge_id"], name: "index_invitations_on_challenge_id"
+    t.index ["challenge_id"], name: "index_invites_on_challenge_id"
+    t.index ["invitee_id"], name: "index_invites_on_invitee_id"
+    t.index ["inviter_id"], name: "index_invites_on_inviter_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -104,7 +109,9 @@ ActiveRecord::Schema.define(version: 2020_11_23_091435) do
 
   add_foreign_key "challenges", "categories"
   add_foreign_key "footprints", "users"
-  add_foreign_key "invitations", "challenges"
+  add_foreign_key "invites", "challenges"
+  add_foreign_key "invites", "users", column: "invitee_id"
+  add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "tips", "categories"
   add_foreign_key "user_challenges", "challenges"
   add_foreign_key "user_challenges", "users"

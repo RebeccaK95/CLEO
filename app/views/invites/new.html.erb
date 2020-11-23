@@ -1,0 +1,7 @@
+
+
+<%= simple_form_for [@challenge, @invite] do |f| %>
+  <%= f.association :invitee, label_method: :username %>
+  <%= f.button :submit, 'Send invitation', class: "btn btn-primary" %>
+<% end %>
+
