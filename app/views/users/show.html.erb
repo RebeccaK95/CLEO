@@ -1,34 +1,63 @@
-<div class="banner">
-  <div class="container">
-    <h1>Profile</h1>
-    <p></p>
+<div class="container container-margin min-height d-flex">
+  <!-- Left side -->
+  <div>
+    <!-- User card -->
+    <div class="background-blue">
+      <span class="avatar"><%= image_tag("avatar_default.svg") %></span>
+      <h3><%= @user.username %></h3>
+      <div class="d-flex">
+        <div>
+          <p>Footprint</p>
+          <% if @score %>
+            <p><%= @score %></p>
+          <% end %>
+        </div>
+        <div>
+          <p>Challenges</p>
+          <p><%= @user_challenges.count %></p>
+        </div>
+      </div>
+      <p>Completed challenge last on Nov 14, 2020</p>
+      <p>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
+      <div class="button-outline-blue">
+        <%= link_to "Invite friends" %>
+      </div>
+    </div>
+    <!-- Achievements section -->
+    <div>
+      <h2>Achievements</h2>
+      <hr>
+      <% @done_challenges.each do |user_challenge| %>
+        <div>
+          <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+          <p><%= user_challenge.challenge.points %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<div class="container container-margin min-height">
-  <div class="column flex-column d-flex justify-content-between">
-    <div class="challenge-intro">
-      <div class="description">
-        <h4>Your footprint history</h4>
+  <!-- Right side -->
+  <div>
+    <!-- Carbon footprint -->
+    <div>
+      <h2>Carbon footprint</h2>
+      <hr>
+      <div>
         <% if @score %>
           <p><%= @score %></p>
         <% end %>
       </div>
-      <div class="category">
-        <h3>Your ongoing challenges</h3>
-        <ul>
-          <% @ongoing_challenges.each do |user_challenge| %>
-            <li><%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %></li>
-          <% end %>
-        </ul>
     </div>
-      <div class="category">
-        <h3>Your new footprint after finishing these challenges</h3>
-        <ul>
-          <% @done_challenges.each do |user_challenge| %>
-            <li><%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %></li>
-          <% end %>
-        </ul>
+    <!-- Ongoing challenges -->
+    <div>
+      <h2>Ongoing challenges</h2>
+      <hr>
+      <div>
+        <% @ongoing_challenges.each do |user_challenge| %>
+          <div>
+            <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
