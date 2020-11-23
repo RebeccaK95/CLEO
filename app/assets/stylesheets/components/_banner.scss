@@ -7,7 +7,7 @@
 .banner img {
   width: 100%;
   object-fit: cover;
-  height: 250px;
+  height: 240px;
 }
 
 .banner-infos {
@@ -33,7 +33,6 @@
   background-color: #008DD5;
   padding: 0px 10px;
   padding-top: 2px;
-
 }
 
 .challenge-intro {
@@ -44,15 +43,25 @@
 }
 
 .category {
-  width: 400px;
-  text-align: right;
-  margin: 10px;
-  padding: 10px;
-  font-size: 15px;
-  h4 {
-  font-size: 18px;
-  }
+  margin: 0;
+  font-size: 14px;
+  color: white;
+  font-family: Secular One;
+  background-color: #008DD5;
+  padding: 0px 10px;
+  padding-top: 2px;
 }
+
+// .category {
+//   width: 400px;
+//   text-align: right;
+//   margin: 10px;
+//   padding: 10px;
+//   font-size: 15px;
+//   h4 {
+//   font-size: 18px;
+//   }
+// }
 
 .description {
   width: 700px;

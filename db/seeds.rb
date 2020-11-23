@@ -197,13 +197,15 @@ tip_lifestyle = Tip.create ([
         image:"plastic-bag"},
 
         {title: "The R Story Continues",
-        description: "Reduce, reuse, recycle does not only apply to the kitchen.
+        description: "   Reduce, reuse, recycle does not only apply to the kitchen.
                       The bathroom cries out for a change in perspective and some out-of-the-bottle thinking on eco-friendly hygiene and products.
-                      In the bathroom, we actively consume the most energy and expel the most waste.
-                      From modern plumbing to ventilation, hair dryers, razors, and hot showers, there’s an ecological price to pay for convenience.
+                      In the bathroom, we actively consume the most energy and expel the most waste.;
+
+                         From modern plumbing to ventilation, hair dryers, razors, and hot showers, there’s an ecological price to pay for convenience.
                       Do you really need to throw away that bathroom suite and replace it with a new one or would some new tiles and paint give the room a whole new look? Vintage is in fashion and some antique shelving or tiles may cost less and add a unique flavor to the whole room.
-                      Next time you’re out shopping for shower curtains, take a look at what they are made of.
-                      There are plenty of great looking shower curtains that use organic cotton, hemp or even bamboo to create a green look that is chic.
+                      Next time you’re out shopping for shower curtains, take a look at what they are made of.;
+
+                         There are plenty of great looking shower curtains that use organic cotton, hemp or even bamboo to create a green look that is chic.
                       Don’t just look for green materials for the shower curtain.
                       There are plenty of choices for bath mats, trash cans, and toothbrush holders as well.",
         category_id: Category.find_by(name: "Daily").id,
@@ -228,10 +230,10 @@ tip_bathroom = Tip.create ([
         {title: "Paper-less Automatic Toilet",
         description: "The Toto toilet from Japan is a true marvel. The dual flush system is efficient and Toto also completely eliminates the need for toilet paper! To top it off, it may just save a virgin rainforest in the process.
                       As one of the biggest waste products in the world, toilet paper (which is made from trees!) is sent on its way to contaminate the underground water systems.
-                      98 purcent of all toilet paper sold in the United States is harvested from untouched forests.
+                      98 purcent of all toilet paper sold in the United States is harvested from untouched forests.;
                       Modern convenience also perpetuates the demand for ‘soft’ new paper instead of using recycled paper.
                       Instead of toilet paper, the Toto uses a small wand to expel gentle, tiny water bubbles while a click of a button starts the dryer to finish the job.
-                      It is fresher and cleaner, plus you can continue to browse your smartphone or read your magazine while it does its thing.
+                      It is fresher and cleaner, plus you can continue to browse your smartphone or read your magazine while it does its thing.;
                       Here's a tip : Invest in a gadget like the Drop-A Brick, which you pop into the tank. Some water companies even give these types of devices away, free of charge.",
         category_id: Category.find_by(name: "Bathroom").id,
         image:"toilet"}
@@ -247,10 +249,10 @@ tip_food = Tip.create ([
         {title: "What is eating local ?",
         description: "The primary reason why eating local is good for the planet is the reduction in energy resources required for transport and storage. Generally, the further a food has travelled from “paddock to plate”, the greater its impact on the environment. This is because of fuel used in transport and increased greenhouse gas emissions used for refrigerated storage.
                       The mode of transport matters too. Transporting food by air generates 177 times more greenhouse gases than shipping it.
-                      The global food system lets us eat food from all over the world, all year round. But food miles impact adversely on the nutritional quality of fresh foods, and on the environment.
+                      The global food system lets us eat food from all over the world, all year round. But food miles impact adversely on the nutritional quality of fresh foods, and on the environment.;
                       Yet while eating foods grown close to where we live makes planetary sense, farmers markets and foods grown more sustainably (organically) often carry a price premium, and seem to be targeted to a trendy and wealthy demographic.
                       The lack of a definition of “eating locally” also raises questions of how to incorporate organic and fair trade produce within the larger sustainability movement, and how to support developing nations.
-                      Global supply chains place great demands on ecosystems and natural resources, and large distances between where food is produced and consumed is often seen as evidence of an unsustainable food system. However, this is not always as straightforward as it appears.
+                      Global supply chains place great demands on ecosystems and natural resources, and large distances between where food is produced and consumed is often seen as evidence of an unsustainable food system. However, this is not always as straightforward as it appears.;
                       Take the case of seafood. Australia is in the enviable position of having been ranked in the top five countries for fisheries management and the majority of commercial fish stocks in Australia are assessed as sustainable.
                       However, 72 per cent of seafood consumed in Australia is imported. Surprisingly, there is little difference between the carbon footprint of meals made using imported seafood compared with those of three domestic wild-caught fish.",
         category_id: Category.find_by(name: "Food").id,
@@ -262,8 +264,8 @@ tip_food = Tip.create ([
         image:"keepsafe"},
 
         {title: "Are local foods more nutritious?",
-        description: "There are several factors that influence the nutritive value of produce including crop variety, how it's grown, ripeness at harvest, storage, processing and packaging. Its vitamin and mineral content depends on the practices of people all along the line, from the seed to the table, whether or not produce is local or transported from a distance.
-                      Produce such as broccoli, green beans, kale, red peppers, tomatoes, apricots and peaches are susceptible to nutrient loss when harvested and transported from longer distances, while those that are heartier such as apples, oranges, grapefruit and carrots keep their nutrients even if they travel long distances.
+        description: "There are several factors that influence the nutritive value of produce including crop variety, how it's grown, ripeness at harvest, storage, processing and packaging. Its vitamin and mineral content depends on the practices of people all along the line, from the seed to the table, whether or not produce is local or transported from a distance.;
+                      Produce such as broccoli, green beans, kale, red peppers, tomatoes, apricots and peaches are susceptible to nutrient loss when harvested and transported from longer distances, while those that are heartier such as apples, oranges, grapefruit and carrots keep their nutrients even if they travel long distances.;
                       To learn more on the topic, please consult this great reference by Harvard Medical School entitled Healthy and Sustainable Food.",
         category_id: Category.find_by(name: "Food").id,
         image:"radish"}

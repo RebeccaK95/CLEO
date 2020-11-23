@@ -12,3 +12,9 @@ h1.welcome-line {
   width: 200px;
 
 }
+
+.link-dashboard a {
+  &:hover {
+    color: $green;
+  }
+}
