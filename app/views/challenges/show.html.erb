@@ -89,7 +89,7 @@
         </div>
       <% else %>
         <div class="challenge-progression d-flex">
-          <%= link_to "Start challenge", challenge_user_challenges_path(@challenge),
+          <%= link_to "Start challenge", challenge_user_challenges_path(@challenge, anchor: "challenge-#{@challenge.description}"),
                                           method: :post,
                                           id: "start-challenge",
                                           class: "button-primary" %>
