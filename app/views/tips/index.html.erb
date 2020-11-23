@@ -27,7 +27,7 @@
       <%= image_tag("tip-#{tip.image}.jpg") %>
       <div class="tip-card-infos">
         <h2><%= link_to tip.title, tip_path(tip) %></h2>
-        <h3><%= tip.category.name %></h3>
+        <h3 class="category-tip-dashboard"><%= tip.category.name %></h3>
         <p><%= tip.description.to_s.truncate(80) %><%= link_to "     Read more", tip_path(tip) %></p>
       </div>
     </div>
