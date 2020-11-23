@@ -10,7 +10,4 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :tips, only: [:index, :show]
-  resources :users, only: [:show] do
-    resources :footprint, only: [:new, :create, :update]
-  end
 end
