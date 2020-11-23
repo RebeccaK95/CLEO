@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     @challenges = Challenge.first(3)
     @tips = Tip.last(3)
     @show_page = true
+    @invites = Invite.where(invitee_id: current_user)
+    @open_invites = @invites.where(accepted: false)
   end
 
 end

@@ -19,6 +19,22 @@ class InvitesController < ApplicationController
     end
   end
 
+  def update
+    invite = Invite.find(params[:id])
+    invite.mark_as_accepted
+    invite.save
+    @challenge = Challenge.find(params[:challenge_id])
+    @user_challenge = UserChallenge.new
+    @user_challenge.challenge = @challenge
+    @user_challenge.user = current_user
+
+    if @user_challenge.save
+      redirect_to challenge_path(@challenge)
+    else
+      render "challenges/show"
+    end
+  end
+
 private
 
   def invite_params

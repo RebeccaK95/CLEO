@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_141656) do
 
   create_table "invites", force: :cascade do |t|
     t.boolean "invited"
-    t.boolean "accepted"
+    t.boolean "accepted", default: false
     t.bigint "challenge_id", null: false
     t.bigint "inviter_id", null: false
     t.bigint "invitee_id", null: false
