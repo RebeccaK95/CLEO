@@ -1,5 +1,7 @@
+
 <div class="banner">
-  <div class="container">
+  <%= image_tag("#{@challenge.image}") %>
+  <div class="banner-infos">
     <h1><%= @challenge.name %></h1>
     <p class="d-inline-flex"><%= @challenge.category.name.downcase %></p>
   </div>
