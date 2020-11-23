@@ -1,15 +1,19 @@
 .banner {
-  height: 350px;
-  background-size: cover;
-  background-position: center;
-  background: linear-gradient(to right bottom, rgba(0,0,0,0.4),rgba(0,0,0,0.1)), image-url("ecolo.jpg");
-  padding: 150px 0;
-  margin-bottom: 10px;
+  height: 200px;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .banner img {
   width: 100%;
   object-fit: cover;
+  height: 250px;
+}
+
+.banner-infos {
+  position: absolute;
+  top: 90px;
+  left: 40px;
 }
 
 .banner h1 {
@@ -18,6 +22,7 @@
   font-size: 36px;
   font-weight: bold;
   text-align: left;
+  text-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .banner p {
@@ -28,6 +33,7 @@
   background-color: #008DD5;
   padding: 0px 10px;
   padding-top: 2px;
+
 }
 
 .challenge-intro {

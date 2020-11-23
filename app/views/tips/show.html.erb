@@ -1,17 +1,18 @@
-<div class="bannertip">
-    <h1 style="color: white"><%= @tip.title %></h1>
-    <%= image_tag("tip-#{@tip.image}.jpg") %>
+<div class="banner">
+  <%= image_tag("tip-#{@tip.image}.jpg") %>
+  <div class="banner-infos">
+    <h1><%= @tip.title %></h1>
+    <p class="d-inline-flex"><%= @tip.category.name.downcase %></p>
+  </div>
 </div>
 <div class="container">
   <div class="column flex-column d-flex justify-content-between">
-    <div class="d-flex">
+    <div class="d-flex"></div>
+      <p style="padding-left: 8px;"><%= @tip.category.name %></p>
+      <p style="padding-left: 8px;"><%= @tip.description %></p>
+      <div class="link-show">
+        <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>
       </div>
-        <p style="padding-left: 8px;"><%= @tip.category.name %></p>
-        <p style="padding-left: 8px;"><%= @tip.description %></p>
-        <div class="link-show">
-          <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>
-        </div>
-      </div>
-    </div>
   </div>
-  </div>
+</div>
+

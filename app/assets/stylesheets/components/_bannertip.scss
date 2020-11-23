@@ -12,17 +12,28 @@
   object-fit: cover;
 }
 .bannertip h1 {
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
+// .bannertip p {
+//   font-size: 22px;
+//   font-weight: bold;
+//   text-align: left;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   color: white;
+//   text-shadow: 0 0 5px rgba(0,0,0,0.2);
+// }
 
 .container-bannertip {
   width: 1100px;

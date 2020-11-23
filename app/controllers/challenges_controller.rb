@@ -13,6 +13,7 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @show_page = true
     @challenge_started = challenge_started?
+    @challenge_steps = ChallengeStep.where(challenge_id: params[:id])
     # @challenge_inprogress = challenge_inprogress?
     @challenge_completed = challenge_completed?
   end

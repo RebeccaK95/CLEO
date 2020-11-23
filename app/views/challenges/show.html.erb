@@ -1,5 +1,7 @@
+
 <div class="banner">
-  <div class="container">
+  <%# <%= image_tag("#{@challenge.image}") %> 
+  <div class="banner-infos">
     <h1><%= @challenge.name %></h1>
     <p class="d-inline-flex"><%= @challenge.category.name.downcase %></p>
   </div>
@@ -50,19 +52,18 @@
           <h3>Let's nail it!</h3>
           <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
           <div class="steps background-blue" >
-            <% steps_array = @challenge.steps.split(';') %>
-            <% @number_steps = steps_array.count %>
-            <% steps_array.each do |step| %>
+            <% @challenge_steps.each do |step| %>
               <div class="step">
                 <div class="marker">
                   <%= check_box_tag("step") %>
                 </div>
                 <div class="secular-one">
-                  <p>Step <%=step %></p>
+                 <p> <%= step.description  %></p>
                 </div>
               </div>
             <% end %>
             <div>
+            <div id="progressbar"></div>
               <p>Your progress:</p>
               </div>
             </div>

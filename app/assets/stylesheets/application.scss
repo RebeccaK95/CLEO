@@ -38,6 +38,9 @@ a {
   color: #252525;
   font-family: Montserrat;
   font-weight: 500;
+  &:hover {
+    color: $blue;
+  }
 }
 
 hr {
