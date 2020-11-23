@@ -27,9 +27,6 @@
   font-size: 13px;
 }
 
-.tip-dashboard h5 {
-  font-size: 10px;
-}
 
 .tip-dashboard a {
   &:hover {
@@ -40,4 +37,15 @@
 .read a {
   color: $green !important;
   text-decoration: underline !important;
+}
+
+.category-tip-dashboard {
+  margin: 0;
+  font-size: 10px;
+  color: white;
+  font-family: Secular One;
+  background-color: #008DD5;
+  width: fit-content;
+  padding: 0px 10px;
+  padding-top: 2px;
 }
