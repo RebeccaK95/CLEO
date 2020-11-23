@@ -6,19 +6,19 @@
     <div>
       <h3>Profile</h3>
       <div class="graph"> <%= image_tag("graph.jpg") %> </div>
-      </div>
+    </div>
     <div>
       <h6 style="padding-top: 7px;">Ongoing challenges</h6>
        <div class="d-flex">
-        <% @challenges.each do |challenge| %>
-        <div class="ongoing">
-          <%= image_tag("#{challenge.image}") %>
-          <div>
-            <p><%= link_to challenge.name, challenge_path(challenge) %></p>
+          <% @challenges.each do |challenge| %>
+          <div class="ongoing">
+            <%= image_tag("#{challenge.image}") %>
+            <div>
+              <p><%= link_to challenge.name, challenge_path(challenge) %></p>
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
 
       <h6 style="padding-top: 10px;">Recommended for you</h6>
       <div class="d-flex">
@@ -37,27 +37,27 @@
       <div class="button"> <%= link_to "See my other challenges", challenges_path %> </div>
     </div> -->
   </div>
-</div>
-<div class="blue">
-    <div class="container">
-    <h3 style="padding: 30px 0px">Tips</h3>
-    <div class="d-flex justify-content-between">
-    <% @tips.each do |tip| %>
-      <div class="tip-dashboard">
-        <%= image_tag("tip-#{tip.image}.jpg") %>
-          <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-            <h6><%= link_to tip.title, tip_path(tip) %></h6>
-            <h5><%= tip.category.name %></h5>
-            <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
+  <div class="blue">
+      <div class="container">
+      <h3 style="padding: 30px 0px">Tips</h3>
+      <div class="d-flex justify-content-between">
+      <% @tips.each do |tip| %>
+        <div class="tip-dashboard">
+          <%= image_tag("tip-#{tip.image}.jpg") %>
+            <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+              <h6><%= link_to tip.title, tip_path(tip) %></h6>
+              <h5><%= tip.category.name %></h5>
+              <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
+            </div>
           </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
-    <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
+      <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
+    </div>
   </div>
+  <% else %>
+    <h1 class="welcome-line">Change is now</h1>
+    <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
+    <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+  <% end %>
 </div>
-    <% else %>
-      <h1 class="welcome-line">Change is now</h1>
-      <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
-      <%= link_to "Sign up", new_user_registration_path, class: "button" %>
-    <% end %>

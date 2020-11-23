@@ -2,25 +2,26 @@
   <!-- Left side -->
   <div>
     <!-- User card -->
-    <div class="background-blue">
-      <span class="avatar"><%= image_tag("avatar_default.svg") %></span>
+    <div class="user-card background-blue position-relative">
+      <div class="position-absolute avatar-profile">
+        <%= image_tag("avatar_default.svg") %>
+      </div>
       <h3><%= @user.username %></h3>
       <div class="d-flex">
-        <div>
+        <div class="col text-center vertical-separator">
           <p>Footprint</p>
           <% if @score %>
-            <p><%= @score %></p>
+            <p class="secular-one numbers-big"><%= @score %></p>
           <% end %>
         </div>
-        <div>
+        <div class="col text-center">
           <p>Challenges</p>
-          <p><%= @user_challenges.count %></p>
+          <p class="secular-one numbers-big"><%= @user_challenges.count %></p>
         </div>
       </div>
-      <p>Completed challenge last on Nov 14, 2020</p>
-      <p>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
-      <div class="button-outline-blue">
-        <%= link_to "Invite friends" %>
+      <p>Completed challenge last on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
+      <div class="button-outline-blue margin-bottom-none">
+        <%= link_to "Edit" %>
       </div>
     </div>
     <!-- Achievements section -->
