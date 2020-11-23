@@ -2,6 +2,7 @@ class UserChallenge < ApplicationRecord
   belongs_to :user
   belongs_to :challenge
   before_validation :start_challenge, on: :create
+  has_many :user_challenge_steps, dependent: :destroy
 
   STATUSES = ["in_progress", "completed"].freeze
 

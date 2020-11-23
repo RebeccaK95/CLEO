@@ -18,7 +18,6 @@ cat = Category.all
 challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
                                 description: "Usage of industrial shampoos and soaps is an ecological drama,
                                               all those empty packages end up in the trash and they are not especilly good for the our bodies.",
-                                steps:   "1- Buy organic products for a week;2- Let's make your own shampoo !;3- Time for the body, make your own body wash;4- Reuse empty bottles to make some more of your marvellous product!",
 
 
                                 image: "homemade-p.jpg",
@@ -29,7 +28,7 @@ challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
 
                                 {name: "Use less water !",
                                 description: "Water is an element of life. It is the 'blue gold' as some call it. 800 millions of people do not have access to drinkable water, and it is 70 purcent of the surface of the earth!",
-                                steps:     "1- Try to take your shower in three minutes.;2- Put a timer to manage your time spend in the shower. Here's a good tip: Sing a three minute song!;3- Don't flush each time you go to the loo. Try to keep a big bottle of water next to it, and poor it in the toilet instead of flushing, which uses a enormous quantity of water each time.;4- When you wash your hands, turn off the tap!;5- Same goes for when you are doing the dishes!",
+                                
 
 
                                 image: "shower.jpg",
@@ -41,13 +40,27 @@ challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
 
 puts "Done with bathroom"
 
+puts "Creating steps for the bathroom challenges"
+
+challenge_bathroom_steps = ChallengeStep.create([
+        {description: "1- Buy organic products for a week", challenge_id: challenges_bathroom.first.id},
+        {description: "2- Let's make your own shampoo !", challenge_id: challenges_bathroom.first.id},
+        {description: "3- Time for the body, make your own body wash", challenge_id: challenges_bathroom.first.id},
+        {description: "4- Reuse empty bottles to make some more of your marvellous product!", challenge_id: challenges_bathroom.first.id},
+
+        {description: "1- Try to take your shower in three minutes.", challenge_id: challenges_bathroom.second.id},
+        {description: "2- Put a timer to manage your time spend in the shower. Here's a good tip: Sing a three minute song!", challenge_id: challenges_bathroom.second.id},
+        {description: "3- Don't flush each time you go to the loo. Try to keep a big bottle of water next to it, and poor it in the toilet instead of flushing, which uses a enormous quantity of water each time.", challenge_id: challenges_bathroom.second.id},
+        {description: "4- When you wash your hands, turn off the tap!", challenge_id: challenges_bathroom.second.id},
+        {description: "5- Same goes for when you are doing the dishes!", challenge_id: challenges_bathroom.second.id},
+])
+puts "Done with steps for the bathroom challenges"
+
+
 puts "Creating transports challenges"
 challenges_transportation = Challenge.create([{name: "Stay away from your car!",
 
-
-
                                               description: "As you well know, the emissions of CO2 of your car is a real problem nowadays, time to help our planet recover from all those years of pollution.",
-                                              steps:   "1- Your bike has been in the garage for for years with no use ? Fix it !;2- Take your bike or the bus one day this week to go to work;3- Now let's make it three times a week !;4- By that stage, you should only use your car for grocery shopping!",
                                               points: [100, 200, 300, 400, 500].sample,
                                               category_id: Category.find_by(name: "Transports").id,
                                               image: "transport2.jpg"},
@@ -55,8 +68,7 @@ challenges_transportation = Challenge.create([{name: "Stay away from your car!",
 
                                               {name: "Eco-travel",
                                               description: "The fastest way to travel is usually the worst for the environment. As you should take your bike to go to work, it is preferable to take your car than a plane!",
-                                              steps: ["1- When thinking of your next vacations, try to take the train instead of a fast travel, big CO2 emissions plane.;2- When staying away from your home, try to find some locals accomodations that care about the environment. Search and find, my friend.;3- Don't buy unnecessary souvenirs, try to find something local and eco-friendly instead !;4- Finally, only take what you need, the less you have to move, the less is your carbon foorprint!"],
-
+                                              
 
                                               image: "transport1.jpg",
 
@@ -66,12 +78,25 @@ challenges_transportation = Challenge.create([{name: "Stay away from your car!",
 
 puts "Done with transports"
 
+puts "Creating steps for the transport challenges"
+
+challenge_transportation_steps = ChallengeStep.create([
+        {description: "1- Your bike has been in the garage for for years with no use ? Fix it !", challenge_id: challenges_transportation.first.id},
+        {description: "2- Take your bike or the bus one day this week to go to work!", challenge_id: challenges_transportation.first.id},
+        {description: "3- Now let's make it three times a week !", challenge_id: challenges_transportation.first.id},
+        {description: "4- By that stage, you should only use your car for grocery shopping!", challenge_id: challenges_transportation.first.id},
+
+        {description: "1- When thinking of your next vacations, try to take the train instead of a fast travel, big CO2 emissions plane.,
+        ", challenge_id: challenges_transportation.second.id},
+        {description: "2- When staying away from your home, try to find some locals accomodations that care about the environment. Search and find, my friend.", challenge_id: challenges_transportation.second.id},
+        {description: "3- Don't buy unnecessary souvenirs, try to find something local and eco-friendly instead !", challenge_id: challenges_transportation.second.id},
+        {description: "4- Finally, only take what you need, the less you have to move, the less is your carbon foorprint!", challenge_id: challenges_transportation.second.id},
+])
+puts "Done with steps for the transport challenges"
+
 puts "Creating lifestyle challenges"
 challenges_lifestyle = Challenge.create([{name: "Bye bye plastic bags",
                                         description: "We are all by now aware of the disastrous usage of plastic bags. Let's get rid of them!",
-                                        steps:  "1- Buy some reusable grocery bags, preferably in fabric.;2- If you forgot them, buy at the register reusable pastic bags.;3- For your fruits and vegetables, get also some fabric baggies instead of using the disposable ones !;4- If you are travelling, don't use plastic bags, the fabric ones will do the job perfectly !",
-
-
                                         image: "ecolo.jpg",
 
                                         points: [100, 200, 300, 400, 500].sample,
@@ -112,6 +137,18 @@ challenges_lifestyle = Challenge.create([{name: "Bye bye plastic bags",
 
 
 puts "Done with lifestyle"
+
+puts "Creating steps for the lifestyle challenges"
+
+challenge_lifestyle_steps = ChallengeStep.create([
+        {description: "1- Buy some reusable grocery bags, preferably in fabric.", challenge_id: challenges_lifestyle.first.id},
+        {description: "2- If you forgot them, buy at the register reusable pastic bags.", challenge_id: challenges_lifestyle.first.id},
+        {description: "3- For your fruits and vegetables, get also some fabric baggies instead of using the disposable ones !", challenge_id: challenges_lifestyle.first.id},
+        {description: "4- If you are travelling, don't use plastic bags, the fabric ones will do the job perfectly !", challenge_id: challenges_lifestyle.first.id},
+])
+puts "Done with steps for the lifestyle challenges"
+
+
 
 puts "Creating food challenges"
 challenges_food = Challenge.create([{name: "Decrease additives",

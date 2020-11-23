@@ -51,6 +51,7 @@
           <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
           <div class="steps background-blue" >
             <% steps_array = @challenge.steps.split(';') %>
+            <% @number_steps = steps_array.count %>
             <% steps_array.each do |step| %>
               <div class="step">
                 <div class="marker">
@@ -63,6 +64,7 @@
             <% end %>
             <div>
               <p>Your progress:</p>
+              </div>
             </div>
           </div>
           <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
