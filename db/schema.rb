@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_19_070403) do
+ActiveRecord::Schema.define(version: 2020_11_23_145607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2020_11_19_070403) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "challenge_steps", force: :cascade do |t|
+    t.string "description"
+    t.bigint "challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["challenge_id"], name: "index_challenge_steps_on_challenge_id"
   end
 
   create_table "challenges", force: :cascade do |t|
@@ -68,6 +76,16 @@ ActiveRecord::Schema.define(version: 2020_11_19_070403) do
     t.index ["category_id"], name: "index_tips_on_category_id"
   end
 
+  create_table "user_challenge_steps", force: :cascade do |t|
+    t.string "status"
+    t.bigint "user_challenge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "challenge_step_id"
+    t.index ["challenge_step_id"], name: "index_user_challenge_steps_on_challenge_step_id"
+    t.index ["user_challenge_id"], name: "index_user_challenge_steps_on_user_challenge_id"
+  end
+
   create_table "user_challenges", force: :cascade do |t|
     t.string "status"
     t.bigint "user_id", null: false
@@ -91,10 +109,12 @@ ActiveRecord::Schema.define(version: 2020_11_19_070403) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "challenge_steps", "challenges"
   add_foreign_key "challenges", "categories"
   add_foreign_key "footprints", "users"
   add_foreign_key "invitations", "challenges"
   add_foreign_key "tips", "categories"
+  add_foreign_key "user_challenge_steps", "user_challenges"
   add_foreign_key "user_challenges", "challenges"
   add_foreign_key "user_challenges", "users"
 end

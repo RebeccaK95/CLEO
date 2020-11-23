@@ -25,7 +25,7 @@
     <% @challenges.each do |challenge| %>
 
     <div class="challenge-card" data-category="<%=challenge.category.name.downcase%>">
-      <%= image_tag("#{challenge.image}") %>
+      <%# <%= image_tag("#{challenge.image}") %>
       <div class="challenge-card-infos">
         <h2><%= link_to challenge.name, challenge_path(challenge) %></h2>
         <h3 class="category-tip-dashboard"><%= challenge.category.name %></h3>

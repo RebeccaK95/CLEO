@@ -1,6 +1,6 @@
 
 <div class="banner">
-  <%= image_tag("#{@challenge.image}") %>
+  <%# <%= image_tag("#{@challenge.image}") %> 
   <div class="banner-infos">
     <h1><%= @challenge.name %></h1>
     <p class="d-inline-flex"><%= @challenge.category.name.downcase %></p>
@@ -52,19 +52,21 @@
           <h3>Let's nail it!</h3>
           <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
           <div class="steps background-blue" >
-            <% steps_array = @challenge.steps.split(';') %>
-            <% steps_array.each do |step| %>
-              <div class="step">
-                <div class="marker">
-                  <%= check_box_tag("step") %>
-                </div>
-                <div class="secular-one">
-                  <p>Step <%=step %></p>
-                </div>
+            <% @challenge_steps.each do |step| %>
+              <% user_step = @user_challenge.user_challenge_steps.find_by(challenge_step_id: step.id) %>
+              <div class="secular-one">
+                 <p> <%= step.description  %></p>
               </div>
+              <% if user_step.status == "completed" %>
+                <p>Good job</p>
+              <% else %>
+                <%= link_to "Step completed" , user_challenge_step_path(user_step), method: :patch,
+              class: "button-primary" %>
+              <% end %> 
             <% end %>
             <div>
               <p>Your progress:</p>
+              </div>
             </div>
           </div>
           <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
