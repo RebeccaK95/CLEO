@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg_search','~> 2.3.0'
 
 gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
+gem 'letter_opener'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

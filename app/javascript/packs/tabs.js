@@ -22,11 +22,12 @@ const tabs = () => {
           challenges.addClass("active");
           dashboard.removeClass("active");
           tips.removeClass("active");
-          svgDashboard.setAttribute("fill", "#C4C4C4");
-          svgChallengesOne.setAttribute("fill", "#38B44E");
-          svgChallengesTwo.setAttribute("fill", "#38B44E");
-          svgChallengesThree.setAttribute("fill", "#38B44E");
-
+          if (svgDashboard) {
+            svgDashboard.setAttribute("fill", "#C4C4C4");
+            svgChallengesOne.setAttribute("fill", "#38B44E");
+            svgChallengesTwo.setAttribute("fill", "#38B44E");
+            svgChallengesThree.setAttribute("fill", "#38B44E");
+          }
         }
         if (window.location.href.includes("tips")) {
           tips.addClass("active");

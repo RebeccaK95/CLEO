@@ -15,6 +15,7 @@
 @import "components/cardtip";
 @import "components/banner";
 @import "components/bannertip";
+@import "components/progressbar";
 @import "pages/index";
 
 .container {
@@ -37,6 +38,9 @@ a {
   color: #252525;
   font-family: Montserrat;
   font-weight: 500;
+  &:hover {
+    color: $blue;
+  }
 }
 
 hr {
