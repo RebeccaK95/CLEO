@@ -53,17 +53,18 @@
           <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
           <div class="steps background-blue" >
             <% @challenge_steps.each do |step| %>
-              <div class="step">
-                <div class="marker">
-                  <%= check_box_tag("step") %>
-                </div>
-                <div class="secular-one">
+              <% user_step = @user_challenge.user_challenge_steps.find_by(challenge_step_id: step.id) %>
+              <div class="secular-one">
                  <p> <%= step.description  %></p>
-                </div>
               </div>
+              <% if user_step.status == "completed" %>
+                <p>Good job</p>
+              <% else %>
+                <%= link_to "Step completed" , user_challenge_step_path(user_step), method: :patch,
+              class: "button-primary" %>
+              <% end %> 
             <% end %>
             <div>
-            <div id="progressbar"></div>
               <p>Your progress:</p>
               </div>
             </div>

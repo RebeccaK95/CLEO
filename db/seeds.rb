@@ -235,11 +235,6 @@ tip_bathroom = Tip.create ([
                       Here's a tip : Invest in a gadget like the Drop-A Brick, which you pop into the tank. Some water companies even give these types of devices away, free of charge.",
         category_id: Category.find_by(name: "Bathroom").id,
         image:"toilet"}
-
-
-
-
-
 ])
 
 puts "Creating food tips"

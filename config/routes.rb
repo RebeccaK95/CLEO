@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :challenges, only: [:index, :show] do
     resources :user_challenges, only: [:create, :update]
   end
-
+  resources :user_challenge_steps, only: [:update]
+  
   resources :categories
   resources :tips, only: [:index, :show]
   resources :users, only: [:show] do
