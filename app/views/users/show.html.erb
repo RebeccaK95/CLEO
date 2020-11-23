@@ -1,15 +1,50 @@
-<div class="banner">
-  <div class="container">
-    <h1>Profile</h1>
-    <p></p>
+<div class="container container-margin min-height margin-top d-flex">
+  <!-- Left side -->
+  <div class="col-4">
+    <!-- User card -->
+    <div class="user-card background-blue position-relative">
+      <span class="avatar-profile position-absolute">
+        <%= image_tag("avatar_default.svg") %>
+      </span>
+      <h3><%= @user.username %></h3>
+      <div class="d-flex">
+        <div class="col text-center vertical-separator">
+          <p>Footprint</p>
+          <% if @score %>
+            <p class="secular-one numbers-big"><%= @score %></p>
+          <% end %>
+        </div>
+        <div class="col text-center">
+          <p>Challenges</p>
+          <p class="secular-one numbers-big"><%= @user_challenges.count %></p>
+        </div>
+      </div>
+      <p class="text-small">Last challenge completed on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
+      <%= link_to do %>
+        <div class="button-outline-blue margin-bottom-none">
+          <p>Edit</p>
+        </div>
+      <% end %>
+    </div>
+    <!-- Achievements section -->
+    <div>
+      <h2>Achievements</h2>
+      <hr class="profile">
+      <% @done_challenges.each do |user_challenge| %>
+        <div>
+          <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+          <p><%= user_challenge.challenge.points %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<div class="container container-margin min-height">
-  <div class="column flex-column d-flex justify-content-between">
-    <div class="challenge-intro">
-      <div class="description">
-        <h4>Your footprint history</h4>
+  <!-- Right side -->
+  <div class="col-8">
+    <!-- Carbon footprint -->
+    <div>
+      <h2>Carbon footprint</h2>
+      <hr class="profile">
+      <div>
         <% if @score %>
           <p><%= @score %></p>
           <div class="progress" style="height: 20px;">
@@ -17,22 +52,18 @@
           </div>
         <% end %>
       </div>
-      <div class="category">
-        <h3>Your ongoing challenges</h3>
-        <ul>
-          <% @ongoing_challenges.each do |user_challenge| %>
-            <li><%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %></li>
-          <% end %>
-        </ul>
     </div>
-      <div class="category">
-        <h3>Your new footprint after finishing these challenges</h3>
-        <ul>
-          <% @done_challenges.each do |user_challenge| %>
-            <li><%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %></li>
-          <% end %>
-        </ul>
-
+    <!-- Ongoing challenges -->
+    <div>
+      <h2>Ongoing challenges</h2>
+      <hr class="profile">
+      <div>
+        <% @ongoing_challenges.each do |user_challenge| %>
+          <div>
+            <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

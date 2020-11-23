@@ -1,0 +1,28 @@
+.user-card {
+  position: relative;
+}
+
+.user-card h3 {
+  text-align: center;
+}
+
+.user-card p {
+  margin: 0.7rem 0;
+}
+
+.numbers-big {
+  font-size: 1.4rem;
+}
+
+.vertical-separator {
+  border-right: $black 1px solid;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0;
+}
+
+p.text-small {
+  font-size: 0.9rem;
+  margin-top: 1.4rem;
+}

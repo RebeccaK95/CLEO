@@ -1,7 +1,6 @@
-
-<div class="banner">
-  <%# <%= image_tag("#{@challenge.image}") %> 
-  <div class="banner-infos">
+<div class="banner" style="background-image: url('/assets/<%= @challenge.image %>');">
+  <%#<%= image_tag("#{@challenge.image}") %>
+  <div class="container">
     <h1><%= @challenge.name %></h1>
     <p class="d-inline-flex"><%= @challenge.category.name.downcase %></p>
   </div>
@@ -11,7 +10,7 @@
 
   <div class="d-flex">
     <!-- Left side -->
-    <div>
+    <div class="col-7">
       <h3>Overview</h3>
       <p class="challenge-description"><%= @challenge.description %></p>
       <div class="challenge-highlights">
@@ -38,9 +37,12 @@
             <span class="avatar-friends"><%= image_tag("avatar_default.svg") %></span>
             <p class="friends">1 friend is completing this challenge</p>
           </div>
-          <div class="button-outline-blue">
-            <%= link_to "Invite friends", new_challenge_invite_path(@challenge)%>
-          </div>
+          <%= link_to new_challenge_invite_path(@challenge) do %>
+            <div class="button-outline-blue padding">
+              <p>Invite friends</p>
+            </div>
+          <% end %>
+
         </div>
       </div>
     </div>
@@ -62,16 +64,16 @@
               <% else %>
                 <%= link_to "Step completed" , user_challenge_step_path(user_step), method: :patch,
               class: "button-primary" %>
-              <% end %> 
+              <% end %>
             <% end %>
             <div>
               <p>Your progress:</p>
               </div>
             </div>
+            <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
+                                              method: :patch,
+                                              class: "button-primary" %>
           </div>
-          <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
-                                            method: :patch,
-                                            class: "button-primary" %>
         </div>
       <% elsif @challenge_completed %>
         <div class="challenge-progression d-flex flex-column">
@@ -94,7 +96,7 @@
           <%= link_to "Start challenge", challenge_user_challenges_path(@challenge, anchor: "challenge-#{@challenge.description}"),
                                           method: :post,
                                           id: "start-challenge",
-                                          class: "button-primary" %>
+                                          class: "button-primary margin-button" %>
         </div>
       <% end %>
       <!-- Progression through challenge: end -->
