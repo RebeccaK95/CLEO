@@ -25,7 +25,7 @@
   </div>
   <div class="cards">
     <% @tips.each do |tip| %>
-      <div class="tip-card" data-category="<%=tip.category.name.downcase%>">
+      <div class="tip-dashboard" data-category="<%=tip.category.name.downcase%>">
         <%= image_tag("tip-#{tip.image}.jpg") %>
         <div class="tip-card-infos">
           <h2><%= link_to tip.title, tip_path(tip) %></h2>
