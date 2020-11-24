@@ -1,160 +1,189 @@
-
 <% if user_signed_in? %>
-<!-- User signed in view: start -->
+  <!-- User signed in view: start -->
   <div class="container container-margin">
-    <h1 class="welcome-line" style="margin: 50px 0px;">Welcome <span class="username-green"><%= current_user.username %><span></h1>
-    <!-- Dashboard -->
-    <div class="d-flex justify-content-between">
-      <!-- Profile -->
-      <div>
-        <h3>Profile</h3>
-        <div class="graph">
-          <%= image_tag("graph.jpg") %>
+    <!-- Welcome line -->
+    <h1 class="welcome-line">Welcome <span class="username-green"><%= current_user.username %> <i class="fas fa-seedling"></i></span></h1>
+    <!-- Carbon footprint -->
+    <div class="secondary-container">
+      <h2 class="dashboard">Carbon footprint</h2>
+      <div class="footprint-container">
+        <div class="score-card">
+          <p>Your score</p>
+          <% if @score %>
+            <p class="score"><%= @score %></p>
+          <% end %>
+        </div>
+        <div class="results">
+          <p>Your lifestyle emits 531kg of CO2 per year.</p>
+          <div class="percentages">
+            <!-- Component -->
+            <div class="percentage">
+              <div class="percentage-details">
+                <p>bathroom</p>
+                <p class="level-percent">3%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge bathroom"></div>
+              </div>
+            </div>
+            <div class="percentage margin-left">
+              <div class="percentage-details">
+                <p>daily</p>
+                <p class="level-percent">11%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge daily"></div>
+              </div>
+            </div>
+            <div class="percentage">
+              <div class="percentage-details">
+                <p>energy</p>
+                <p class="level-percent">15%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge energy"></div>
+              </div>
+            </div>
+            <div class="percentage margin-left">
+              <div class="percentage-details">
+                <p>food</p>
+                <p class="level-percent">22%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge food"></div>
+              </div>
+            </div>
+            <div class="percentage">
+              <div class="percentage-details">
+                <p>shopping</p>
+                <p class="level-percent">18%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge shopping"></div>
+              </div>
+            </div>
+            <div class="percentage margin-left">
+              <div class="percentage-details">
+                <p>transports</p>
+                <p class="level-percent">31%</p>
+              </div>
+              <div class="result-bar">
+                <div class="gauge transports"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div>
-        <!-- Ongoing challenges -->
-        <h6 style="padding-top: 7px;" class="link-dashboard"><%= link_to "Ongoing challenges", challenges_path %></h6>
-        <div class="d-flex">
-          <% if @ongoing_challenges != [] %>
-            <% @ongoing_challenges.each do |user_challenge| %>
-              <div class="ongoing">
-                <%= image_tag("#{user_challenge.challenge.image}") %>
-                <div>
-                  <p><%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %></p>
+    </div>
+    <!-- Rest of dashboard -->
+    <div class="secondary-container">
+      <!-- Challenges -->
+      <h2 class="dashboard">Challenges</h2>
+      <div class="dashboard-challenge-cards">
+        <% @user_challenges.each do |user_challenge| %>
+          <% if user_challenge.status == "in_progress" %>
+            <%= link_to challenge_path(user_challenge.challenge) do %>
+              <div class="dashboard-challenge-card-progress">
+                <h4><%= user_challenge.challenge.name %></h4>
+                <p class="challenge-card-category"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div class="status">
+                  <p class="in-progress">In progress</p>
+                  <p>Nail it now!</p>
                 </div>
               </div>
             <% end %>
-            <% else %>
-              <p>You do not have any ongoing challenges, <%= link_to "let's start one !", challenges_path %></p>
-          <% end %>
-        </div>
-        <!-- 3 other challenges -->
-        <h6 style="padding-top: 10px;" class="link-dashboard"><%= link_to "See all challenges", challenges_path %></h6>
-        <div class="d-flex">
-          <% @challenges.each do |challenge| %>
-            <div class="ongoing">
-              <%= image_tag("#{challenge.image}") %>
-              <div>
-                <p><%= link_to challenge.name, challenge_path(challenge) %></p>
+          <% else %>
+            <%= link_to challenge_path(user_challenge.challenge) do %>
+              <div class="dashboard-challenge-card-completed">
+                <h4><%= user_challenge.challenge.name %></h4>
+                <p class="challenge-card-category background-green"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div class="status">
+                  <p class="completed">Completed</p>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        </div>
-        <!-- Invitations -->
-        <% if @open_invites != [] %>
-          <h6 style="padding-top: 10px;">You have a new invitation!</h6>
-          <div class="d-flex">
-            <% @open_invites.each do |invite| %>
-              <p><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %> invited you to participate to <%= link_to invite.challenge.name, challenge_path(invite.challenge.id) %></p>
-              <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
+        <% end %>
+        <%= link_to challenges_path do %>
+          <div class="dashboard-challenge-button">
+            <p class="plus">+</p>
+            <p>Start a new challenge</p>
+          </div>
+        <% end %>
+      </div>
+      <!-- Tips -->
+      <h2 class="dashboard">Tips</h2>
+      <div class="tip-suggestions">
+
+      </div>
+      <!-- Friends zone -->
+      <div class="friends-container">
+        <div>
+          <h2 class="dashboard">You've been challenged!</h2>
+          <div class="invitation-cards background-blue">
+            <% if @open_invites != [] %>
+              <% @open_invites.each do |invite| %>
+                <div class="invitation-card">
+                  <img src="" class="avatar">
+                  <div class="invitation-card-info">
+                    <p><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %> invited you to participate to <span class="secular-one"><%= link_to invite.challenge.name, challenge_path(invite.challenge.id) %></span>.</p>
+                    <div class="">
+                      <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
                                                 method: :patch,
                                                 class: "button-primary" %>
-              <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
+                      <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
                                                 class: "button-primary",
                                                 method: :delete %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
+          </div>
+        </div>
+        <div>
+          <h2 class="dashboard">They want to stalk you</h2>
+          <div class="invitation-cards background-blue">
+            <% if @open_invites != [] %>
+              <% @open_invites.each do |invite| %>
+                <div class="invitation-card">
+                  <img src="" class="avatar">
+                  <div class="invitation-card-info">
+                    <p><span class="secular-one"><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %></span> wants to follow you.</p>
+                    <div class="">
+                      <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
+                                                method: :patch,
+                                                class: "button-primary" %>
+                      <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
+                                                class: "button-primary",
+                                                method: :delete %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <p>Chill!</p>
+              <p>Enjoy the free inbox.</p>
+            <% end %>
+          </div>
+        </div>
+        <%= link_to do %>
+          <div class="dashboard-challenge-button">
+            <p>Find a friend to stalk</p>
           </div>
         <% end %>
       </div>
     </div>
   </div>
-  <!-- Tips carousel -->
-  <div class="blue">
-    <div class="container">
-      <h3 style="padding: 30px 0px">Tips</h3>
-      <div class="top-content">
-        <div class="container-fluid">
-          <div id="carousel-example" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner row w-100 mx-auto" role="listbox">
-              <!-- Carousel item active -->
-              <div class="carousel-item active">
-                <div class="d-flex justify-content-between">
-                  <% tip_dashboard = @tips.sample(3) %>
-                  <% tip_dashboard.each do |tip| %>
-                    <div class="tip-dashboard">
-                      <%= image_tag("tip-#{tip.image}.jpg") %>
-                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <!-- Carousel item 1 -->
-              <div class="carousel-item">
-                <div class="d-flex justify-content-between">
-                  <% tip_dashboard = @tips.sample(3) %>
-                  <% tip_dashboard.each do |tip| %>
-                    <div class="tip-dashboard">
-                      <%= image_tag("tip-#{tip.image}.jpg") %>
-                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <!-- Carousel item 2 -->
-              <div class="carousel-item">
-                <div class="d-flex justify-content-between">
-                  <% tip_dashboard = @tips.sample(3) %>
-                  <% tip_dashboard.each do |tip| %>
-                    <div class="tip-dashboard">
-                      <%= image_tag("tip-#{tip.image}.jpg") %>
-                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <!-- Carousel item 3 -->
-              <div class="carousel-item">
-                <div class="d-flex justify-content-between">
-                  <% tip_dashboard = @tips.sample(3) %>
-                  <% tip_dashboard.each do |tip| %>
-                    <div class="tip-dashboard">
-                      <%= image_tag("tip-#{tip.image}.jpg") %>
-                      <div class="tip-dashboard-infos d-flex flex-column align-items-left">
-                        <h6><%= link_to tip.title, tip_path(tip) %></h6>
-                        <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
-                        <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-              <!-- Previous / Next -->
-              <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="button-tips d-flex align-items-center"><%= link_to "Read more tips", tips_path %></div>
-      </div>
-    </div>
-  </div>
-<!-- User signed in view: end -->
+  <!-- User signed in view: end -->
 <% else %>
+  <!-- User signed out view -->
   <div class="homepage2">
     <div class="container container-margin min-height">
-      <h1 class="welcome-line" style="font-weight: bold; color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2);">Change is now</h1>
+      <h1 class="welcome-line baseline">Change is now</h1>
       <br>
-      <p style="color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2); font-size: 20px">Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends!</p>
-      <p style="color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2); font-size: 20px">Change is now, and it is fun. Sign up now !</p>
+      <p class="landing-page">Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends!</p>
+      <p class="landing-page">Change is now, and it is fun. Sign up now !</p>
       <br>
       <%= link_to "Sign up", new_user_registration_path, class: "button" %>
     </div>

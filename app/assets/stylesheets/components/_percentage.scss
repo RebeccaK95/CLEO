@@ -1,0 +1,58 @@
+.percentages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.percentage {
+  margin: 0 25px 10px 0;
+}
+
+.margin-left {
+  margin: 0 0 10px 25px;
+}
+
+.percentage-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  p {
+    margin: 0;
+    font-family: 'Secular One', sans-serif;
+    font-size: 1.1rem;
+  }
+}
+
+.level-percent {
+  font-size: 1.3rem;
+}
+
+.result-bar {
+  background-color: white;
+  border: 1px $light-gray solid;
+  height: 16px;
+  display: flex;
+}
+
+.gauge {
+  background-color: #38B44E35;
+}
+.bathroom {
+  width: 3%;
+}
+.daily {
+  width: 11%;
+}
+.energy {
+  width: 15%;
+}
+.food {
+  width: 22%;
+}
+.shopping {
+  width: 18%;
+}
+.transports {
+  width: 31%;
+}
+
+

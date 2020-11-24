@@ -1,0 +1,117 @@
+.dashboard-challenge-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: stretch;
+  grid-gap: 30px 50px;
+  grid-auto-rows: 1fr;
+  margin-bottom: 2.6rem;
+}
+
+.dashboard-challenge-cards > a {
+  display: flex;
+}
+
+.dashboard-challenge-card-progress {
+  width: 100%;
+  padding: 30px;
+  border: 2px solid $blue;
+  background-color: #008DD535;
+  transition: 0.3s ease-out;
+  p {
+    font-family: 'Secular One', sans-serif;
+  }
+  h4 {
+    font-weight: 300;
+    font-size: 1.4rem;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $black;
+    background-color: white;
+    box-shadow: 4px 4px 0px $blue;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+.dashboard-challenge-card-completed {
+  width: 100%;
+  padding: 30px;
+  border: 2px solid $green;
+  background-color: #38B44E35;
+  transition: 0.3s ease-out;
+  p {
+    font-family: 'Secular One', sans-serif;
+  }
+  h4 {
+    font-weight: 300;
+    font-size: 1.4rem;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $black;
+    background-color: white;
+    box-shadow: 4px 4px 0px $green;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+.in-progress {
+  color: $blue;
+}
+
+.completed {
+  color: $green;
+}
+
+.challenge-card-category {
+  margin: 0;
+  color: white;
+  background-color: $blue;
+  padding: 0px 10px;
+  padding-top: 2px;
+  font-size: 0.8rem;
+  display: inline-flex;
+}
+
+.background-green {
+  background-color: $green;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  p {
+    margin: 0;
+  }
+}
+
+.dashboard-challenge-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  padding: 30px;
+  border: 2px $light-gray solid;
+  text-align: center;
+  transition: 0.3s ease-out;
+  p {
+    margin: 0;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $black;
+    box-shadow: 4px 4px 0px $light-gray;
+    top: -4px;
+    right: -4px;
+  }
+}
+
+.plus {
+  font-size: 2.4rem;
+  font-weight: 100;
+  margin-right: 10px !important;
+}

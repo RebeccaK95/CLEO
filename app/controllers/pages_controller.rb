@@ -3,12 +3,15 @@ class PagesController < ApplicationController
 
   def home
     @home_page = true
-    @challenges = Challenge.first(3)
+    # Score
+    @user_footprint = Footprint.find_by(user_id: current_user.id)
+    @score = @user_footprint&.score
+    # User challenges (my challenges)
+    @user_challenges = UserChallenge.where(user_id: current_user&.id)
+    # Tips
     @tips = Tip.all
-    @show_page = true
+    # Invitations
     @invites = Invite.where(invitee_id: current_user)
     @open_invites = @invites.where(accepted: false)
-    @user_challenges = UserChallenge.where(user_id: current_user&.id)
-    @ongoing_challenges = @user_challenges.where(status: "in_progress")
   end
 end
