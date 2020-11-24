@@ -4,8 +4,10 @@ class ChallengesController < ApplicationController
     @categories = Category.all
     if params[:query].present?
       @challenges = Challenge.pg_search(params[:query])
+      @placeholder = params[:query]
     else
       @challenges = Challenge.all
+      @placeholder = "Search for a challenge"
     end
   end
 
@@ -16,7 +18,7 @@ class ChallengesController < ApplicationController
     if @challenge_started != nil
       user_challenges = UserChallenge.where(user_id: current_user.id)
       @user_challenge = user_challenges.find_by(challenge_id: params[:id])
-    end 
+    end
     @challenge_steps = ChallengeStep.where(challenge_id: params[:id])
     @challenge_completed = challenge_completed?
   end
