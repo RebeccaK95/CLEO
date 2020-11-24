@@ -1,37 +1,41 @@
 #progressBar {
 	display:inline-block;
-	width:327px;
-	height:8px;
-  left: 984px;
+	height:20px;
+  left: auto;
   top: 963px;
-  background:white;
-	border: 2px solid $blue;
-  padding: 10px 40px;
-	border-radius: 15px;
-	text-align: left;
+	text-align: right;
 	position:relative;
 	font-family: Secular One;
 	font-size: 0.8em;
+	background: white;
+}
+progress {
+	width: 100%;
+	height:20px;
+	background: white;
+	border: 2px solid $blue;
+	text-align: right;
+	font-family: Secular One;
+	font-size: 1em;
 }
 progress::-webkit-progress-bar {
-	height:8px;
-	width:109px;
+	height:20px;
+	width:calc(100%-10px);
 	margin:0 auto;
-	background-color: rgba(56, 180, 78, 0.5);
-  padding: 10px 40px;
+	background-color:white; 
+ 
 }
 progress::-webkit-progress-value {
 	display:inline-block;
 	float:left;
-	height:11px;
-	margin:0px -10px 0 0;
-	background: rgba(56, 180, 78, 0.5);
-	border-radius: 15px;
+	height:20px;
+	margin:0 0 0 0;
+	background-color:rgba(56, 180, 78, 0.5); 
 }
 progress:after {
-	margin:-26px 0 0 -7px;
-	padding:0;
+	margin:-45px 0 0 -7px;
 	display:inline-block;
 	float:left;
+	color: #CEE7F6;
 	content: attr(value) '%';
 }
