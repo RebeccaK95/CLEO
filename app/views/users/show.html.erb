@@ -9,14 +9,12 @@
       <h3><%= @user.username %></h3>
       <div class="d-flex">
         <div class="col text-center vertical-separator">
-          <p>Footprint</p>
-          <% if @score %>
-            <p class="secular-one numbers-big"><%= @score %></p>
-          <% end %>
+          <p> Followers</p>
+            <p class="secular-one numbers-big"><%= link_to @followers_count, friendships_path %></p>
         </div>
         <div class="col text-center">
-          <p>Challenges</p>
-          <p class="secular-one numbers-big"><%= @user_challenges.count %></p>
+          <p>Following</p>
+          <p class="secular-one numbers-big"><%= link_to @following_count, friendships_path %></p>
         </div>
       </div>
       <p class="text-small">Last challenge completed on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
@@ -27,44 +25,67 @@
       <% end %>
     </div>
     <!-- Achievements section -->
-    <div>
+    <div class="mt-5">
       <h2>Achievements</h2>
       <hr class="profile">
-      <% @done_challenges.each do |user_challenge| %>
-        <div>
-          <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
-          <p><%= user_challenge.challenge.points %></p>
-        </div>
-      <% end %>
+      <div class="badges d-flex align-items-center p-2">
+        <h5 class="mr-5">Badges</h3>
+        <div class="points"><%= @done_challenges.count %></div>
+      </div>
+      <div class="badges d-flex align-items-center p-2">
+        <h5 class="mr-5">Points</h3>
+        <div class="points"><%= @total %></div>
+      </div>
     </div>
   </div>
   <!-- Right side -->
   <div class="col-8">
-    <!-- Carbon footprint -->
-    <div>
-      <h2>Carbon footprint</h2>
-      <hr class="profile">
-      <div>
-        <% if @score %>
-          <p><%= @score %></p>
-          <div class="progress" style="height: 20px;">
-          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="<%= (5000 - @score)/50 %>" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <!-- Ongoing challenges -->
-    <div>
-      <h2>Ongoing challenges</h2>
-      <hr class="profile">
-      <div>
-        <% @ongoing_challenges.each do |user_challenge| %>
+    <div class="d-flex justify-content-around ">
+      <!-- Carbon footprint -->
+        <div>
+          <h2>Completed challenges</h2>
+          <hr class="profile">
+            <% @done_challenges.each do |user_challenge| %>
+              <div class="d-flex justify-content-between align-items-center px-2 my-2 border border-primary">
+                <div class="mx-2">
+                  <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+                </div>
+                <div class="align-middle">
+                  <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
+                  <div class="align-middle text-center"> points</div>
+                </div>
+              </div>
+            <% end %>
+        </div>
+        <!-- Ongoing challenges -->
+        <div>
+          <h2>Ongoing challenges</h2>
+          <hr class="profile">
           <div>
-            <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+            <% @ongoing_challenges.each do |user_challenge| %>
+              <div class="d-flex justify-content-between align-items-center px-2 my-2 border border-primary">
+                <div class="mx-2">
+                  <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+                </div>
+                <div class="align-middle">
+                  <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
+                  <div class="align-middle text-center"> points</div>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
     </div>
   </div>
 </div>
 
+
+<!-- <div>
+            <% if @score %>
+              <p><%= @score %></p>
+              <div class="progress" style="height: 20px;">
+              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="<%= (5000 - @score)/50 %>" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            <% end %>
+          </div>
+-->

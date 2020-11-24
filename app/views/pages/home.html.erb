@@ -116,8 +116,9 @@
       <div class="tip-suggestions">
 
       </div>
-      <!-- Friends zone -->
+      <!-- Friends zone: start -->
       <div class="friends-container">
+        <!-- Invitations to challenges -->
         <div>
           <h2 class="dashboard">You've been challenged!</h2>
           <div class="invitation-cards background-blue">
@@ -138,25 +139,29 @@
                   </div>
                 </div>
               <% end %>
+            <% else %>
+              <p>Chill!</p>
+              <p>Enjoy the free inbox.</p>
             <% end %>
           </div>
         </div>
+        <!-- Followers invitations -->
         <div>
           <h2 class="dashboard">They want to stalk you</h2>
           <div class="invitation-cards background-blue">
-            <% if @open_invites != [] %>
-              <% @open_invites.each do |invite| %>
+            <% if @open_friendships != [] %>
+              <% @open_friendships.each do |friendship| %>
                 <div class="invitation-card">
                   <img src="" class="avatar">
                   <div class="invitation-card-info">
-                    <p><span class="secular-one"><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %></span> wants to follow you.</p>
+                    <p><span class="secular-one"><%= link_to "#{friendship.follower.username}", user_path(friendship.follower.id) %></span> wants to follow you.</p>
                     <div class="">
-                      <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
-                                                method: :patch,
-                                                class: "button-primary" %>
-                      <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
-                                                class: "button-primary",
-                                                method: :delete %>
+                      <%= link_to "Accept", friendship_path(friendship),
+                                            method: :patch,
+                                            class: "button-primary" %>
+                      <%= link_to "Decline", friendship_path(friendship),
+                                            method: :delete,
+                                            class: "button-primary" %>
                     </div>
                   </div>
                 </div>
@@ -167,12 +172,32 @@
             <% end %>
           </div>
         </div>
-        <%= link_to do %>
-          <div class="dashboard-challenge-button">
-            <p>Find a friend to stalk</p>
+        <!-- Add a friend -->
+        <!-- Button trigger modal -->
+        <button type="button" class="button-outline-blue padding" data-toggle="modal" data-target="#exampleModal">
+          Find a friend to stalk
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Follow your friends!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for [@friendship] do |f| %>
+                  <%= f.association :followed, label: 'Find your friend', label_method: :username %>
+                  <%= f.button :submit, 'Send invitation', class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        <% end %>
+        </div>
       </div>
+      <!-- Friends zone: end -->
     </div>
   </div>
   <!-- User signed in view: end -->
