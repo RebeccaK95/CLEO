@@ -12,7 +12,7 @@ class InvitesController < ApplicationController
     @invite.challenge = @challenge
     @invite.inviter_id = current_user.id
 
-     if @invite.save
+    if @invite.save
       redirect_to challenge_path(@challenge)
     else
       render "challenges/show"
@@ -33,6 +33,17 @@ class InvitesController < ApplicationController
     else
       render "challenges/show"
     end
+
+    @challenge_steps = ChallengeStep.where(challenge_id: @challenge)
+    @challenge_steps.each do |step|
+      @user_challenge_steps = UserChallengeStep.create(user_challenge_id: @user_challenge.id, challenge_step_id: step.id, status: "not done yet")
+    end
+  end
+
+  def destroy
+    invite = Invite.find(params[:id])
+    invite.delete
+    redirect_to root_path
   end
 
 private

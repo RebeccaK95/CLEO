@@ -37,6 +37,20 @@
   }
 }
 
+button.button-outline-blue {
+  text-align: center;
+  border: 2px solid $blue;
+  margin: 1.4rem 0;
+  color: $blue;
+  font-family: Montserrat;
+  font-weight: 600;
+  background-color: white !important;
+  &:hover {
+    background-color: $blue !important;
+    color: white;
+  }
+}
+
 .button-outline-blue p {
   margin: 0;
 }
