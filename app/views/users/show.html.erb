@@ -9,14 +9,14 @@
       <h3><%= @user.username %></h3>
       <div class="d-flex">
         <div class="col text-center vertical-separator">
-          <p>Footprint</p>
+          <p> Followers</p>
           <% if @score %>
-            <p class="secular-one numbers-big"><%= @score %></p>
+            <p class="secular-one numbers-big"><%= link_to @followers_count, friendships_path %></p>
           <% end %>
         </div>
         <div class="col text-center">
-          <p>Challenges</p>
-          <p class="secular-one numbers-big"><%= @user_challenges.count %></p>
+          <p>Following</p>
+          <p class="secular-one numbers-big"><%= link_to @following_count, friendships_path %></p>
         </div>
       </div>
       <p class="text-small">Last challenge completed on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
@@ -36,6 +36,10 @@
           <p><%= user_challenge.challenge.points %></p>
         </div>
       <% end %>
+      <h3>Score</h3>
+      <%= @score %>
+      <h3>Challenges</h3>
+      <%= @user_challenges.count %>
     </div>
   </div>
   <!-- Right side -->

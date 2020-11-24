@@ -35,7 +35,7 @@ import { check } from "./check.js"
 
 document.addEventListener('turbolinks:load', () => {
   // check();
-  start();
+  //start();
   tabs();
   filterCategories();
   filterCategoriesTips();

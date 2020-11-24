@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_145607) do
+ActiveRecord::Schema.define(version: 2020_11_24_150636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_11_23_145607) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_footprints_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.boolean "accepted", default: false
+    t.bigint "follower_id", null: false
+    t.bigint "followed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
   create_table "invites", force: :cascade do |t|
@@ -128,6 +138,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_145607) do
   add_foreign_key "challenge_steps", "challenges"
   add_foreign_key "challenges", "categories"
   add_foreign_key "footprints", "users"
+  add_foreign_key "friendships", "users", column: "followed_id"
+  add_foreign_key "friendships", "users", column: "follower_id"
   add_foreign_key "invites", "challenges"
   add_foreign_key "invites", "users", column: "invitee_id"
   add_foreign_key "invites", "users", column: "inviter_id"

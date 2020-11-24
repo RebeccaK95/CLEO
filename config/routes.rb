@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :tips, only: [:index, :show]
+  resources :friendships, only: [:index, :create, :update, :destroy]
 end
