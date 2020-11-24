@@ -1,0 +1,14 @@
+.score-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px $light-gray solid;
+  text-align: center;
+}
+
+.score {
+  font-family: 'Secular One', sans-serif;
+  margin: 0;
+  font-size: 1.6rem;
+  color: $blue;
+}
