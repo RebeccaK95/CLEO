@@ -1,0 +1,61 @@
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+
+.category-tip-blue {
+  margin: 0;
+  font-size: 14px;
+  color: white;
+  font-family: Secular One;
+  background-color: #008DD5;
+  padding: 0px 10px;
+  padding-top: 2px;
+  width: fit-content;
+}
+
+.category-tip-title {
+  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.image-tip img {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+}
+
+.p-tip {
+  margin-bottom: 0px;
+}
+
+.background-blue-tip {
+  background-color: #008DD535;
+  padding: 80px 1.4rem;
+}
+
+.category-card-tips {
+  color: $blue;
+}
+
+.category-card-tips {
+  color: $blue;
+  padding: 10px;
+  margin-top: 0.5rem !important;
+}
+
+.category-card-tips h2 {
+  font-size: 20px;
+}
+
+
+.border-tip {
+  padding: 10px 10px 0px 10px;
+  border-top: 1px solid #C4C4C4;
+  border-bottom: 1px solid #C4C4C4;
+  margin-top: 1.8rem;
+}

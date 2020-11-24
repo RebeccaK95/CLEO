@@ -1,8 +1,8 @@
 
 const filterCategoriesTips = () => {
-  const tips = document.querySelectorAll(".tip-card");
+  const tips = document.querySelectorAll(".tip-dashboard");
   const categories = document.querySelectorAll(".category-card");
-  const categoriesContainer = document.querySelector(".category-cards");
+  const categoriesContainer = document.querySelector(".category-cards-tips");
 
   if (categoriesContainer){
     categoriesContainer.addEventListener('click', (e) => {

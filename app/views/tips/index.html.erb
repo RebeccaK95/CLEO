@@ -1,10 +1,33 @@
 <div class="container">
-  <div class="category-cards">
-    <% @categories.each do |category| %>
-      <div class="category-card <%=category.name.downcase%>" data-category="<%=category.name.downcase%>">
-        <h2 data-category="<%=category.name.downcase%>"><%= category.name  %></h2>
+
+
+
+  <div class="tip-month">
+    <div class="d-flex">
+      <div class="background-blue-tip d-flex flex-column justify-content-around">
+        <p style="font-family: 'Montserrat'; font-weight: bold;">Cleo community’s tip of the month</p>
+        <h1 class="category-tip-title"> <%= @tip_month.title %> </h1>
+        <h5 class="category-tip-blue d-inline-flex"><%= @tip_month.category.name %></h5>
+        <p class="p-tip"> <%= @tip_month.description.truncate(300) %> <br> <span class="read"> <%= link_to "Read more", tip_path(@tip_month) %> </span></p>
       </div>
-    <% end %>
+      <div class="image-tip">
+        <%= image_tag("tip-radish.jpg") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-tip">
+    <div class="d-flex justify-content-between">
+      <div style="padding: 10px; margin-top: 0.5rem !important; color: #C4C4C4;"><p>Filter by categories</p>
+      </div>
+      <div class="category-cards-tips d-flex justify-content-end">
+        <% @categories.each do |category| %>
+          <div class="category-card-tips <%=category.name.downcase%>" data-category="<%=category.name.downcase%>">
+            <h2 data-category="<%=category.name.downcase%>"><%= category.name.upcase %></h2>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <!-- Search bar -->
   <div class="search-bar">
@@ -23,14 +46,14 @@
       </div>
     <% end %>
   </div>
-  <div class="cards">
+  <div class="tips-grid">
     <% @tips.each do |tip| %>
-      <div class="tip-dashboard" data-category="<%=tip.category.name.downcase%>">
+      <div class="tip-dashboard" data-category="<%= tip.category.name.downcase%>">
         <%= image_tag("tip-#{tip.image}.jpg") %>
-        <div class="tip-card-infos">
-          <h2><%= link_to tip.title, tip_path(tip) %></h2>
-          <h3 class="category-tip-dashboard"><%= tip.category.name %></h3>
-          <p><%= tip.description.to_s.truncate(80) %><%= link_to "     Read more", tip_path(tip) %></p>
+        <div class="tip-dashboard-infos d-flex flex-column align-items-left">
+          <h6><%= link_to tip.title, tip_path(tip) %></h6>
+          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+          <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
         </div>
       </div>
     <% end %>
