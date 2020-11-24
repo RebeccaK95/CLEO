@@ -67,8 +67,10 @@
               <% end %>
             <% end %>
             <div>
-              <p>Your progress:</p>
-              </div>
+              <p>Your progress: </p> 
+              
+              <progress id="progressbar" max="100" value="<%= @value %>"></progress>
+            </div>
             </div>
             <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
                                               method: :patch,

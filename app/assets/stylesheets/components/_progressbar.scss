@@ -1,8 +1,37 @@
-#progressbar {
-position: absolute;
-width: 109px;
-height: 8px;
-left: 984px;
-top: 963px;
-background: rgba(56, 180, 78, 0.5);
+#progressBar {
+	display:inline-block;
+	width:327px;
+	height:8px;
+  left: 984px;
+  top: 963px;
+  background:white;
+	border: 2px solid $blue;
+  padding: 10px 40px;
+	border-radius: 15px;
+	text-align: left;
+	position:relative;
+	font-family: Secular One;
+	font-size: 0.8em;
+}
+progress::-webkit-progress-bar {
+	height:8px;
+	width:109px;
+	margin:0 auto;
+	background-color: rgba(56, 180, 78, 0.5);
+  padding: 10px 40px;
+}
+progress::-webkit-progress-value {
+	display:inline-block;
+	float:left;
+	height:11px;
+	margin:0px -10px 0 0;
+	background: rgba(56, 180, 78, 0.5);
+	border-radius: 15px;
+}
+progress:after {
+	margin:-26px 0 0 -7px;
+	padding:0;
+	display:inline-block;
+	float:left;
+	content: attr(value) '%';
 }
