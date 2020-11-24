@@ -10,5 +10,8 @@ class PagesController < ApplicationController
     @open_invites = @invites.where(accepted: false)
     @user_challenges = UserChallenge.where(user_id: current_user&.id)
     @ongoing_challenges = @user_challenges.where(status: "in_progress")
+    @friendships = Friendship.where(followed_id: current_user)
+    @open_friendships = @friendships.where(accepted: false)
+    @friendship = Friendship.new
   end
 end
