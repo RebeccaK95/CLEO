@@ -59,7 +59,7 @@
               <div class="secular-one">
                  <p> <%= step.description  %></p>
               </div>
-              <% if user_step.status == "completed" %>
+              <% if user_step&.status == "completed" %>
                 <p>Good job</p>
               <% else %>
                 <%= link_to "Step completed" , user_challenge_step_path(user_step), method: :patch,
