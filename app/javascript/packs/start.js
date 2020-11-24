@@ -1,18 +1,20 @@
 const start = () => {
 
-  const link = document.querySelector("#start-challenge")
-  const progress = document.querySelector(".challenge-progression")
+  const link = document.querySelector("#start-challenge");
+  const progress = document.querySelector(".challenge-progression");
+
+  console.log(progress);
 
   if (link) {
 
-    console.log(link)
+    console.log(link);
       link.addEventListener('click', (event) => {
         event.preventDefault();
         console.log("hey");
       });
-  }
+  };
   else {
     progress.scrollIntoView();
-  }
+  };
 }
 export { start }

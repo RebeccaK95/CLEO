@@ -30,8 +30,8 @@ import "bootstrap";
 import { tabs } from "./tabs.js"
 import { filterCategories } from "./filterCategories.js"
 import { filterCategoriesTips } from "./filterCategoriesTips.js"
-import { start } from "./start.js"
-import { check } from "./check.js"
+// import { start } from "./start.js"
+// import { check } from "./check.js"
 
 document.addEventListener('turbolinks:load', () => {
   // check();
@@ -39,6 +39,7 @@ document.addEventListener('turbolinks:load', () => {
   tabs();
   filterCategories();
   filterCategoriesTips();
+
   // Call your functions here, e.g:
   // initSelect2();
 });
