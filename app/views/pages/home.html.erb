@@ -46,7 +46,7 @@
           <h6 style="padding-top: 10px;">You have a new invitation!</h6>
           <div class="d-flex">
             <% @open_invites.each do |invite| %>
-              <p><%= invite.inviter.username %> invited you to participate to <%=invite.challenge.name %></p>
+              <p><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %> invited you to participate to <%= link_to invite.challenge.name, challenge_path(invite.challenge.id) %></p>
               <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
                                                 method: :patch,
                                                 class: "button-primary" %>
