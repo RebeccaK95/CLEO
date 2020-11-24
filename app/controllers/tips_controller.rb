@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   def index
+    @tip_month = Tip.last
     @categories = Category.all
     if params[:query].present?
       @tips = Tip.pg_search(params[:query])
