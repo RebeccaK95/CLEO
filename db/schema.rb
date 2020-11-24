@@ -51,10 +51,15 @@ ActiveRecord::Schema.define(version: 2020_11_23_145607) do
 
   create_table "invites", force: :cascade do |t|
     t.boolean "invited"
+    t.boolean "accepted", default: false
     t.bigint "challenge_id", null: false
+    t.bigint "inviter_id", null: false
+    t.bigint "invitee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["challenge_id"], name: "index_invites_on_challenge_id"
+    t.index ["invitee_id"], name: "index_invites_on_invitee_id"
+    t.index ["inviter_id"], name: "index_invites_on_inviter_id"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -124,6 +129,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_145607) do
   add_foreign_key "challenges", "categories"
   add_foreign_key "footprints", "users"
   add_foreign_key "invites", "challenges"
+  add_foreign_key "invites", "users", column: "invitee_id"
+  add_foreign_key "invites", "users", column: "inviter_id"
   add_foreign_key "tips", "categories"
   add_foreign_key "user_challenge_steps", "user_challenges"
   add_foreign_key "user_challenges", "challenges"
