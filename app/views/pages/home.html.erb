@@ -149,9 +149,14 @@
   </div>
 <!-- User signed in view: end -->
 <% else %>
-  <div class="container container-margin min-height">
-    <h1 class="welcome-line">Change is now</h1>
-    <p>Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends! Change is now, and it is fun. Sign up now:</p>
-    <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+  <div class="homepage">
+    <div class="container container-margin min-height">
+      <h1 class="welcome-line" style="font-weight: bold; color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2);">Change is now</h1>
+      <br>
+      <p style="color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2); font-size: 20px">Get a clear idea of your lifestyle footprint, improve it and challenge yourself and your friends!</p>
+      <p style="color: white; text-shadow: 0 0 5px rgba(0,0,0,0.2); font-size: 20px">Change is now, and it is fun. Sign up now !</p>
+      <br>
+      <%= link_to "Sign up", new_user_registration_path, class: "button" %>
+    </div>
   </div>
 <% end %>
