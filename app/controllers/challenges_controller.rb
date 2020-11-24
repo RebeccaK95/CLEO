@@ -15,18 +15,18 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @show_page = true
     @challenge_started = challenge_started?
-    if @challenge_started 
+    if @challenge_started
       user_challenges = UserChallenge.where(user_id: current_user.id)
       @user_challenge = user_challenges.find_by(challenge_id: params[:id])
       @challenge_steps = @challenge.challenge_steps
-      @value = @user_challenge.user_challenge_steps.where(status:"completed").count.to_f / @challenge_steps.count.to_f * 100 
+      @value = @user_challenge.user_challenge_steps.where(status:"completed").count.to_f / @challenge_steps.count.to_f * 100
       @value = @value.floor
-    end 
+    end
 
     @challenge_steps = ChallengeStep.where(challenge_id: params[:id])
     @challenge_completed = challenge_completed?
 
-    @users = User.all
+    @users = Friendship.where(followed: current_user.id)
     @invite = Invite.new
 
     @challenges_count = UserChallenge.where(challenge_id: params[:id]).length
