@@ -12,7 +12,7 @@ class InvitesController < ApplicationController
     @invite.challenge = @challenge
     @invite.inviter_id = current_user.id
 
-     if @invite.save
+    if @invite.save
       redirect_to challenge_path(@challenge)
     else
       render "challenges/show"

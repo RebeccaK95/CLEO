@@ -4,8 +4,10 @@ class ChallengesController < ApplicationController
     @categories = Category.all
     if params[:query].present?
       @challenges = Challenge.pg_search(params[:query])
+      @placeholder = params[:query]
     else
       @challenges = Challenge.all
+      @placeholder = "Search for a challenge"
     end
   end
 
