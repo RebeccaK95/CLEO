@@ -74,24 +74,32 @@
           <div class="steps background-blue" >
             <% @challenge_steps.each do |step| %>
               <% user_step = @user_challenge.user_challenge_steps.find_by(challenge_step_id: step.id) %>
-              <div class="secular-one">
-                 <p> <%= step.description  %></p>
-              </div>
-              <% if user_step&.status == "completed" %>
-                <p>Good job</p>
-              <% else %>
-                <%= link_to "Step completed" , user_challenge_step_path(user_step), method: :patch,
-              class: "button-primary" %>
+
+              <div class="secular-one d-flex flex-column justify-content-between">
+                <% if user_step.status == "completed" %>
+                  <div class="d-flex justify-content-between">
+                     <div class="step-description mb-1"><p> <%= step.description  %></p></div>
+                     <div id="good-job" class="align-self-start"><i class="far fa-check-circle"></i></div>
+                  </div>
+                <% else %>
+                  <div class="d-flex justify-content-between">
+                    <p> <%= step.description  %></p>
+                    <%= link_to user_challenge_step_path(user_step), method: :patch do %>
+                      <button id="btn-step" class="align-self-start"><i class="far fa-circle"></i></button>
+                    <% end %>
+                  </div>
+                <% end %>
+                </div>
               <% end %>
-            <% end %>
             <div>
-              <p>Your progress: </p> 
+              <p>Your progress: </p>
               <progress id="progressbar" max="100" value="<%= @value %>"></progress>
             </div>
             </div>
-            <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
+              <%= link_to "Mark challenge as completed", challenge_user_challenge_path(@challenge),
                                               method: :patch,
                                               class: "button-primary" %>
+          </div>
           </div>
         </div>
       <% elsif @challenge_completed %>
@@ -112,7 +120,7 @@
         </div>
       <% else %>
         <div class="challenge-progression d-flex">
-          <%= link_to "Start challenge", challenge_user_challenges_path(@challenge, anchor: "challenge-#{@challenge.description}"),
+          <%= link_to "Start challenge", challenge_user_challenges_path(@challenge),
                                           method: :post,
                                           id: "start-challenge",
                                           class: "button-primary margin-button" %>
