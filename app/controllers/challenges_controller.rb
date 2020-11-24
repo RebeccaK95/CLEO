@@ -20,6 +20,7 @@ class ChallengesController < ApplicationController
       @user_challenge = user_challenges.find_by(challenge_id: params[:id])
       @challenge_steps = @challenge.challenge_steps
       @value = @user_challenge.user_challenge_steps.where(status:"completed").count.to_f / @challenge_steps.count.to_f * 100 
+      @value = @value.floor
     end 
 
     @challenge_steps = ChallengeStep.where(challenge_id: params[:id])
