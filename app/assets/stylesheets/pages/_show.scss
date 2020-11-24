@@ -89,7 +89,7 @@ div.challenge-progression {
 .steps {
   margin: 2px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 15px;
 }
 
 .marker {
@@ -105,8 +105,15 @@ div.challenge-progression {
 .link-show > i {
   font-size: 1.2rem;
   margin-right: 0.8rem;
+  margin-bottom: 30px;
+  margin-left: 30px;
 }
 
 .link-show:hover {
   color: $blue;
 }
+
+// .step-description p {
+//   padding: 5px;
+
+// }
