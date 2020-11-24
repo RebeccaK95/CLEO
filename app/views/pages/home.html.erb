@@ -50,6 +50,9 @@
               <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
                                                 method: :patch,
                                                 class: "button-primary" %>
+              <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
+                                                class: "button-primary",
+                                                method: :delete %>
             <% end %>
           </div>
         <% end %>
