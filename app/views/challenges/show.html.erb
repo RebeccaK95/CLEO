@@ -34,7 +34,13 @@
         <div class="d-flex flex-column justify-content-end px-4">
           <div class="d-flex align-items-center">
             <span class="avatar-friends"><%= image_tag("avatar_default.svg") %></span>
+            <% if @friends > 1%>
             <p class="friends"><%= @friends %> friends are completing this challenge</p>
+            <% elsif @friends == 0 %>
+            <p class="friends"> You have no friend completing this challenge</p>
+            <% else %>
+            <p class="friends"> <%= @friends %> friend is completing this challenge</p>
+            <% end %>
           </div>
 
           <!-- Button trigger modal -->
@@ -114,7 +120,7 @@
             <p>Thank you for contributing to a greener world.</p>
             <p>Keep up the good work!</p>
             <div class="d-flex justify-content-center">
-              <%= link_to "See footprint", user_path(current_user.id), class: "button-footprint" %>
+              <%= link_to "See footprint", root_path, class: "button-footprint" %>
             </div>
           </div>
         </div>
