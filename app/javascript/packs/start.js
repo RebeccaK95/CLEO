@@ -12,9 +12,10 @@ const start = () => {
         event.preventDefault();
         console.log("hey");
       });
-  };
-  else {
+  } else if (progress) {
     progress.scrollIntoView();
-  };
+  } else {
+    return
+  }
 }
 export { start }
