@@ -1,6 +1,12 @@
 <div class="container min-height">
-  <h2>Sign up</h2>
-
+  <div class="d-flex justify-content-between">
+    <h2>Sign up</h2>
+    <div>Already signed up ?
+      <%- if controller_name != 'sessions' %>
+        <%= link_to "Log in", new_session_path(resource_name) %><br />
+      <% end %>
+    </div>
+  </div>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
@@ -29,6 +35,3 @@
       <%= f.button :submit, "Sign up", class: "button" %>
     </div>
   <% end %>
-
-  <%= render "devise/shared/links" %>
-</div>
