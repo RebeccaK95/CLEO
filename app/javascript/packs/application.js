@@ -39,7 +39,6 @@ document.addEventListener('turbolinks:load', () => {
   tabs();
   filterCategories();
   filterCategoriesTips();
-
   // Call your functions here, e.g:
   // initSelect2();
 });
