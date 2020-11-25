@@ -25,7 +25,7 @@
                 <div class="gauge category-bathroom"></div>
               </div>
             </div>
-            <div class="percentage margin-left">
+            <div class="percentage">
               <div class="percentage-details">
                 <p>daily</p>
                 <p class="level-percent">11%</p>
@@ -43,7 +43,7 @@
                 <div class="gauge category-energy"></div>
               </div>
             </div>
-            <div class="percentage margin-left">
+            <div class="percentage">
               <div class="percentage-details">
                 <p>food</p>
                 <p class="level-percent">22%</p>
@@ -61,7 +61,7 @@
                 <div class="gauge category-shopping"></div>
               </div>
             </div>
-            <div class="percentage margin-left">
+            <div class="percentage">
               <div class="percentage-details">
                 <p>transports</p>
                 <p class="level-percent">31%</p>
@@ -74,9 +74,8 @@
         </div>
       </div>
     </div>
-    <!-- Rest of dashboard -->
+    <!-- Challenges -->
     <div class="secondary-container">
-      <!-- Challenges -->
       <h2 class="dashboard">Challenges</h2>
       <div class="dashboard-challenge-cards">
         <% @user_challenges.each do |user_challenge| %>
@@ -110,10 +109,15 @@
           </div>
         <% end %>
       </div>
-      <!-- Tips -->
-      <h2 class="dashboard">Tips to help you nail your challenges</h2>
-      <div class="tip-suggestions">
+    </div>
 
+    <div class="secondary-container tips-friends">
+      <!-- Tips -->
+      <div>
+        <h2 class="dashboard">Tips to help you nail your challenges</h2>
+        <div class="tip-suggestions">
+
+        </div>
       </div>
       <!-- Friends zone: start -->
       <div class="friends-container">
@@ -141,15 +145,17 @@
                 </div>
               <% end %>
             <% else %>
-              <p><i class="far fa-hand-peace"></i></p>
-              <p class="secular-one">Chill!</p>
-              <p>Enjoy the empty inbox.</p>
+              <div class="no-invitation">
+                <p class="hand"><i class="far fa-hand-peace"></i></p>
+                <p class="secular-one chill">Chill!</p>
+                <p>Enjoy the empty inbox.</p>
+              </div>
             <% end %>
           </div>
         </div>
         <!-- Followers invitations -->
         <div>
-          <h2 class="dashboard">They want to stalk you</h2>
+          <h2 class="dashboard margin-top">They want to stalk you</h2>
           <div class="invitation-cards">
             <% if @open_friendships != [] %>
               <% @open_friendships.each do |friendship| %>
@@ -169,9 +175,11 @@
                 </div>
               <% end %>
             <% else %>
-              <p><i class="far fa-hand-peace"></i></p>
-              <p class="secular-one">Chill!</p>
-              <p>Enjoy the empty inbox.</p>
+              <div class="no-invitation">
+                <p class="hand"><i class="far fa-hand-peace"></i></p>
+                <p class="secular-one chill">Chill!</p>
+                <p>Enjoy the empty inbox.</p>
+              </div>
             <% end %>
           </div>
         </div>

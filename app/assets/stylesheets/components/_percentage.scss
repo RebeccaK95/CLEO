@@ -1,14 +1,7 @@
 .percentages {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-.percentage {
-  margin: 0 25px 10px 0;
-}
-
-.margin-left {
-  margin: 0 0 10px 25px;
+  grid-gap: 10px 50px;
 }
 
 .percentage-details {
