@@ -1,7 +1,7 @@
 const start = () => {
 
   const link = document.querySelector("#start-challenge");
-  const progress = document.querySelector(".challenge-progression");
+  const progress = document.querySelector("#nail-it");
 
   console.log(progress);
 
@@ -12,9 +12,10 @@ const start = () => {
         event.preventDefault();
         console.log("hey");
       });
-  };
-  else {
+  } else if (progress) {
     progress.scrollIntoView();
-  };
+  } else {
+    return
+  }
 }
 export { start }
