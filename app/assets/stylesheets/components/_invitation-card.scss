@@ -1,0 +1,40 @@
+.invitation-cards {
+
+}
+
+.invitation-card {
+  padding: 16px;
+  font-size: 0.9rem;
+  background-color: #008DD535;
+  border-bottom: 1px solid white;
+  display: flex;
+}
+
+.invitation-card-info {
+  margin-left: 16px;
+}
+
+.button-invitation {
+  border: 1px black solid;
+  padding: 8px 20px;
+  margin-right: 10px;
+  display: inline-block;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.accept {
+  &:hover {
+    background-color: $green;
+    border: 1px $green solid;
+  }
+}
+
+.decline {
+  &:hover {
+    background-color: $blue;
+    border: 1px $blue solid;
+  }
+}
