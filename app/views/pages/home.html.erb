@@ -120,13 +120,13 @@
       <div>
         <h2 class="dashboard">We've got some tips for you</h2>
         <div class="tip-suggestions">
-          <% @daily_tips.each do |tip| %>
+          <% @random_tips.each do |tip| %>
             <div class="tip-card-dashboard" data-category="<%= tip.category.name.downcase %>">
               <%= image_tag("tip-#{tip.image}.jpg") %>
-              <div class="tip-card-dashboard-infos d-flex flex-column align-items-left">
+              <div class="tip-card-dashboard-infos">
                 <h6><%= link_to tip.title, tip_path(tip) %></h6>
                 <h5 class="tip-card-category-dashboard d-inline-flex"><%= tip.category.name.downcase %></h5>
-                <p><%= tip.description.to_s.truncate(100) %></p>
+                <p><%= tip.description.to_s.truncate(150) %></p>
                 <p class="read-more"> <%= link_to "Read more", tip_path(tip) %></p>
               </div>
             </div>
