@@ -69,7 +69,7 @@
       <!-- Progression through challenge: start -->
       <% if @challenge_started %>
         <div class="challenge-progression d-flex flex-column">
-          <h3>Let's nail it!</h3>
+          <h3 id="nail-it">Let's nail it!</h3>
           <p class="challenge-description">Here are the different steps you will have to take to complete this challenge:</p>
           <div class="steps background-blue" >
             <% @challenge_steps.each do |step| %>
