@@ -1,7 +1,7 @@
 const start = () => {
 
   const link = document.querySelector("#start-challenge");
-  const progress = document.querySelector(".challenge-progression");
+  const progress = document.querySelector("#nail-it");
 
   console.log(progress);
 
