@@ -82,8 +82,10 @@
           <% if user_challenge.status == "in_progress" %>
             <%= link_to challenge_path(user_challenge.challenge) do %>
               <div class="dashboard-challenge-card-progress">
-                <h4><%= user_challenge.challenge.name %></h4>
-                <p class="challenge-card-category"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div>
+                  <h4><%= user_challenge.challenge.name %></h4>
+                  <p class="challenge-card-category"><%= user_challenge.challenge.category.name.downcase %></p>
+                </div>
                 <div class="status">
                   <p class="in-progress">In progress</p>
                   <p>Nail it now!</p>
@@ -93,8 +95,10 @@
           <% else %>
             <%= link_to challenge_path(user_challenge.challenge) do %>
               <div class="dashboard-challenge-card-completed">
-                <h4><%= user_challenge.challenge.name %></h4>
-                <p class="challenge-card-category background-green"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div>
+                  <h4><%= user_challenge.challenge.name %></h4>
+                  <p class="challenge-card-category background-green"><%= user_challenge.challenge.category.name.downcase %></p>
+                </div>
                 <div class="status">
                   <p class="completed">Completed</p>
                 </div>
