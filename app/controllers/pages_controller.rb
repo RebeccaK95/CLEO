@@ -9,9 +9,8 @@ class PagesController < ApplicationController
     @score = @user_footprint&.score
     # User challenges (my challenges)
     @user_challenges = UserChallenge.where(user_id: current_user&.id)
-    # Tips for Daily category
-    category_daily = Category.find_by(name: "Daily")
-    @daily_tips = Tip.where(category_id: category_daily.id)
+    # Randomly selected tips
+    @random_tips = Tip.order("RANDOM()").limit(4)
     # Invitations
     @invites = Invite.where(invitee: current_user)
     @open_invites = @invites.where(accepted: false)

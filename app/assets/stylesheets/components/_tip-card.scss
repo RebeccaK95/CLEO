@@ -4,7 +4,6 @@
   align-items: stretch;
   grid-gap: 30px 50px;
   grid-auto-rows: 1fr;
-  margin-bottom: 2.6rem;
 }
 
 .tip-card-dashboard {
@@ -23,6 +22,9 @@
 
 .tip-card-dashboard-infos {
   padding: 20px;
+  p {
+    margin: 0 !important;
+  }
 }
 
 .tip-card-dashboard img {
@@ -32,7 +34,7 @@
 }
 
 .tip-card-dashboard p {
-  padding-top: 10px;
+  padding-top: 20px;
   font-size: 0.9rem;
 }
 
@@ -45,6 +47,8 @@
 .read-more a {
   color: $green;
   border-bottom: 2px solid $green;
+  margin: 0;
+  padding: 0 !important;
   &:hover {
     border-bottom: 2px solid $blue;
   }
