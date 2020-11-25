@@ -17,20 +17,21 @@ progress {
 	text-align: right;
 	font-family: Secular One;
 	font-size: 1em;
+  margin-top: 20px;
 }
 progress::-webkit-progress-bar {
 	height:20px;
 	width:calc(100%-10px);
 	margin:0 auto;
-	background-color:white; 
- 
+	background-color:white;
+
 }
 progress::-webkit-progress-value {
 	display:inline-block;
 	float:left;
 	height:20px;
 	margin:0 0 0 0;
-	background-color:rgba(56, 180, 78, 0.5); 
+	background-color:rgba(56, 180, 78, 0.5);
 }
 progress:after {
 	margin:-45px 0 0 -7px;
@@ -38,4 +39,8 @@ progress:after {
 	float:left;
 	color: #CEE7F6;
 	content: attr(value) '%';
+}
+
+p.progressbar {
+  margin: 6px 0;
 }
