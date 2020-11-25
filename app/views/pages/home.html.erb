@@ -16,14 +16,13 @@
         <div class="results">
           <p>Your lifestyle emits 531kg of CO2 per year.</p>
           <div class="percentages">
-            <!-- Component -->
             <div class="percentage">
               <div class="percentage-details">
                 <p>bathroom</p>
                 <p class="level-percent">3%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge bathroom"></div>
+                <div class="gauge category-bathroom"></div>
               </div>
             </div>
             <div class="percentage margin-left">
@@ -32,7 +31,7 @@
                 <p class="level-percent">11%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge daily"></div>
+                <div class="gauge category-daily"></div>
               </div>
             </div>
             <div class="percentage">
@@ -41,7 +40,7 @@
                 <p class="level-percent">15%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge energy"></div>
+                <div class="gauge category-energy"></div>
               </div>
             </div>
             <div class="percentage margin-left">
@@ -50,7 +49,7 @@
                 <p class="level-percent">22%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge food"></div>
+                <div class="gauge category-food"></div>
               </div>
             </div>
             <div class="percentage">
@@ -59,7 +58,7 @@
                 <p class="level-percent">18%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge shopping"></div>
+                <div class="gauge category-shopping"></div>
               </div>
             </div>
             <div class="percentage margin-left">
@@ -68,7 +67,7 @@
                 <p class="level-percent">31%</p>
               </div>
               <div class="result-bar">
-                <div class="gauge transports"></div>
+                <div class="gauge category-transports"></div>
               </div>
             </div>
           </div>
@@ -112,7 +111,7 @@
         <% end %>
       </div>
       <!-- Tips -->
-      <h2 class="dashboard">Tips</h2>
+      <h2 class="dashboard">Tips to help you nail your challenges</h2>
       <div class="tip-suggestions">
 
       </div>
@@ -121,54 +120,58 @@
         <!-- Invitations to challenges -->
         <div>
           <h2 class="dashboard">You've been challenged!</h2>
-          <div class="invitation-cards background-blue">
+          <div class="invitation-cards">
             <% if @open_invites != [] %>
               <% @open_invites.each do |invite| %>
                 <div class="invitation-card">
-                  <img src="" class="avatar">
+                  <div class="avatar-friend">
+                    <%= image_tag("avatar_default.svg") %>
+                  </div>
                   <div class="invitation-card-info">
                     <p><%= link_to "#{invite.inviter.username}", user_path(invite.inviter.id) %> invited you to participate to <span class="secular-one"><%= link_to invite.challenge.name, challenge_path(invite.challenge.id) %></span>.</p>
                     <div class="">
                       <%= link_to "Accept", challenge_invite_path(invite.challenge, invite),
                                                 method: :patch,
-                                                class: "button-primary" %>
+                                                class: "button-invitation accept" %>
                       <%= link_to "Decline", challenge_invite_path(invite.challenge, invite),
-                                                class: "button-primary",
+                                                class: "button-invitation decline",
                                                 method: :delete %>
                     </div>
                   </div>
                 </div>
               <% end %>
             <% else %>
-              <p>Chill!</p>
-              <p>Enjoy the free inbox.</p>
+              <p><i class="far fa-hand-peace"></i></p>
+              <p class="secular-one">Chill!</p>
+              <p>Enjoy the empty inbox.</p>
             <% end %>
           </div>
         </div>
         <!-- Followers invitations -->
         <div>
           <h2 class="dashboard">They want to stalk you</h2>
-          <div class="invitation-cards background-blue">
+          <div class="invitation-cards">
             <% if @open_friendships != [] %>
               <% @open_friendships.each do |friendship| %>
                 <div class="invitation-card">
-                  <img src="" class="avatar">
+                  <img src="" class="avatar-friend">
                   <div class="invitation-card-info">
                     <p><span class="secular-one"><%= link_to "#{friendship.follower.username}", user_path(friendship.follower.id) %></span> wants to follow you.</p>
                     <div class="">
                       <%= link_to "Accept", friendship_path(friendship),
                                             method: :patch,
-                                            class: "button-primary" %>
+                                            class: "button-invitation accept" %>
                       <%= link_to "Decline", friendship_path(friendship),
                                             method: :delete,
-                                            class: "button-primary" %>
+                                            class: "button-invitation decline" %>
                     </div>
                   </div>
                 </div>
               <% end %>
             <% else %>
-              <p>Chill!</p>
-              <p>Enjoy the free inbox.</p>
+              <p><i class="far fa-hand-peace"></i></p>
+              <p class="secular-one">Chill!</p>
+              <p>Enjoy the empty inbox.</p>
             <% end %>
           </div>
         </div>

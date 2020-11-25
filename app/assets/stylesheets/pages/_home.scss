@@ -43,5 +43,7 @@ h2.dashboard {
 }
 
 .friends-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  grid-gap: 50px;
 }
