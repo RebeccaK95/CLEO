@@ -15,6 +15,14 @@ class User < ApplicationRecord
   has_many :friendships, class_name: 'Friendship', foreign_key: 'follower_id'
   has_many :friendships, class_name: 'Friendship', foreign_key: 'followed_id'
 
+  after_create :create_footprint
+
   validates :email, :encrypted_password, presence: true
   validates :email, format: { with: Devise.email_regexp }
+
+private
+
+  def create_footprint
+      Footprint.create(user_id: self.id, score: rand(4000..5000))
+  end
 end
