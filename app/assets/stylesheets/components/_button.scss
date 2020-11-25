@@ -122,3 +122,17 @@ button.button-outline-blue {
   text-align: center;
   margin-left: 20px;
 }
+
+.button-blue, .button-blue a {
+  text-align: center;
+  border: 2px solid $blue;
+  background-color: $blue;
+  margin: 1.4rem 0;
+  color: white;
+  font-family: Montserrat;
+  font-weight: 600;
+  &:hover {
+    background-color: $white;
+    color: $blue;
+  }
+}
