@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @home_page = true
+    @show_page = true
     # Score
     @user_footprint = Footprint.find_by(user_id: current_user.id)
     @score = @user_footprint&.score
