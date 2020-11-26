@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_185609) do
+ActiveRecord::Schema.define(version: 2020_11_26_164826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 2020_11_25_185609) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "points"
     t.string "image"
+    t.text "benefit"
+    t.integer "participant_base"
+    t.integer "duration"
     t.index ["category_id"], name: "index_challenges_on_category_id"
   end
 
