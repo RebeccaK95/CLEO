@@ -30,6 +30,7 @@ class ChallengesController < ApplicationController
     @invite = Invite.new
 
     @participants_count = participants_count
+    @weeks = weeks
 
     @invites_count = Invite.where(inviter_id: current_user.id)
     @invites_challenge = @invites_count.where(challenge_id: params[:id])
@@ -54,5 +55,9 @@ class ChallengesController < ApplicationController
     user_challenges = UserChallenge.where(challenge_id: params[:id])
     open_user_challenges_count = user_challenges.where(status: "in_progress").length
     return open_user_challenges_count + rand(300...5000)
+  end
+
+  def weeks
+    return rand(1..12)
   end
 end
