@@ -14,8 +14,10 @@ class User < ApplicationRecord
   has_many :invites, class_name: 'Invite', foreign_key: 'inviter_id'
   has_many :friendships, class_name: 'Friendship', foreign_key: 'follower_id'
   has_many :friendships, class_name: 'Friendship', foreign_key: 'followed_id'
+  has_one_attached :photo
 
   after_create :create_footprint
+  after_commit :add_default_avatar, on: [:create, :update]
 
   validates :email, :encrypted_password, presence: true
   validates :email, format: { with: Devise.email_regexp }
@@ -24,5 +26,11 @@ private
 
   def create_footprint
       Footprint.create(user_id: self.id, score: rand(4000..5000))
+  end
+
+  def add_default_avatar
+    unless photo.attached?
+      self.photo.attach(io: File.open(Rails.root.join("app", "assets", "images", "avatar_default.svg")), filename: 'avatar_default.svg' , content_type: "image/svg")
+    end
   end
 end

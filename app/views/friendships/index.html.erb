@@ -1,44 +1,61 @@
 <div class="container min-height">
   <div class="banner-friends"></div>
-  <div class="text-center m-3"><%= @user.username %></div>
+  <div class="text-center m-3"><%= current_user.username %></div>
     <div class="d-flex justify-content-center">
       <h5 class="mx-5">Followers</h5>
       <h5 class="mx-5">Following</h5>
     </div>
-
-      <!--      <% @followers.each do |f| %>
-              <p><%= f.follower.username %></p>
-            <% end %>
-
-            <% @followeds.each do |f| %>
-              <p><%= f.followed.username %></p>
-            <% end %>
-      -->
-        <div class="links d-flex justify-content-center">
-          <%= link_to "Back to profile", user_path(current_user), class:"button-outline-blue padding" %>
-          <button type="button" class="button-outline-blue padding mx-2" data-toggle="modal" data-target="#exampleModal">
-            Find friends
-          </button>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Follow your friends!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <%= simple_form_for [@friendship] do |f| %>
-                  <%= f.association :followed, label: 'Find your friend', label_method: :username %>
-                  <%= f.button :submit, 'Send invitation', class: "btn btn-primary" %>
-                <% end %>
-              </div>
+    <div class="d-flex justify-content-around align-items-center px-2 my-2">
+      <div class="followers">
+        <% @friendships.each do |friendship| %>
+          <div class="invitation-card">
+            <div class="avatar-friend">
+              <%= cl_image_tag friendship.follower.photo.key, crop: :scale %>
+            </div>
+            <div class="invitation-card-info">
+              <p><span class="secular-one"><%= link_to "#{friendship.follower.username}", user_path(friendship.follower.id) %></span> follows you.</p>
             </div>
           </div>
+        <% end %>
+      </div>
+      <div class="followed">
+        <% @friendships.each do |friendship| %>
+          <div class="invitation-card">
+            <div class="avatar-friend">
+              <%= cl_image_tag friendship.followed.photo.key, crop: :scale %>
+            </div>
+            <div class="invitation-card-info">
+              <p>You are following <span class="secular-one"><%= link_to "#{friendship.followed.username}", user_path(friendship.follower.id) %></span></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="links d-flex justify-content-center">
+      <%= link_to "Back to profile", user_path(current_user), class:"button-outline-blue padding" %>
+      <button type="button" class="button-outline-blue padding mx-2" data-toggle="modal" data-target="#exampleModal">
+        Find friends
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Follow your friends!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [@friendship] do |f| %>
+              <%= f.association :followed, label: 'Find your friend', label_method: :username %>
+              <%= f.button :submit, 'Send invitation', class: "btn btn-primary" %>
+            <% end %>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
 </div>

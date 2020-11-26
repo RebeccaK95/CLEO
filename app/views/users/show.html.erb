@@ -4,7 +4,7 @@
     <!-- User card -->
     <div class="user-card background-blue position-relative">
       <span class="avatar-profile position-absolute">
-        <%= image_tag("avatar_default.svg") %>
+        <%= cl_image_tag @user.photo.key, crop: :scale %>
       </span>
       <h3><%= @user.username %></h3>
       <div class="d-flex">
@@ -17,78 +17,135 @@
           <p class="secular-one numbers-big"><%= link_to @following_count, friendships_path %></p>
         </div>
       </div>
-      <p class="text-small">Last challenge completed on 
-      <%= @done_challenges.last.updated_at.strftime("%b %d, %Y") %> <br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
-      <%= link_to do %>
-        <div class="button-outline-blue margin-bottom-none">
-          <p>Edit</p>
+      <% if @done_challenges.empty? %>
+        <p class="text-small">
+          No challenge completed yet.
+        <br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %>
+        </p>
+      <% else %>
+        <p class="text-small">Last challenge completed on
+        <%= @done_challenges.last.updated_at.strftime("%b %d, %Y") %> <br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
+      <% end %>
+      <!-- Edit/FOLLOW UNFOLOW link -->
+      <% if current_user == @user %>
+        <%= link_to user_path(@user), "data-toggle" => "modal", 'data-target' => '#editModal' do %>
+          <div class="button-outline-blue margin-bottom-none">
+            <p>Edit</p>
+          </div>
+        <% end %>
+        <!-- Edit modal -->
+        <div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">My profile information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= simple_form_for(@user) do |f| %>
+                <div class="modal-body">
+                  <%= f.input :username %>
+                  <%= f.input :email %>
+                  <%= f.input :photo, as: :file %>
+                </div>
+                <div class="modal-footer">
+                  <%= link_to 'Back', user_path(@user), class: "button-outline" %>
+                  <%= f.button :submit, 'Save changes', class: "button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
+      <% else %>
+        <% if @followed_user.nil? %>
+          <%= link_to user_friendships_path(@user), method: :post do %>
+            <div class="button-outline-blue margin-bottom-none">
+              <p>Follow</p>
+            </div>
+          <% end %>
+        <% else %>
+          <% if @followed_user.followed == @user %>
+            <%= link_to friendship_path(@followed_user), method: :delete do %>
+              <div class="button-outline-blue margin-bottom-none">
+                <p>Unfollow</p>
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to friendships_path, method: :post do %>
+              <div class="button-outline-blue margin-bottom-none">
+                <p>Follow</p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
     <!-- Achievements section -->
     <div>
-    <div class="mt-5">
-      <h2>Achievements</h2>
-      <hr class="profile">
-      <div class="badges d-flex align-items-center p-2">
-        <h5 class="mr-5">Badges</h3>
-        <div class="points">
-          <% @done_challenges.each do |count| %> 
-            <i class="fas fa-leaf"></i>
-          <% end %>
+      <div class="mt-5">
+        <h2>Achievements</h2>
+        <hr class="profile">
+        <div class="badges d-flex align-items-center p-2">
+          <h5 class="mr-5">Badges</h3>
+          <div class="points">
+            <% @done_challenges.each do |count| %>
+              <i class="fas fa-leaf"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="badges d-flex align-items-center p-2">
+          <h5 class="mr-5">Points</h3>
+          <div class="points"><%= @total %></div>
         </div>
       </div>
-      <div class="badges d-flex align-items-center p-2">
-        <h5 class="mr-5">Points</h3>
-        <div class="points"><%= @total %></div>
-      </div>
-    </div>
     </div>
   </div>
 
   <!-- Right side -->
   <div class="grid">
     <div class="row">
-    <div class="col">
-      <!-- Carbon footprint -->
-        <div>
-          <h2>Completed challenges</h2>
-          <hr class="profile">
-            <% @done_challenges.each do |user_challenge| %>
-              <div class="d-flex justify-content-between align-items-center px-2 my-3 border border-primary">
-                <div class="mx-2">
-                  <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+      <div class="col">
+        <!-- Carbon footprint -->
+          <div>
+            <h2>Completed challenges</h2>
+            <hr class="profile">
+              <% @done_challenges.each do |user_challenge| %>
+                <div class="d-flex justify-content-between align-items-center px-2 my-3 border border-primary">
+                  <div class="mx-2">
+                    <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+                  </div>
+                  <div class="align-middle">
+                    <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
+                    <div class="align-middle text-center"> points</div>
+                  </div>
                 </div>
-                <div class="align-middle">
-                  <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
-                  <div class="align-middle text-center"> points</div>
-                </div>
-              </div>
-            <% end %>
-        </div>
+              <% end %>
+          </div>
+      </div>
     </div>
-    </div>    
         <!-- Ongoing challenges -->
     <div class="row">
-    <div class="col">
-        <div>
-          <h2>Ongoing challenges</h2>
-          <hr class="profile">
-            <% @ongoing_challenges.each do |user_challenge| %>
-              <div class="d-flex justify-content-between align-items-center px-2 my-3 border border-primary">
-                <div class="mx-2">
-                  <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+      <div class="col">
+          <div>
+            <h2>Ongoing challenges</h2>
+            <hr class="profile">
+              <% @ongoing_challenges.each do |user_challenge| %>
+                <div class="d-flex justify-content-between align-items-center px-2 my-3 border border-primary">
+                  <div class="mx-2">
+                    <%= link_to user_challenge.challenge.name, challenge_path(user_challenge.challenge) %>
+                  </div>
+                  <div class="align-middle">
+                    <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
+                    <div class="align-middle text-center"> points</div>
+                  </div>
                 </div>
-                <div class="align-middle">
-                  <div class="align-middle text-center"><%= user_challenge.challenge.points%></div>
-                  <div class="align-middle text-center"> points</div>
-                </div>
-              </div>
-            <% end %>
-        </div>
+              <% end %>
+          </div>
+      </div>
     </div>
-    </div>  
-   </div>
+  </div>
+</div>
 
 
 

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     resources :footprint, only: [:new, :create, :update]
   end
 
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :tips, only: [:index, :show]
-  resources :friendships, only: [:index, :create, :update, :destroy]
+  resources :friendships, only: [:index, :new, :create, :update, :destroy]
 end
