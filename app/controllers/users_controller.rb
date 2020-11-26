@@ -16,5 +16,25 @@ class UsersController < ApplicationController
     @friendships = Friendship.where(accepted: true)
     @followers_count = @friendships.where(followed_id: params[:id]).length
     @following_count = @friendships.where(follower_id: params[:id]).length
+
+    @current_follower = @friendships.where(follower_id: current_user.id)
+    @followed_user = @current_follower.find_by(followed_id: @user.id)
   end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    redirect_to user_path(user)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :photo)
+  end
+
 end

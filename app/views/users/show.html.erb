@@ -4,7 +4,7 @@
     <!-- User card -->
     <div class="user-card background-blue position-relative">
       <span class="avatar-profile position-absolute">
-        <%= image_tag("avatar_default.svg") %>
+        <%= cl_image_tag @user.photo.key, crop: :scale %>
       </span>
       <h3><%= @user.username %></h3>
       <div class="d-flex">
@@ -18,10 +18,59 @@
         </div>
       </div>
       <p class="text-small">Last challenge completed on Nov 14, 2020<br>Joined on <%= @user.created_at.strftime("%b %d, %Y") %></p>
-      <%= link_to do %>
-        <div class="button-outline-blue margin-bottom-none">
-          <p>Edit</p>
+      <!-- Edit/FOLLOW UNFOLOW link -->
+      <% if current_user == @user %>
+        <%= link_to user_path(@user), "data-toggle" => "modal", 'data-target' => '#editModal' do %>
+          <div class="button-outline-blue margin-bottom-none">
+            <p>Edit</p>
+          </div>
+        <% end %>
+        <!-- Edit modal -->
+        <div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">My profile information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= simple_form_for(@user) do |f| %>
+                <div class="modal-body">
+                  <%= f.input :username %>
+                  <%= f.input :email %>
+                  <%= f.input :photo, as: :file %>
+                </div>
+                <div class="modal-footer">
+                  <%= link_to 'Back', user_path(@user), class: "button-outline" %>
+                  <%= f.button :submit, 'Save changes', class: "button" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
+      <% else %>
+        <% if @followed_user.nil? %>
+          <%= link_to user_friendships_path(@user), method: :post do %>
+            <div class="button-outline-blue margin-bottom-none">
+              <p>Follow</p>
+            </div>
+          <% end %>
+        <% else %>
+          <% if @followed_user.followed == @user %>
+            <%= link_to friendship_path(@followed_user), method: :delete do %>
+              <div class="button-outline-blue margin-bottom-none">
+                <p>Unfollow</p>
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to friendships_path, method: :post do %>
+              <div class="button-outline-blue margin-bottom-none">
+                <p>Follow</p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
     <!-- Achievements section -->

@@ -29,6 +29,7 @@
                   required: true,
                   placeholder: raw("&bull;&bull;&bull;&bull;&bull;&bull;"),
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo, as: :file, label: "Profile picture" %>
     </div>
 
     <div class="form-actions">
