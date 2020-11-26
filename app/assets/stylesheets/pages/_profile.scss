@@ -16,3 +16,9 @@ h5 {
   font-size: 0.9rem;
   color: #328ED6;
 }
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+}
