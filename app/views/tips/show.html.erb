@@ -1,9 +1,9 @@
-<div class="banner" style="background-image: linear-gradient(to right bottom, rgba(0,0,0,0.4),rgba(0,0,0,0.1)), url('/assets/tip-<%= @tip.image %>.jpg');">
-  <div class="container">
+<div class="banner">
+  <%= image_tag("tip-#{@tip.image}.jpg") %>
+  <div class="banner-infos">
     <h1><%= @tip.title %></h1>
     <p class="d-inline-flex"><%= @tip.category.name.downcase %></p>
   </div>
-</div>
 <div class="container">
   <div class="column flex-column d-flex justify-content-between">
     <!-- <div class="d-flex"></div> -->
