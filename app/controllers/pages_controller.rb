@@ -3,13 +3,14 @@ class PagesController < ApplicationController
 
   def home
     @home_page = true
+    @show_page = true
     # Score
     @user_footprint = Footprint.find_by(user_id: current_user.id)
     @score = @user_footprint&.score
     # User challenges (my challenges)
     @user_challenges = UserChallenge.where(user_id: current_user&.id)
-    # Tips
-    @tips = Tip.all
+    # Randomly selected tips
+    @random_tips = Tip.order("RANDOM()").limit(4)
     # Invitations
     @invites = Invite.where(invitee: current_user)
     @open_invites = @invites.where(accepted: false)
