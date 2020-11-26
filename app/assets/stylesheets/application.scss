@@ -25,6 +25,14 @@
 }
 
 .container-margin {
+  margin: 9rem auto;
+}
+
+.container-profile {
+  margin: 12rem auto;
+}
+
+.container-challenge {
   margin: 3rem auto;
 }
 
@@ -32,6 +40,9 @@
   margin-top: 8rem;
 }
 
+.min-height {
+  min-height: 100vh;
+}
 
 body {
   background-color: white;

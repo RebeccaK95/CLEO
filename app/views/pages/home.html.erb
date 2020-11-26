@@ -82,8 +82,10 @@
           <% if user_challenge.status == "in_progress" %>
             <%= link_to challenge_path(user_challenge.challenge) do %>
               <div class="dashboard-challenge-card-progress">
-                <h4><%= user_challenge.challenge.name %></h4>
-                <p class="challenge-card-category"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div>
+                  <h4><%= user_challenge.challenge.name %></h4>
+                  <p class="challenge-card-category"><%= user_challenge.challenge.category.name.downcase %></p>
+                </div>
                 <div class="status">
                   <p class="in-progress">In progress</p>
                   <p>Nail it now!</p>
@@ -93,8 +95,10 @@
           <% else %>
             <%= link_to challenge_path(user_challenge.challenge) do %>
               <div class="dashboard-challenge-card-completed">
-                <h4><%= user_challenge.challenge.name %></h4>
-                <p class="challenge-card-category background-green"><%= user_challenge.challenge.category.name.downcase %></p>
+                <div>
+                  <h4><%= user_challenge.challenge.name %></h4>
+                  <p class="challenge-card-category background-green"><%= user_challenge.challenge.category.name.downcase %></p>
+                </div>
                 <div class="status">
                   <p class="completed">Completed</p>
                 </div>
@@ -114,9 +118,19 @@
     <div class="secondary-container tips-friends">
       <!-- Tips -->
       <div>
-        <h2 class="dashboard">Tips to help you nail your challenges</h2>
+        <h2 class="dashboard">We've got some tips for you</h2>
         <div class="tip-suggestions">
-
+          <% @random_tips.each do |tip| %>
+            <div class="tip-card-dashboard" data-category="<%= tip.category.name.downcase %>">
+              <%= image_tag("tip-#{tip.image}.jpg") %>
+              <div class="tip-card-dashboard-infos">
+                <h6><%= link_to tip.title, tip_path(tip) %></h6>
+                <h5 class="tip-card-category-dashboard d-inline-flex"><%= tip.category.name.downcase %></h5>
+                <p><%= tip.description.to_s.truncate(150) %></p>
+                <p class="read-more"> <%= link_to "Read more", tip_path(tip) %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
       <!-- Friends zone: start -->
@@ -160,7 +174,9 @@
             <% if @open_friendships != [] %>
               <% @open_friendships.each do |friendship| %>
                 <div class="invitation-card">
-                  <img src="" class="avatar-friend">
+                  <div class="avatar-friend">
+                    <%= image_tag("avatar_default.svg") %>
+                  </div>
                   <div class="invitation-card-info">
                     <p><span class="secular-one"><%= link_to "#{friendship.follower.username}", user_path(friendship.follower.id) %></span> wants to follow you.</p>
                     <div class="">
