@@ -200,7 +200,7 @@
               </div>
               <div class="modal-body">
                 <%= simple_form_for [@friendship] do |f| %>
-                  <%= f.association :followed, label: 'Find your friend', label_method: :username %>
+                  <%= f.association :followed, label: 'Find your friend', label_method: :username, input_html: { class: 'select2' } %>
                   <%= f.button :submit, 'Send invitation', class: "btn btn-primary" %>
                 <% end %>
               </div>
