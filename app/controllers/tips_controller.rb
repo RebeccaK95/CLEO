@@ -14,5 +14,6 @@ class TipsController < ApplicationController
   def show
     @tip = Tip.find(params[:id])
     @show_page = true
+    @tips = Tip.all
   end
 end

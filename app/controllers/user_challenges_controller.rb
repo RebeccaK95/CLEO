@@ -34,5 +34,5 @@ class UserChallengesController < ApplicationController
     user_progression = (challenge_steps / 100) * 100 
     user_challenge&.status == "#{user_progression}"
   end
-  
+
 end
