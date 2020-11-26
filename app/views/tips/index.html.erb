@@ -7,7 +7,7 @@
       <div class="background-blue-tip d-flex flex-column justify-content-around">
         <p style="font-family: 'Montserrat'; font-weight: bold;">Cleo community’s tip of the month</p>
         <h1 class="category-tip-title"> <%= @tip_month.title %> </h1>
-        <h5 class="category-tip-blue d-inline-flex"><%= @tip_month.category.name %></h5>
+        <h5 class="category-tip-blue d-inline-flex"><%= @tip_month.category.name.downcase %></h5>
         <p class="p-tip"> <%= @tip_month.description.truncate(300) %> <br> <span class="read"> <%= link_to "Read more", tip_path(@tip_month) %> </span></p>
       </div>
       <div class="image-tip">
@@ -52,7 +52,7 @@
         <%= image_tag("tip-#{tip.image}.jpg") %>
         <div class="tip-dashboard-infos d-flex flex-column align-items-left">
           <h6><%= link_to tip.title, tip_path(tip) %></h6>
-          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name %></h5>
+          <h5 class="category-tip-dashboard d-inline-flex"><%= tip.category.name.downcase %></h5>
           <p><%= tip.description.to_s.truncate(100) %> <br> <span class="read"> <%= link_to "Read more", tip_path(tip) %> </span></p>
         </div>
       </div>
