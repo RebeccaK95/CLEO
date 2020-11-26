@@ -17,15 +17,21 @@ puts "Creating bathroom challenges"
 cat = Category.all
 challenges_bathroom = Challenge.create([{name: "Make your own beauty products",
                                 description: "Usage of industrial shampoos and soaps is an ecological drama,
-                                              all those empty packages end up in the trash and they are not especilly good for the our bodies.",
+                                              all those empty packages end up in the trash and they are not especially good for the our bodies.",
                                 image: "homemade-p.jpg",
                                 points: [100, 200, 300, 400, 500].sample,
+                                duration: rand(1..12),
+                                participant_base: rand(300...5000),
+                                benefit: "Get a plastic-free bathroom.",
                                 category_id: Category.find_by(name: "Bathroom").id},
 
                                 {name: "Use less water !",
-                                description: "Water is an element of life. It is the 'blue gold' as some call it. 800 millions of people do not have access to drinkable water, and it is 70 purcent of the surface of the earth!",
+                                description: "Water is an element of life. It is the 'blue gold' as some call it. 800 millions of people do not have access to drinkable water, and it is 70 percent of the surface of the earth!",
                                 image: "shower.jpg",
                                 points: [100, 200, 300, 400, 500].sample,
+                                duration: rand(1..12),
+                                participant_base: rand(300...5000),
+                                benefit: "Save the planet... and time in the morning.",
                                 category_id: Category.find_by(name: "Bathroom").id}])
 
 puts "Done with bathroom"
@@ -49,16 +55,21 @@ puts "Done with steps for the bathroom challenges"
 
 puts "Creating transports challenges"
 challenges_transportation = Challenge.create([{name: "Stay away from your car!",
-
                                               description: "As you well know, the emissions of CO2 of your car is a real problem nowadays, time to help our planet recover from all those years of pollution.",
                                               points: [100, 200, 300, 400, 500].sample,
                                               category_id: Category.find_by(name: "Transports").id,
+                                              duration: rand(1..12),
+                                              participant_base: rand(300...5000),
+                                              benefit: "You'll get nice exercise in too.",
                                               image: "transport2.jpg"},
 
                                               {name: "Eco-travel",
                                               description: "The fastest way to travel is usually the worst for the environment. As you should take your bike to go to work, it is preferable to take your car than a plane!",
                                               image: "transport1.jpg",
                                               points: [100, 200, 300, 400, 500].sample,
+                                              duration: rand(1..12),
+                                              participant_base: rand(300...5000),
+                                              benefit: "Plan your holidays in a greener way without neglicting fun either.",
                                               category_id: Category.find_by(name: "Transports").id}])
 
 puts "Done with transports"
@@ -83,24 +94,36 @@ challenges_lifestyle = Challenge.create([{name: "Bye bye plastic bags",
                                         description: "We are all by now aware of the disastrous usage of plastic bags. Let's get rid of them!",
                                         image: "ecolo.jpg",
                                         points: [100, 200, 300, 400, 500].sample,
+                                        duration: rand(1..12),
+                                        participant_base: rand(300...5000),
+                                        benefit: "Get a big kiss from Nemo.",
                                         category_id: Category.find_by(name: "Daily").id},
 
                                         {name: "Clean your house using natural products",
                                         description: "Cleaning products contain some chemicals that are bad for our health, but also for the environment. Let's see what we can do about it !",
                                         image: "main.jpg",
                                         points: [100, 200, 300, 400, 500].sample,
+                                        duration: rand(1..12),
+                                        participant_base: rand(300...5000),
+                                        benefit: "Get a toxic-free house environment.",
                                         category_id: Category.find_by(name: "Daily").id},
 
                                         {name: "Get definitely rid of plastic",
-                                        description: "Plastic is bad for the environment and is also really dangerous for your health. Let's try to put an end our crazy use of plastic.",
+                                        description: "Plastic is bad for the environment and is also really dangerous for your health. Let's try to put an end to our crazy use of plastic.",
                                         image: "bouteille-jaune.jpg",
                                         points: [100, 200, 300, 400, 500].sample,
+                                        duration: rand(1..12),
+                                        participant_base: rand(300...5000),
+                                        benefit: "Your supermarket is your new catwalk, let's show off your trendy bags.",
                                         category_id: Category.find_by(name: "Daily").id},
 
                                         {name: "Healing with nature",
                                         description: "Modern medicine is all about labs. When rejecting the drugs, they pollute the soil, the water and the air. It is everywhere. Not so eco-friendly right?",
                                         image: "tip-nature.jpg",
                                         points: [100, 200, 300, 400, 500].sample,
+                                        duration: rand(1..12),
+                                        participant_base: rand(300...5000),
+                                        benefit: "Reconnecting with nature will bring you joy and peacefulness.",
                                         category_id: Category.find_by(name: "Daily").id }])
 
 puts "Done with lifestyle"
@@ -117,9 +140,9 @@ challenge_lifestyle_steps = ChallengeStep.create([
         {description: "1- Stop using plastic-bottled water. Try to get a glass or inox one that you refill when needed.", challenge_id: challenges_lifestyle.third.id},
         {description: "2- Start purchasing in bulk or concentrate!", challenge_id: challenges_lifestyle.third.id},
         {description: "3- Get rid of plastics bags when doing your groceries.", challenge_id: challenges_lifestyle.third.id},
- 
+
         {description: "1- Use essential oils! 9 out of 10 times they will do the job perfectly.", challenge_id: challenges_lifestyle.fourth.id},
-        {description: "2- Try to get better use natural medecines like acupunture or homeopathy.", challenge_id: challenges_lifestyle.fourth.id}
+        {description: "2- Try to get better use of natural medecines like acupunture or homeopathy.", challenge_id: challenges_lifestyle.fourth.id}
         ])
 puts "Done with steps for the lifestyle challenges"
 
@@ -128,25 +151,35 @@ challenges_food = Challenge.create([{name: "Decrease additives",
                                     description: "A lot of the food we buy in supermarkets are filled with nocive additives, demanding in production usage of non-ecological resources.",
                                     image: "tomatoes.jpg",
                                     points: [100, 200, 300, 400, 500].sample,
+                                    duration: rand(1..12),
+                                    participant_base: rand(300...5000),
+                                    benefit: "The benefits will be as good as 30min at the gym.",
                                     category_id: Category.find_by(name: "Food").id},
 
                                     {name: "Eating locally and with the seasons",
                                     description: "You might wonder why eating with the seasons is a way to reduce your carbon foorprint. Well, to grow a strawberry in january by example demands chemicals fertilizers or you could buy imported products. You guessed right, that's no good for you or the environment. Let's see what we can do about it.",
                                     image: "etales.jpg",
                                     points: [100, 200, 300, 400, 500].sample,
+                                    duration: rand(1..12),
+                                    participant_base: rand(300...5000),
+                                    benefit: "You'll help local producers as well as eating better food.",
                                     category_id: Category.find_by(name: "Food").id},
 
                                     {name: "Grow your own vegetable garden",
                                     description: "A lot a vegetables are easily grownable in your backyard, or even your balcony! That way, you'll make sure of the provenance of the things you eat!",
                                     image: "plantation.jpg",
                                     points: [100, 200, 300, 400, 500].sample,
+                                    duration: rand(1..12),
+                                    participant_base: rand(300...5000),
+                                    benefit: "An opportunity to impress and connect with your neighbours.",
                                     category_id: Category.find_by(name: "Food").id}])
 
 puts "Done with food"
 
 puts "Creating steps for the food challenges"
 challenge_food_steps = ChallengeStep.create([
-        {description: "1- Buy in local bio stores;2- Cook more at home !", challenge_id: challenges_food.first.id},
+        {description: "1- Buy in local bio stores.", challenge_id: challenges_food.first.id},
+        {description: "2- Cook more at home !", challenge_id: challenges_food.first.id},
 
         {description: "1- Buy fruits and vegetables according to the season.", challenge_id: challenges_food.second.id},
         {description: "2- Try to check, when in the process of buying something, where it comes from and do not purchase it if it comes from far away!", challenge_id: challenges_food.second.id},
@@ -157,15 +190,21 @@ puts "Done with steps for the food challenges"
 
 puts "Creating energy challenges"
 challenges_energy = Challenge.create([{name:"Light me up",
-                                      description: "Electricity is also a domain where you can imporove your ecological skills! Try these following steps to reduce your carbon footprint on this beloved earth.",
+                                      description: "Electricity is also a domain where you can improve your ecological skills! Try these following steps to reduce your carbon footprint on this beloved earth.",
                                       image: "ampoule.jpg",
                                       points: [100, 200, 300, 400, 500].sample,
+                                      duration: rand(1..12),
+                                      participant_base: rand(300...5000),
+                                      benefit: "Definitely a plus for your health and comfort at home.",
                                       category_id: Category.find_by(name: "Energy").id},
 
                                       {name: "Hot'n'cold",
                                       description: "Heating or cooling your place represents a big part of your imprint on the planet.",
                                       image: "eolienne2.jpg",
                                       points: [100, 200, 300, 400, 500].sample,
+                                      duration: rand(1..12),
+                                      participant_base: rand(300...5000),
+                                      benefit: "Get the perfect temperature for a cosy home.",
                                       category_id: Category.find_by(name: "Energy").id}])
 
 puts "Done with energy"
@@ -177,7 +216,7 @@ challenge_energy_steps = ChallengeStep.create([
 
         {description: "1- Naturally heat and cool your house, office, or dorm room by opening or closing your windows, curtains, and blinds, and by using fans.", challenge_id: challenges_energy.second.id},
         {description: "2- Adjust your thermostat down 2 degrees from usual when you use the heat, and up 2 degrees when you use air conditioning.", challenge_id: challenges_energy.second.id},
-        {description: "3- Replace manual thermostats with programmable ones.", challenge_id: challenges_energy.second.id} 
+        {description: "3- Replace manual thermostats with programmable ones.", challenge_id: challenges_energy.second.id}
 ])
 puts "Done with steps for the energy challenges"
 
@@ -274,10 +313,6 @@ tip_food = Tip.create ([
 puts "Done with food"
 
 puts "Done with tips"
-
-puts "Create footprint"
-fp = Footprint.create([{ user_id: 1, score: 5000 }, { user_id: 2, score: 5000 } ])
-puts "Done with footprint"
 
 
 
