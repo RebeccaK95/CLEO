@@ -29,7 +29,7 @@ class ChallengesController < ApplicationController
     @users = Friendship.where(followed: current_user.id)
     @invite = Invite.new
 
-    @participants_count = particpants_count
+    @participants_count = UserChallenge.where(challenge_id: params[:id]).length
 
     @invites_count = Invite.where(inviter_id: current_user.id)
     @invites_challenge = @invites_count.where(challenge_id: params[:id])
@@ -51,7 +51,7 @@ class ChallengesController < ApplicationController
   end
 
   def participants_count
-    challenges_count = UserChallenge.where(challenge_id: params[:id]).length
-    return challenges_count + rand(300...5000)
+    user_challenges = UserChallenge.where(challenge_id: params[:id]).length
+    return user_challenges_count + rand(300...5000)
   end
 end
