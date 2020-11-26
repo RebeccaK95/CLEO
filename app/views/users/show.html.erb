@@ -59,7 +59,7 @@
         </div>
       <% else %>
         <% if @followed_user.nil? %>
-          <%= link_to user_friendships_path(@user), method: :post do %>
+          <%= link_to do %>
             <div class="button-outline-blue margin-bottom-none">
               <p>Follow</p>
             </div>
