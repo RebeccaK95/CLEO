@@ -10,11 +10,19 @@
       <div class="d-flex">
         <div class="col text-center vertical-separator">
           <p> Followers</p>
+          <% if current_user == @user %>
             <p class="secular-one numbers-big"><%= link_to @followers_count, friendships_path %></p>
+          <% else %>
+            <p class="secular-one numbers-big"><%= @followers_count %></p>
+          <% end %>
         </div>
         <div class="col text-center">
           <p>Following</p>
-          <p class="secular-one numbers-big"><%= link_to @following_count, friendships_path %></p>
+          <% if current_user == @user %>
+            <p class="secular-one numbers-big"><%= link_to @following_count, friendships_path %></p>
+          <% else %>
+            <p class="secular-one numbers-big"><%= @following_count %></p>
+          <% end %>
         </div>
       </div>
       <% if @done_challenges.empty? %>
@@ -57,27 +65,18 @@
             </div>
           </div>
         </div>
+        <!--  end of modal -->
+      <% elsif current_user.followeds.include?(@user) %>
+        <%= link_to unfollow_user_path, method: :post do %>
+          <div class="button-outline-blue margin-bottom-none">
+            <p>Unfollow</p>
+          </div>
+        <% end %>
       <% else %>
-        <% if @followed_user.nil? %>
-          <%= link_to do %>
-            <div class="button-outline-blue margin-bottom-none">
-              <p>Follow</p>
-            </div>
-          <% end %>
-        <% else %>
-          <% if @followed_user.followed == @user %>
-            <%= link_to friendship_path(@followed_user), method: :delete do %>
-              <div class="button-outline-blue margin-bottom-none">
-                <p>Unfollow</p>
-              </div>
-            <% end %>
-          <% else %>
-            <%= link_to friendships_path, method: :post do %>
-              <div class="button-outline-blue margin-bottom-none">
-                <p>Follow</p>
-              </div>
-            <% end %>
-          <% end %>
+        <%= link_to follow_user_path, method: :post do %>
+          <div class="button-outline-blue margin-bottom-none">
+            <p>Follow</p>
+          </div>
         <% end %>
       <% end %>
     </div>

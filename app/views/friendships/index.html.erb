@@ -7,25 +7,25 @@
     </div>
     <div class="d-flex justify-content-around align-items-center px-2 my-2">
       <div class="followers">
-        <% @friendships.each do |friendship| %>
+        <% @followers.each do |follower| %>
           <div class="invitation-card">
             <div class="avatar-friend">
-              <%= cl_image_tag friendship.follower.photo.key, crop: :scale %>
+              <%= cl_image_tag follower.photo.key, crop: :scale %>
             </div>
             <div class="invitation-card-info">
-              <p><span class="secular-one"><%= link_to "#{friendship.follower.username}", user_path(friendship.follower.id) %></span> follows you.</p>
+              <p><span class="secular-one"><%= link_to "#{follower.username}", user_path(follower.id) %></span> follows you.</p>
             </div>
           </div>
         <% end %>
       </div>
       <div class="followed">
-        <% @friendships.each do |friendship| %>
+        <% @followeds.each do |followed| %>
           <div class="invitation-card">
             <div class="avatar-friend">
-              <%= cl_image_tag friendship.followed.photo.key, crop: :scale %>
+              <%= cl_image_tag followed.photo.key, crop: :scale %>
             </div>
             <div class="invitation-card-info">
-              <p>You are following <span class="secular-one"><%= link_to "#{friendship.followed.username}", user_path(friendship.follower.id) %></span></p>
+              <p>You are following <span class="secular-one"><%= link_to "#{followed.username}", user_path(followed.id) %></span></p>
             </div>
           </div>
         <% end %>

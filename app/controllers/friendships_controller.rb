@@ -2,8 +2,8 @@ class FriendshipsController < ApplicationController
 
   def index
     @friendships = Friendship.where(accepted: true)
-    @followers = @friendships.where(followed_id: current_user.id)
-    @followeds = @friendships.where(follower_id: current_user.id)
+    @followers = current_user.followers
+    @followeds = current_user.followeds
     @friendship = Friendship.new(follower_id: current_user.id)
 
   end
