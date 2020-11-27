@@ -15,5 +15,6 @@ class TipsController < ApplicationController
     @tip = Tip.find(params[:id])
     @show_page = true
     @tips = Tip.all
+    @eat_locally_tip = Tip.find_by(title: "What is eating local ?")
   end
 end

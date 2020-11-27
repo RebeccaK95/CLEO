@@ -10,18 +10,19 @@
     <!-- <div class="d-flex"></div> -->
     <br>
     <br>
-      <% tip_array = @tip.description.split(";") %>
-        <% tip_array.each do |tip| %>
-          <%= tip %>
-        <br>
-        <br>
-        <% end %>
-      <!-- <br> -->
-      <!-- <p style="padding-left: 8px;"><%= @tip.description %></p> -->
-      <!-- <div class="link-show"> -->
-        <%# <i class="fas fa-hand-point-left"></i><%= link_to "  Go back to all the tips", tips_path  %>
-      <!-- </div> -->
-      <!-- <br> -->
+    <% tip_array = @tip.description.split(";") %>
+      <% tip_array.each do |tip| %>
+        <%= tip %>
+      <br>
+      <br>
+      <% end %>
+    <!-- Shop Locally -->
+    <% if @eat_locally_tip %>
+      <h5 id="shop-locally">Check out this website to find local shops nearby:</h5>
+      <a href="http://www.shoplocally.xyz" src="Shop-Locally" target="_blank">
+        <%= image_tag("logo-shop-locally.png") %>
+      </a>
+    <% end %>
   </div>
 </div>
 <!-- Tips carousel -->
