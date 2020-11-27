@@ -12,8 +12,12 @@ class User < ApplicationRecord
   has_many :invitations, class_name: self.to_s, as: :invited_by
   has_many :invites, class_name: 'Invite', foreign_key: 'invitee_id'
   has_many :invites, class_name: 'Invite', foreign_key: 'inviter_id'
-  has_many :friendships, class_name: 'Friendship', foreign_key: 'follower_id'
-  has_many :friendships, class_name: 'Friendship', foreign_key: 'followed_id'
+
+  has_many :followed_users, foreign_key: :follower_id, class_name: 'Friendship'
+  has_many :followeds, through: :followed_users #followeds are people I follow
+  has_many :following_users, foreign_key: :followed_id, class_name: 'Friendship'
+  has_many :followers, through: :following_users #followers are people that follow me
+
   has_one_attached :photo
 
   after_create :create_footprint
