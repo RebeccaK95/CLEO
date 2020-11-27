@@ -14,8 +14,8 @@ class UsersController < ApplicationController
     @user_footprint = Footprint.find_by(user_id: current_user.id)
     @score = @user_footprint&.score
     @friendships = Friendship.where(accepted: true)
-    @followers_count = @friendships.where(followed_id: params[:id]).length
-    @following_count = @friendships.where(follower_id: params[:id]).length
+    @followers_count = @user.followers.length
+    @following_count = @user.followeds.length
 
     @current_follower = @friendships.where(follower_id: current_user.id)
     @followed_user = @current_follower.find_by(followed_id: @user.id)
@@ -29,6 +29,18 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.update(user_params)
     redirect_to user_path(user)
+  end
+
+  def follow
+    @user = User.find(params[:id])
+    current_user.followeds << @user
+    redirect_back(fallback_location: user_path(@user))
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.followed_users.find_by(followed_id: @user.id).destroy
+    redirect_to user_path(@user)
   end
 
   private
