@@ -26,6 +26,7 @@
   height: 100px;
   border-radius: 50%;
   box-shadow: 0 1px 6px rgba(0, 0,0, 0.2);
+  object-fit: cover;
 }
 .avatar-profile {
   display: flex;
@@ -38,4 +39,5 @@
   height: 50px;
   border-radius: 50%;
   border: 1px white solid;
+  object-fit: cover;
 }
